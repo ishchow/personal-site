@@ -1,8 +1,6 @@
-module.exports = function (eleventyConfig) {
-    // Add a filter using the Config API
-    eleventyConfig.addFilter("myFilter", function () {});
+module.exports = function(eleventyConfig) {
+    eleventyConfig.addPassthroughCopy("src/assets/img");
 
-    // You can return your Config object (optional).
     return {
         dir: {
             input: "src",
@@ -12,5 +10,6 @@ module.exports = function (eleventyConfig) {
             markdownTemplateEngine: "njk",
             htmlTemplateEngine: "njk",
         },
+        passthroughFileCopy: true,
     };
 };
