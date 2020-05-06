@@ -1,0 +1,16 @@
+{
+    "name": "personal-site",
+    "version": "1.0.0",
+    "description": "todo",
+    "main": "index.js",
+    "scripts": {
+        "dev": "eleventy --serve",
+        "build": "elventy"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@11ty/eleventy": "^0.10.0"
+    }
+}
