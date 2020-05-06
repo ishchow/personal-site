@@ -1,0 +1,39 @@
+{% macro navbaritem(name='Item', href='#') %}
+<a
+    href="{{ href }}"
+    class="block mt-4 mr-4 font-semibold text-xl text-white lg:inline-block lg:mt-0 hover:text-white"
+>
+    {{ name }}
+</a>
+{% endmacro %}
+
+{% macro navbarbutton() %}
+<div class="block lg:hidden">
+    <button
+        class="flex items-center px-3 py-2 text-white border border-white rounded hover:text-white hover:border-white"
+    >
+        <svg
+            class="w-3 h-3 fill-current"
+            viewbox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <title>menu</title>
+            <path d="m0 3h20v2h0v3zm0 6h20v2h0v9zm0 6h20v2h0v-2z" />
+        </svg>
+        <!-- <img src="assets/icons/fondicons/menu.svg"> -->
+    </button>
+</div>
+{% endmacro %}
+
+<!-- Navbar -->
+<nav class="flex flex-wrap items-center justify-between p-6 bg-red-800">
+    {# {{ navbarbutton() }} #}
+    <div class="flex-grow block w-full lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm lg:flex-grow">
+            {{ navbaritem(name='About', href='#') }} 
+            {{ navbaritem(name='Archive', href='#') }} 
+            {{ navbaritem(name='Blog', href='#') }} 
+            {{ navbaritem(name='Categories', href='#') }} 
+        </div>
+    </div>
+</nav>
