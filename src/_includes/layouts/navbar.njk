@@ -1,7 +1,7 @@
 {% macro navbaritem(name='Item', href='#') %}
 <a
     href="{{ href }}"
-    class="block mt-4 mr-4 text-2xl font-semibold text-white lg:inline-block lg:mt-0 hover:text-white"
+    class="block mt-4 mr-4 text-2xl font-semibold text-gray-900 border-b-2 border-gray-900 border-dashed lg:inline-block lg:mt-0"
 >
     {{ name }}
 </a>
@@ -26,14 +26,17 @@
 {% endmacro %}
 
 <!-- Navbar -->
-<nav class="flex flex-wrap items-center justify-between p-6 bg-purple-700">
-    {# {{ navbarbutton() }} #}
-    <div class="flex-grow block w-full lg:flex lg:items-center lg:w-auto">
-        <div class="text-sm lg:flex-grow">
-            {{ navbaritem(name='About', href='#') }} 
-            {# {{ navbaritem(name='Archive', href='#') }} #}
-            {{ navbaritem(name='Blog', href='#') }} 
-            {# {{ navbaritem(name='Categories', href='#') }} #}
+<div class="">
+    <nav class="container items-center justify-between py-6 mx-6 lg:mx-auto lg:px-48">
+        {# {{ navbarbutton() }} #}
+        <div class="flex-grow block w-full lg:flex lg:items-center lg:w-auto">
+            <div class="lg:flex-grow">
+                {{ navbaritem(name='About', href='#') }} 
+                {# {{ navbaritem(name='Archive', href='#') }} #}
+                {{ navbaritem(name='Blog', href='#') }} 
+                {# {{ navbaritem(name='Tags', href='#') }} #}
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>
+

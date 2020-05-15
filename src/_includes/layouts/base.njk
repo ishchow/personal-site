@@ -10,13 +10,24 @@
     <body class="bg-gray-100">
         {% include "layouts/navbar.njk" %}
 
-        <div class="container h-screen mx-6 my-6 divide-y-2 divide-gray-900 lg:mx-auto lg:px-48">
-            <div class="py-6">
-                <a class="text-4xl font-bold text-purple-600" href="#">Post Title </a>
-                <p> blabh blah blah</p>
+        <div class="container h-screen mx-6 my-6 divide-y-2 divide-gray-300 lg:mx-auto lg:px-48">
+            <div class="py-8">
+                <a class="text-3xl font-bold leading-loose text-gray-900" href="#">Post Title </a>
+                <p class="text-lg italic text-gray-700">April 9, 2020</p>
+                <div class="flex flex-row leading-loose space-x-2">
+                    <a class="text-lg italic text-gray-700" href="#">#rust</a>
+                    <a class="text-lg italic text-gray-700" href="#">#programming</a>
+                </div>
+                <p class="text-lg">Summary</p>
             </div>
-            <div class="py-6">
-                <a class="text-4xl font-bold text-purple-600" href="#">Another Post Title</a>
+            <div class="py-8">
+                <a class="text-3xl font-bold leading-loose text-gray-900" href="#">Another Post Title</a>
+                <p class="text-lg italic text-gray-700">April 7, 2020</p>
+                <div class="flex flex-row leading-loose space-x-2">
+                    <a class="text-lg italic text-gray-700" href="#">#rust</a>
+                    <a class="text-lg italic text-gray-700" href="#">#programming</a>
+                </div>
+                <p class="text-lg">Summary</p>
             </div>
             {{ content | safe }}
         </div> 
