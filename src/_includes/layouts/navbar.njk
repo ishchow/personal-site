@@ -26,17 +26,15 @@
 {% endmacro %}
 
 <!-- Navbar -->
-<div class="">
-    <nav class="container items-center justify-between py-6 mx-6 lg:mx-auto lg:px-48">
-        {# {{ navbarbutton() }} #}
-        <div class="flex-grow block w-full lg:flex lg:items-center lg:w-auto">
-            <div class="lg:flex-grow">
-                {{ navbaritem(name='About', href='#') }} 
-                {# {{ navbaritem(name='Archive', href='#') }} #}
-                {{ navbaritem(name='Blog', href='#') }} 
-                {# {{ navbaritem(name='Tags', href='#') }} #}
-            </div>
+<nav class="container items-center justify-between py-6 mx-6 lg:mx-auto lg:px-48">
+    {# {{ navbarbutton() }} #}
+    <div class="flex-grow block w-full lg:flex lg:items-center lg:w-auto">
+        <div class="lg:flex-grow">
+            {{ navbaritem(name='About', href='/about/') }} 
+            {# {{ navbaritem(name='Archive', href='#') }} #}
+            {{ navbaritem(name='Blog', href='/') }} 
+            {# {{ navbaritem(name='Tags', href='#') }} #}
         </div>
-    </nav>
-</div>
+    </div>
+</nav>
 
