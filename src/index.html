@@ -9,12 +9,10 @@ pagination:
 ---
 
 <!-- Post List  -->
-<div class="divide-y-2 divide-gray-300 ">
+<div class="divide-y divide-gray-500 ">
     {% for post in posts %}
-    <div class="py-8">
-        <a class="text-2xl font-bold leading-loose" href="{{ post.url | url }}">{{
-            post.data.title
-        }}</a>
+    <div class=" {{ "mb-4" if loop.index == 1 else "py-4" }}">
+        <a class="text-2xl font-bold leading-loose" href="{{ post.url }}">{{ post.data.title }}</a>
         <p class="italic text-gray-700 text-md">
             {{ post.data.date.toDateString() }}
         </p>
@@ -23,7 +21,6 @@ pagination:
             <a class="italic text-gray-700 text-md" href="#">#{{ tag }}</a>
             {% endif %} {% endfor %}
         </div>
-        <p class="text-md">Summary</p>
     </div>
     {% endfor %}
 </div>
