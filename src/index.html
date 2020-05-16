@@ -4,22 +4,18 @@ title: "Ishaat Chowdhury"
 ---
 
 <div class="divide-y-2 divide-gray-300 ">
-    <div class="py-8">
-        <a class="text-3xl font-bold leading-loose text-gray-900" href="/posts/first-post/">Post Title </a>
-        <p class="text-lg italic text-gray-700">April 9, 2020</p>
-        <div class="flex flex-row leading-loose space-x-2">
-            <a class="text-lg italic text-gray-700" href="#">#rust</a>
-            <a class="text-lg italic text-gray-700" href="#">#programming</a>
+    {% for post in collections.post | reverse %}
+        <div class="py-8">
+            <a class="text-3xl font-bold leading-loose text-gray-900" href="/posts/first-post/">{{ post.data.title }}</a>
+            <p class="text-lg italic text-gray-700">{{ post.data.date.toDateString() }}</p>
+            <div class="flex flex-row leading-loose space-x-2">
+                {% for tag in post.data.tags %}
+                    {% if tag != 'post' %}
+                        <a class="text-lg italic text-gray-700" href="#">#{{tag}}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <p class="text-lg">Summary</p>
         </div>
-        <p class="text-lg">Summary</p>
-    </div>
-    <div class="py-8">
-        <a class="text-3xl font-bold leading-loose text-gray-900" href="#">Another Post Title</a>
-        <p class="text-lg italic text-gray-700">April 7, 2020</p>
-        <div class="flex flex-row leading-loose space-x-2">
-            <a class="text-lg italic text-gray-700" href="#">#rust</a>
-            <a class="text-lg italic text-gray-700" href="#">#programming</a>
-        </div>
-        <p class="text-lg">Summary</p>
-    </div>
+    {% endfor %}
 </div>
