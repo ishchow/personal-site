@@ -1,21 +1,42 @@
 ---
 layout: base
 title: "Ishaat Chowdhury"
+pagination:
+    data: collections.post
+    size: 2
+    reverse: true
+    alias: posts
 ---
 
+<!-- Post List  -->
 <div class="divide-y-2 divide-gray-300 ">
-    {% for post in collections.post | reverse %}
-        <div class="py-8">
-            <a class="text-3xl font-bold leading-loose text-gray-900" href="/posts/first-post/">{{ post.data.title }}</a>
-            <p class="text-lg italic text-gray-700">{{ post.data.date.toDateString() }}</p>
-            <div class="flex flex-row leading-loose space-x-2">
-                {% for tag in post.data.tags %}
-                    {% if tag != 'post' %}
-                        <a class="text-lg italic text-gray-700" href="#">#{{tag}}</a>
-                    {% endif %}
-                {% endfor %}
-            </div>
-            <p class="text-lg">Summary</p>
+    {% for post in posts %}
+    <div class="py-8">
+        <a class="text-2xl font-bold leading-loose" href="{{ post.url | url }}">{{
+            post.data.title
+        }}</a>
+        <p class="italic text-gray-700 text-md">
+            {{ post.data.date.toDateString() }}
+        </p>
+        <div class="flex flex-row leading-loose space-x-2">
+            {% for tag in post.data.tags %} {% if tag != 'post' %}
+            <a class="italic text-gray-700 text-md" href="#">#{{ tag }}</a>
+            {% endif %} {% endfor %}
         </div>
+        <p class="text-md">Summary</p>
+    </div>
     {% endfor %}
 </div>
+
+<!-- Pagination  -->
+<nav class="flex justify-center text-xl text-center">
+    <a class="px-4 py-2 m-2 {{ "invisible" if page.url == pagination.href.first else "" }}" href="{{ pagination.href.first }}">&lt&lt</a>
+    <a class="px-4 py-2 m-2 {{ "invisible" if page.url == pagination.href.first else "" }}" href="{{ pagination.href.previous }}">&lt</a>
+    
+    {% for pageEntry in pagination.pages %}
+    <a class="px-4 py-2 m-2 {{ "font-black" if page.url == pagination.hrefs[loop.index0]  else "" }}" href="{{ pagination.hrefs[loop.index0] }}">{{ loop.index }}</a>
+    {% endfor %}
+
+    <a class="px-4 py-2 m-2 {{ "invisible" if page.url == pagination.href.last else "" }}" href="{{ pagination.href.next }}">&gt</a>
+    <a class="px-4 py-2 m-2 {{ "invisible" if page.url == pagination.href.last else "" }}" href="{{ pagination.href.last }}">&gt&gt</a>
+</nav>
