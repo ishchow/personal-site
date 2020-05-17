@@ -1,3 +1,5 @@
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/img");
     eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
@@ -6,6 +8,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.setBrowserSyncConfig({
         files: ["dist/assets/css"],
     });
+
+    eleventyConfig.addPlugin(syntaxHighlight);
 
     // enable everything
     var markdownit = require("markdown-it")({
