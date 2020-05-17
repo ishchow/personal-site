@@ -9,7 +9,7 @@ title: "Tags"
         {% if (tag != 'post') and (tag != 'all') %}
             <details>
                 <summary class="text-xl">{{ tag }}</summary>
-                <ul>
+                <ul class="text-lg">
                     {% for post in posts | reverse %}
                     <li>
                         <span class="italic">{{ post.data.date.toDateString() }} - </span><a class="text-blue-700 underline" href="{{ post.url }}">{{ post.data.title }}</a>
