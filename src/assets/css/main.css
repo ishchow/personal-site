@@ -1,6 +1,57 @@
 @tailwind base;
 
+h1 {
+    @apply my-4 text-4xl font-bold;
+}
+
+h2 {
+    @apply my-4 text-3xl font-bold;
+}
+
+h3 {
+    @apply my-4 text-2xl font-bold;
+}
+
+h4 {
+    @apply my-4 text-xl font-bold;
+}
+
+h5 {
+    @apply my-4 text-lg font-bold;
+}
+
+h6 {
+    @apply my-4 font-bold;
+}
+
+pre {
+    @apply p-1 my-2 bg-gray-200;
+}
+
+blockquote {
+    @apply py-1 pl-2 my-2 border-l-4 border-gray-400;
+}
+
+code {
+    @apply p-1 my-2 bg-gray-200;
+}
+
+ul {
+    @apply pl-4 my-2 list-disc list-inside;
+}
+
+ol {
+    @apply pl-4 my-2 list-decimal list-inside;
+}
+
+.content p {
+    @apply my-2;
+}
+
+.content a {
+    @apply underline text-blue-700;
+}
+
 @tailwind components;
 
 @tailwind utilities;
-
