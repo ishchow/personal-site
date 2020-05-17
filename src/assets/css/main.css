@@ -24,9 +24,10 @@ h6 {
     @apply my-4 font-bold;
 }
 
-pre {
-    @apply p-1 my-2 bg-gray-200;
-}
+/* Prevent conflicts with prism css theme  */
+/* pre { */
+/*     @apply p-1 my-2 bg-gray-200; */
+/* } */
 
 blockquote {
     @apply py-1 pl-2 my-2 border-l-4 border-gray-400;
