@@ -26,14 +26,9 @@ pagination:
 </div>
 
 <!-- Pagination  -->
-<nav class="flex justify-center text-xl text-center">
-    <a class="px-4 py-2 m-2 {{ "invisible" if page.url == pagination.href.first else "" }}" href="{{ pagination.href.first }}">&lt&lt</a>
-    <a class="px-4 py-2 m-2 {{ "invisible" if page.url == pagination.href.first else "" }}" href="{{ pagination.href.previous }}">&lt</a>
-    
-    {% for pageEntry in pagination.pages %}
-    <a class="px-4 py-2 m-2 {{ "font-black" if page.url == pagination.hrefs[loop.index0]  else "" }}" href="{{ pagination.hrefs[loop.index0] }}">{{ loop.index }}</a>
-    {% endfor %}
-
-    <a class="px-4 py-2 m-2 {{ "invisible" if page.url == pagination.href.last else "" }}" href="{{ pagination.href.next }}">&gt</a>
-    <a class="px-4 py-2 m-2 {{ "invisible" if page.url == pagination.href.last else "" }}" href="{{ pagination.href.last }}">&gt&gt</a>
+<nav class="flex justify-center text-3xl text-center">
+        <a class="px-8 py-4 m-4 {{ "invisible" if page.url == pagination.href.first else "" }}" href="{{ pagination.href.first }}">&lt&lt</a>
+        <a class="px-8 py-4 m-4 {{ "invisible" if page.url == pagination.href.first else "" }}" href="{{ pagination.href.previous }}">&lt</a>
+        <a class="px-8 py-4 m-4 {{ "invisible" if page.url == pagination.href.last else "" }}" href="{{ pagination.href.next }}">&gt</a>
+        <a class="px-8 py-4 m-4 {{ "invisible" if page.url == pagination.href.last else "" }}" href="{{ pagination.href.last }}">&gt&gt</a>
 </nav>
