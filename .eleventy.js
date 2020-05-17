@@ -1,6 +1,7 @@
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/img");
     eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
+    eleventyConfig.addLayoutAlias("about", "layouts/about.njk");
 
     eleventyConfig.setBrowserSyncConfig({
         files: ["dist/assets/css"],
