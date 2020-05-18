@@ -51,7 +51,15 @@ this is in _italics_. This is *emphasized*. This is **bolded**. This is ~~strike
 
 # Inline code
 
-`this is some inline code`
+xxx `this is some inline code`
+
+# Block code no lang
+
+```text
+alfjlkfd
+aflkajff
+aflaf
+```
 
 # Block quotes
 
