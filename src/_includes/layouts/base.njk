@@ -8,13 +8,15 @@
         <title>{{ title }}</title>
     </head>
 
-    <body class="text-gray-900 bg-gray-100">
+    <body class="flex flex-col h-screen text-gray-900 bg-gray-100">
         {% include "layouts/navbar.njk" %}
 
-        <div class="container mx-6 my-6 lg:mx-auto lg:px-48">
+        <div class="container flex-1 mx-6 my-6 lg:mx-auto lg:px-48">
             {% block main %}
             {{ content | safe }}
             {% endblock %}
         </div> 
+
+        {% include "layouts/footer.njk" %}
     </body>
 </html>
