@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: post
 title: Latest Post
 date: 2020-05-17T00:00:00-07:00
 tags:
@@ -8,11 +8,15 @@ tags:
     - tag
 ---
 
-{{ date.toUTCString() | log }}
+# Heading 1
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque elit eget gravida cum sociis natoque. Odio euismod lacinia at quis risus. Risus commodo viverra maecenas accumsan. Pharetra et ultrices neque ornare aenean euismod elementum nisi. Nulla posuere sollicitudin aliquam ultrices. Nam at lectus urna duis convallis convallis tellus id interdum. Sed turpis tincidunt id aliquet risus feugiat in. Viverra ipsum nunc aliquet bibendum enim. Orci eu lobortis elementum nibh tellus molestie nunc non. Cursus metus aliquam eleifend mi in nulla posuere sollicitudin aliquam. Neque egestas congue quisque egestas. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci. Nulla pharetra diam sit amet nisl. Sed tempus urna et pharetra pharetra massa. Laoreet sit amet cursus sit amet dictum sit amet.
 
+## Heading 2
+
 In ornare quam viverra orci sagittis eu volutpat odio. A iaculis at erat pellentesque adipiscing commodo elit at. Pellentesque id nibh tortor id aliquet. Scelerisque purus semper eget duis at tellus at urna condimentum. Purus viverra accumsan in nisl nisi scelerisque. Dui accumsan sit amet nulla facilisi morbi. Fames ac turpis egestas maecenas pharetra convallis posuere morbi. Enim eu turpis egestas pretium aenean pharetra magna ac placerat. Tellus cras adipiscing enim eu turpis egestas. In egestas erat imperdiet sed euismod nisi porta. Tellus in metus vulputate eu scelerisque felis imperdiet.
+
+### Heading 3
 
 Odio facilisis mauris sit amet massa vitae tortor condimentum. Odio tempor orci dapibus ultrices in iaculis. Praesent semper feugiat nibh sed. Dignissim diam quis enim lobortis scelerisque fermentum dui. Sem nulla pharetra diam sit. Ut enim blandit volutpat maecenas volutpat. Est ullamcorper eget nulla facilisi etiam. Enim tortor at auctor urna nunc id cursus metus. Sit amet commodo nulla facilisi nullam vehicula ipsum a. In nisl nisi scelerisque eu ultrices.
 
