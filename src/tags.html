@@ -6,13 +6,13 @@ title: "Tags"
 <!-- Tag List  -->
 <div>
     {% for tag, posts in collections %}
-        {% if (tag != 'post') and (tag != 'all') %}
+        {% if (tag != 'posts') and (tag != 'all') %}
             <details>
                 <summary class="text-xl">{{ tag }}</summary>
                 <ul class="text-lg">
                     {% for post in posts | reverse %}
                     <li>
-                        <span class="italic">{{ post.data.date.toDateString() }} - </span><a class="text-blue-700 underline" href="{{ post.url }}">{{ post.data.title }}</a>
+                        <span class="italic">{{ post.data.date.toDateString() }} - </span><a class="text-blue-700" href="{{ post.url }}">{{ post.data.title }}</a>
                     </li>
                     {% endfor %}
                 </ul>

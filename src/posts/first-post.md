@@ -3,7 +3,6 @@ layout: base
 title: "First Post"
 date: 2020-05-15
 tags:
-    - post
     - rust
     - programming
     - tag

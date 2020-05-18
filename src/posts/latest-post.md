@@ -3,7 +3,6 @@ layout: base
 title: Latest Post
 date: 2020-05-17T00:00:00-07:00
 tags:
-    - post
     - rust
     - programming
     - tag

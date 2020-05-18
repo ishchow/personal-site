@@ -5,6 +5,10 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
     eleventyConfig.addLayoutAlias("about", "layouts/about.njk");
 
+    eleventyConfig.addCollection("posts", function(collection) {
+        return collection.getFilteredByGlob("src/posts/*.md");
+    });
+
     eleventyConfig.setBrowserSyncConfig({
         files: ["dist/assets/css"],
     });
