@@ -1,5 +1,6 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const luxon = require("luxon");
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/img");
@@ -27,6 +28,10 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.setLibrary("md", markdownit);
+
+    eleventyConfig.addFilter("dateFormat", function(date, format) {
+        return luxon.DateTime.fromJSDate(date).setLocale("en").toFormat(format);
+    });
 
     return {
         dir: {
