@@ -15,6 +15,8 @@ mix.postCss('src/assets/css/main.css', 'dist/assets/css', [
   require('tailwindcss'),
 ])
 
+mix.copy('src/assets/js/main.js', 'dist/assets/js')
+
 mix.copy('src/assets/css/prism-tomorrow-night.css', 'dist/assets/css')
 
 // Full API

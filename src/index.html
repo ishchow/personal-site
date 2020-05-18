@@ -16,7 +16,7 @@ pagination:
         <p class="italic text-gray-700 text-md">{{ post.data.date.toDateString() }}</p>
         <div class="flex flex-row leading-loose space-x-2">
             {% for tag in post.data.tags %} 
-                <a class="italic text-gray-700 text-md" href="#">#{{ tag }}</a>
+            <a class="italic text-gray-700 text-md" href="/tags/#{{ tag }}">#{{ tag }}</a>
             {% endfor %}
         </div>
     </div>

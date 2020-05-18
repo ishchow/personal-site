@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
         <link rel="stylesheet" type="text/css" href="/assets/css/prism-tomorrow-night.css" />
         <title>{{ title }}</title>
+        <script async src="/assets/js/main.js"></script>
     </head>
 
     <body class="flex flex-col h-screen text-gray-900 bg-gray-100">
+
         {% include "layouts/navbar.njk" %}
 
         <div class="container flex-1 mx-6 my-6 lg:mx-auto lg:px-48">
             {% block main %}
             {{ content | safe }}
             {% endblock %}
-        </div> 
+        </div>
 
         {% include "layouts/footer.njk" %}
     </body>
