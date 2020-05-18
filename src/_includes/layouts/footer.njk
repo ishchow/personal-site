@@ -1,28 +1,15 @@
-{% macro footeritem(name='Item', href='#') %}
-<a
-    href="{{ href }}"
-    class="block inline-block mt-2 mb-4 mr-4 text-lg font-medium lg:mb-0"
->
-    {{ name }}
-</a>
-{% endmacro %}
-
-{% macro footerlink(text='', href='#') %}
-<a class="text-blue-700" href="{{ href }}">{{ text }}</a>
-{% endmacro %}
-
 <!-- Footer -->
 <footer class="container items-center justify-between mx-6 lg:mx-auto lg:px-48">
     {# {{ navbarbutton() }} #}
     <div class="flex-grow block w-full border-t-2 border-gray-900 lg:flex lg:items-center lg:w-auto">
         <div class="lg:flex-grow">
-            {# {{ footeritem(name='Email', href='#') }} #}
-            {{ footeritem(name='Github', href='https://www.github.com/ishchow') }} 
-            {{ footeritem(name='LinkedIn', href='https://ca.linkedin.com/in/ishaatc') }} 
+            <a href="{{ site.author.email }}" class="block inline-block mt-2 mb-4 mr-4 text-lg font-medium lg:mb-0">Email</a>
+            <a href="{{ site.author.github }}" class="block inline-block mt-2 mb-4 mr-4 text-lg font-medium lg:mb-0">GitHub</a>
+            <a href="{{ site.author.linkedin }}" class="block inline-block mt-2 mb-4 mr-4 text-lg font-medium lg:mb-0">LinkedIn</a>
         </div>
     </div>
-    <p class="my-2 text-gray-700 text-md"> Ishaat Chowdhury | {{ footerlink(text='CC BY-NC-4.0', href='https://creativecommons.org/licenses/by-nc/4.0/?ref=ccchooser') }}
-        </br>Built with {{ footerlink(text='Eleventy', href='https://www.11ty.dev/') }} and {{ footerlink(text='TailwindCSS', href='https://tailwindcss.com/') }}
-        | {{ footerlink(text='Source Code') }}
+    <p class="my-2 text-gray-700 text-md"> Ishaat Chowdhury | <a class="text-blue-700" href="{{ site.license.url }}">{{ site.license.name }}</a>
+        </br>Built with <a class="text-blue-700" href="{{ site.eleventy.url }}">Eleventy</a> and <a class="text-blue-700" href="{{ site.tailwindcss.url }}">TailwindCSS</a>
+        | <a class="text-blue-700" href="{{ site.repo }}">Source Code</a>
     </p>
 </footer>

@@ -1,0 +1,23 @@
+{
+    "title": "Ishaat Chowdhury",
+    "baseurl": "",
+    "url": "https://www.ishaat.ca",
+    "feedUrl": "https://ishaat.ca/feed.xml",
+    "repo": "htps://https://github.com/ishchow",
+    "license": {
+        "name": "CC BY-NC-4.0",
+        "url": "https://creativecommons.org/licenses/by-nc/4.0/?ref=ccchooser"
+    },
+    "eleventy": {
+        "url": "https://www.11ty.dev/"
+    },
+    "tailwindcss": {
+        "url": "https://tailwindcss.com/"
+    },
+    "author": {
+        "name": "Ishaat Chowdhury",
+        "linkedin": "https://ca.linkedin.com/in/ishaatc",
+        "github": "https://www.github.com/ishchow",
+        "email": ""
+    }
+}
