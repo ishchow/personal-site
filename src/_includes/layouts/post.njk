@@ -1,0 +1,23 @@
+{% extends "layouts/base.njk" %}
+
+{% block main %}
+<div>
+
+
+</div>
+
+<article>
+    <div class="mb-12">
+        <p class="mb-2 text-4xl font-bold">{{ title }}</h1> 
+        <p class="text-lg font-medium text-gray-700 "> {{ date.toDateString() }} </p>
+        {% for tag in tags %} 
+            <a class="mr-1 text-lg italic text-gray-700" href="#">#{{ tag }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="content">
+        {{ content | safe }}
+    </div>
+
+</article>
+{% endblock %}

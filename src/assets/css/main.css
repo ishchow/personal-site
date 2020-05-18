@@ -1,23 +1,23 @@
 @tailwind base;
 
 h1 {
-    @apply my-4 text-4xl font-bold;
-}
-
-h2 {
     @apply my-4 text-3xl font-bold;
 }
 
-h3 {
+h2 {
     @apply my-4 text-2xl font-bold;
 }
 
-h4 {
+h3 {
     @apply my-4 text-xl font-bold;
 }
 
-h5 {
+h4 {
     @apply my-4 text-lg font-bold;
+}
+
+h5 {
+    @apply my-4 font-bold;
 }
 
 h6 {

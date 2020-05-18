@@ -4,6 +4,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/img");
     eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
     eleventyConfig.addLayoutAlias("about", "layouts/about.njk");
+    eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
     eleventyConfig.addCollection("posts", function(collection) {
         return collection.getFilteredByGlob("src/posts/*.md");
