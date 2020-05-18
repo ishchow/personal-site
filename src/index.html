@@ -13,7 +13,8 @@ pagination:
     {% for post in posts %}
     <div class="{{ "mb-4" if loop.index == 1 else "py-4" }}">
         <a class="text-2xl font-bold leading-loose" href="{{ post.url }}">{{ post.data.title }}</a>
-        <p class="italic text-gray-700 text-md">{{ post.data.date.toDateString() }}</p>
+        <!-- <p class="italic text&#45;gray&#45;700 text&#45;md">{{ post.data.date.toDateString() }}</p> -->
+        <p class="italic text-gray-700 text-md">{{ post.data.date | dateFormat("DDD") }}</p>
         <div class="flex flex-row leading-loose space-x-2">
             {% for tag in post.data.tags %} 
             <a class="italic text-gray-700 text-md" href="/tags/#{{ tag }}">#{{ tag }}</a>
