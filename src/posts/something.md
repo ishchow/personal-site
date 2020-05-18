@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Something"
 date: 2020-03-29
 tags:

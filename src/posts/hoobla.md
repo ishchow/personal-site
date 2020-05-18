@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Hoobla"
 date: 2020-05-04
 tags:

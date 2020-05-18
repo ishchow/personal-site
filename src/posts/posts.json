@@ -1,0 +1,4 @@
+{
+    "layout": "post",
+    "permalink": "posts/{{ date | dateFormat('y/MM/dd') }}/{{ title | slug }}/"
+}
