@@ -3,7 +3,7 @@ layout: base
 title: "Ishaat Chowdhury"
 pagination:
     data: collections.post
-    size: 2
+    size: 4
     reverse: true
     alias: posts
 ---
@@ -11,7 +11,7 @@ pagination:
 <!-- Post List  -->
 <div class="divide-y divide-gray-500 ">
     {% for post in posts %}
-    <div class=" {{ "mb-4" if loop.index == 1 else "py-4" }}">
+    <div class="{{ "mb-4" if loop.index == 1 else "py-4" }}">
         <a class="text-2xl font-bold leading-loose" href="{{ post.url }}">{{ post.data.title }}</a>
         <p class="italic text-gray-700 text-md">{{ post.data.date.toDateString() }}</p>
         <div class="flex flex-row leading-loose space-x-2">
@@ -26,9 +26,13 @@ pagination:
 </div>
 
 <!-- Pagination  -->
-<nav class="flex justify-center text-3xl text-center">
-        <a class="px-8 py-4 m-4 {{ "invisible" if page.url == pagination.href.first else "" }}" href="{{ pagination.href.first }}">&lt&lt</a>
-        <a class="px-8 py-4 m-4 {{ "invisible" if page.url == pagination.href.first else "" }}" href="{{ pagination.href.previous }}">&lt</a>
-        <a class="px-8 py-4 m-4 {{ "invisible" if page.url == pagination.href.last else "" }}" href="{{ pagination.href.next }}">&gt</a>
-        <a class="px-8 py-4 m-4 {{ "invisible" if page.url == pagination.href.last else "" }}" href="{{ pagination.href.last }}">&gt&gt</a>
+<nav class="flex justify-between text-3xl text-center">
+        <div class="flex flex-row">
+            <a class="pr-6 py-2 my-2 mr-2 {{ "invisible" if page.url == pagination.href.first else "" }}" href="{{ pagination.href.first }}">&lt&lt</a>
+            <a class="px-6 py-2 m-2 {{ "invisible" if page.url == pagination.href.first else "" }}" href="{{ pagination.href.previous }}">&lt</a>
+        </div>
+        <div class="flex flex-row">
+            <a class="px-6 py-2 m-2 {{ "invisible" if page.url == pagination.href.last else "" }}" href="{{ pagination.href.next }}">&gt</a>
+            <a class="pl-6 py-2 my-2 ml-2 {{ "invisible" if page.url == pagination.href.last else "" }}" href="{{ pagination.href.last }}">&gt&gt</a>
+        </div>
 </nav>
