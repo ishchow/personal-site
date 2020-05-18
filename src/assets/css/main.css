@@ -67,7 +67,7 @@ ol {
 }
 
 .content a {
-    @apply underline text-blue-700;
+    @apply text-blue-700;
 }
 
 @tailwind components;
