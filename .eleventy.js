@@ -1,5 +1,6 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const htmlmin = require("html-minifier");
 const luxon = require("luxon");
 
 module.exports = function(eleventyConfig) {
@@ -30,7 +31,22 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.setLibrary("md", markdownit);
 
     eleventyConfig.addFilter("dateFormat", function(date, format) {
-        return luxon.DateTime.fromJSDate(date).setLocale("en").toFormat(format);
+        return luxon.DateTime.fromJSDate(date)
+            .setLocale("en")
+            .toFormat(format);
+    });
+
+    eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+        if (outputPath.endsWith(".html") && process.env.NODE_ENV == "production") {
+            let minified = htmlmin.minify(content, {
+                useShortDoctype: true,
+                removeComments: true,
+                collapseWhitespace: true,
+            });
+            return minified;
+        }
+
+        return content;
     });
 
     return {
