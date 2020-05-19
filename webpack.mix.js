@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+let mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,13 +11,17 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.postCss('src/assets/css/main.css', 'dist/assets/css', [
-  require('tailwindcss'),
-])
+mix.postCss("src/assets/css/main.css", "dist/assets/css", [
+    require("tailwindcss"),
+]).minify("dist/assets/css/main.css");
 
-mix.copy('src/assets/js/main.js', 'dist/assets/js')
+mix.copy("src/assets/js/main.js", "dist/assets/js").minify(
+    "dist/assets/js/main.js"
+);
 
-mix.copy('src/assets/css/prism-tomorrow-night.css', 'dist/assets/css')
+mix.copy("src/assets/css/prism-tomorrow-night.css", "dist/assets/css").minify(
+    "dist/assets/css/prism-tomorrow-night.css"
+);
 
 // Full API
 // mix.js(src, output);
