@@ -3,7 +3,13 @@
     "baseurl": "",
     "url": "https://www.ishaat.ca",
     "feedUrl": "https://ishaat.ca/feed.xml",
-    "repo": "htps://https://github.com/ishchow",
+    "repo": {
+        "url": "https://github.com/ishchow/personal-site",
+        "license": {
+            "name": "MIT",
+            "url": "https://github.com/ishchow/personal-site/blob/master/LICENSE.md"
+        }
+    },
     "license": {
         "name": "CC BY-NC-4.0",
         "url": "https://creativecommons.org/licenses/by-nc/4.0/?ref=ccchooser"
