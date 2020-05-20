@@ -28,3 +28,19 @@ Compile and minify assets using Laravel Mix and then build the pages using Eleve
 ```
 npm run build
 ```
+
+# Clean site folder
+
+Remove _/dist_ folder containing site. This is done automatically before production builds.
+
+```
+npm run clean
+```
+
+# Create a new post
+
+Create a new Markdown file for new post based on a given title and current date. Filename is automatically formatted based on current date and slugified title. Front matter variables are automatically generated.
+
+```
+npm run newpost -- --title="Post Title"
+```
