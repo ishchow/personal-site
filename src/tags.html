@@ -8,7 +8,7 @@ title: "Tags"
     {% for tag, posts in collections %}
         {% if (tag != 'posts') and (tag != 'all') %}
             <details id="{{ tag }}">
-                <summary class="text-xl">{{ tag }}</summary>
+                <summary class="text-xl">{{ tag }} ({{ posts | length }})</summary>
                 <ul class="text-lg">
                     {% for post in posts | reverse %}
                     <li>
