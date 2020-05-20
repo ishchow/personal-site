@@ -19,15 +19,15 @@ h4 {
 }
 
 h5 {
-    @apply my-4 font-bold;
+    @apply my-4 text-lg font-semibold;
 }
 
 h6 {
-    @apply my-4 font-bold;
+    @apply my-4 text-lg font-medium;
 }
 
 blockquote {
-    @apply py-1 pl-2 my-2 border-l-4 border-gray-400;
+    @apply py-1 pl-2 my-2 text-lg border-l-4 border-gray-400;
 }
 
 /* Inline code */
@@ -65,7 +65,7 @@ ol {
 }
 
 .content p {
-    @apply my-2;
+    @apply my-4 leading-tight text-lg;
 }
 
 .content a {

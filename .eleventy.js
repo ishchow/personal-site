@@ -24,7 +24,6 @@ module.exports = function(eleventyConfig) {
     var markdownit = require("markdown-it")({
         html: true,
         linkify: true,
-        breaks: true,
         typographer: true,
     });
 
