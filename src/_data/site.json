@@ -2,7 +2,7 @@
     "title": "Ishaat Chowdhury",
     "baseurl": "",
     "url": "https://www.ishaat.ca",
-    "feedUrl": "https://ishaat.ca/feed.xml",
+    "feedUrl": "https://www.ishaat.ca/feed.xml",
     "repo": {
         "url": "https://github.com/ishchow/personal-site",
         "license": {
