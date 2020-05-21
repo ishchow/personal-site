@@ -5,7 +5,7 @@ const luxon = require("luxon");
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/img");
-    eleventyConfig.addPassthroughCopy("src/admin");
+
     eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
     eleventyConfig.addLayoutAlias("about", "layouts/about.njk");
     eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
