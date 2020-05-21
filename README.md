@@ -1,4 +1,6 @@
-Personal website created using [Eleventy](https://www.11ty.dev/) and [TailwindCSS](https://tailwindcss.com/).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bee5f1ec-679a-4295-a2e7-393917a5b839/deploy-status)](https://app.netlify.com/sites/goofy-engelbart-408c80/deploys)
+
+Personal website created using [Eleventy](https://www.11ty.dev/) and [TailwindCSS](https://tailwindcss.com/). Hosted on [Netlify](https://www.netlify.com).
 
 # License
 
