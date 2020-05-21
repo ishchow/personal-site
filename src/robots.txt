@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /admin/
 
-Sitemap: https://www.ishaat.ca/sitemap/
+Sitemap: https://www.ishaat.ca/sitemap.xml
