@@ -23,6 +23,9 @@ mix.copy("src/assets/css/prism-tomorrow-night.css", "dist/assets/css").minify(
     "dist/assets/css/prism-tomorrow-night.css"
 );
 
+mix.copy("src/admin/config.yml", "dist/admin")
+mix.copy("src/robots.txt", "dist")
+
 // Full API
 // mix.js(src, output);
 // mix.react(src, output); <-- Identical to mix.js(), but registers React Babel compilation.
