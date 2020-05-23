@@ -1,0 +1,8 @@
+{
+  "name": "Ishaat Chowdhury",
+  "short_name": "ishaat.ca",
+  "theme_color": "#F7FAFC",
+  "background_color": "#F7FAFC",
+  "display": "standalone",
+  "start_url": "/"
+}
