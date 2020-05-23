@@ -1,6 +1,9 @@
 ---
 title: "Eleventy + TailwindCSS = New Site"
 date: 2020-05-20T00:00:00-06:00
+description: |
+    In this post, I describe the tech stack I made my new site in and why.
+    I also contextualize my choices compared to my experiences with other static site generators.
 tags:
     - ssg
     - eleventy
