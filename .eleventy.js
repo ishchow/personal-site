@@ -6,7 +6,6 @@ const pluginPWA = require("eleventy-plugin-pwa");
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/img");
-    eleventyConfig.addPassthroughCopy("src/assets/css/prism-tomorrow-night.css")
     eleventyConfig.addPassthroughCopy("src/manifest.json");
     eleventyConfig.addPassthroughCopy("src/robots.txt");
     eleventyConfig.addPassthroughCopy("src/admin/config.yml");
@@ -18,10 +17,6 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addCollection("posts", function(collection) {
         return collection.getFilteredByGlob("src/posts/*.md");
-    });
-
-    eleventyConfig.setBrowserSyncConfig({
-        files: ["dist/assets/css"],
     });
 
     eleventyConfig.addPlugin(syntaxHighlight);
