@@ -1,9 +1,6 @@
 # Build directory
 dist
 
-# Laravel Mix
-mix-manifest.json
-
 # Lighthouse reports
 *.report.html
 
