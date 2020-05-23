@@ -5,7 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="/assets/css/main.min.css" />
         <link rel="stylesheet" type="text/css" href="/assets/css/prism-tomorrow-night.min.css" />
+        <link rel="manifest" href="/manifest.json" />
         <title>{{ title }}</title>
+        <script>
+          if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+              .register("/service-worker.js")
+              .then(function() {
+                console.log("ServiceWorker has been registered!");
+              })
+              .catch(console.error);
+          }
+        </script>
         <script async src="/assets/js/main.min.js"></script>
     </head>
 

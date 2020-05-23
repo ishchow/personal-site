@@ -2,9 +2,11 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const htmlmin = require("html-minifier");
 const luxon = require("luxon");
+const pluginPWA = require("eleventy-plugin-pwa");
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/img");
+    eleventyConfig.addPassthroughCopy("manifest.json");
 
     eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
     eleventyConfig.addLayoutAlias("about", "layouts/about.njk");
@@ -20,6 +22,10 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPlugin(pluginRss);
+    eleventyConfig.addPlugin(pluginPWA, {
+        clientsClaim: true,
+        skipWaiting: true,
+    });
 
     // enable everything
     var markdownit = require("markdown-it")({
@@ -37,7 +43,10 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
-        if (outputPath.endsWith(".html") && process.env.NODE_ENV == "production") {
+        if (
+            outputPath.endsWith(".html") &&
+            process.env.NODE_ENV == "production"
+        ) {
             let minified = htmlmin.minify(content, {
                 useShortDoctype: true,
                 removeComments: true,
