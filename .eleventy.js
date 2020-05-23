@@ -9,6 +9,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/manifest.json");
     eleventyConfig.addPassthroughCopy("src/robots.txt");
     eleventyConfig.addPassthroughCopy("src/admin/config.yml");
+    eleventyConfig.addPassthroughCopy("src/favicon");
 
     eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
     eleventyConfig.addLayoutAlias("about", "layouts/about.njk");
