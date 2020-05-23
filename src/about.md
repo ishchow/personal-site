@@ -1,6 +1,10 @@
 ---
-layout: about
+layout: content
 title: "About"
+description: |
+    Description of website.
+    Contains details of tech stack of site.
+    Also contains license(s) website is sourced under.
 ---
 
 Just another software engineer trying their best.
