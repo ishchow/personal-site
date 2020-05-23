@@ -17,10 +17,6 @@ mix.postCss("src/assets/css/main.css", "dist/assets/css", [
     require("tailwindcss"),
 ]);
 
-mix.copy("src/assets/css/prism-tomorrow-night.css", "dist/assets/css").minify(
-    "dist/assets/css/prism-tomorrow-night.css"
-);
-
 // Full API
 // mix.js(src, output);
 // mix.react(src, output); <-- Identical to mix.js(), but registers React Babel compilation.
