@@ -11,9 +11,11 @@ let mix = require("laravel-mix");
  |
  */
 
+// PurgeCSS in Tailwind already minifies css in prod,
+// no need to do it here
 mix.postCss("src/assets/css/main.css", "dist/assets/css", [
     require("tailwindcss"),
-]).minify("dist/assets/css/main.css");
+]);
 
 mix.copy("src/assets/css/prism-tomorrow-night.css", "dist/assets/css").minify(
     "dist/assets/css/prism-tomorrow-night.css"
