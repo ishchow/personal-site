@@ -1,6 +1,9 @@
 # Build directory
 dist
 
+# Processed css
+src/_includes/css
+
 # Lighthouse reports
 *.report.html
 
