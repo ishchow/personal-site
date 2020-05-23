@@ -38,11 +38,11 @@
 
         {% include "layouts/navbar.njk" %}
 
-        <div class="flex-1 w-11/12 m-auto lg:container lg:px-48">
+        <main class="flex-1 w-11/12 m-auto lg:container lg:px-48">
             {% block main %}
             {{ content | safe }}
             {% endblock %}
-        </div>
+        </main>
 
         {% include "layouts/footer.njk" %}
     </body>
