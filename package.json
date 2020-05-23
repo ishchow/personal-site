@@ -21,6 +21,7 @@
         "@11ty/eleventy-plugin-rss": "^1.0.7",
         "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
         "cross-env": "^7.0.2",
+        "eleventy-plugin-pwa": "^1.0.8",
         "html-minifier": "^4.0.0",
         "laravel-mix": "^5.0.4",
         "luxon": "^1.24.1",
