@@ -25,7 +25,7 @@ npm run dev
 
 # Run production builds
 
-Compile and minify assets using Laravel Mix and then build the pages using Eleventy. Site is contained in _/dist._
+Compile and minify assets using gulp and then build the pages using Eleventy. Site is contained in _/dist._
 
 ```
 npm run build
@@ -45,4 +45,12 @@ Create a new Markdown file for new post based on a given title and current date.
 
 ```
 npm run newpost -- --title="Post Title"
+```
+
+# Run lighthouse
+
+Run [lighthouse](https://www.npmjs.com/package/lighthouse) and view the report in your browser. Useful for checking performance, accessibility, seo compliance, and PWA compliance.
+
+```
+npx run lighthouse https://www.ishaat.ca --view
 ```
