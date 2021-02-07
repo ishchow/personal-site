@@ -42,11 +42,11 @@
         </script>
     </head>
 
-    <body class="flex flex-col h-screen text-gray-900 bg-gray-100">
+    <body class="flex flex-col h-screen mx-auto text-gray-900 bg-gray-100">
 
         {% include "layouts/navbar.njk" %}
 
-        <main class="flex-1 w-11/12 m-auto lg:container lg:px-48">
+        <main class="flex-1 w-11/12 mx-auto lg:container lg:px-48">
             {% block main %}
             {{ content | safe }}
             {% endblock %}
