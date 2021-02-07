@@ -3,4 +3,5 @@ publish = "dist"
 command = "npm run build"
 
 [build.environment]
-TZ = "America/Edmonton"
+TZ = "America/Los_Angeles"
+NODE_ENV = "production"
