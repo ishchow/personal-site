@@ -17,7 +17,7 @@ npm install
 
 # Start Dev Server
 
-Compile assets using Laravel Mix then build and serve the static website using Eleventy. The local site can be found in [localhost:8080](localhost:8080). Site is contained in _/dist_. 
+Compile assets then build and serve the static website using Eleventy. The local site can be found in [localhost:8080](localhost:8080). Site is contained in _/dist_. 
 
 ```
 npm run dev
@@ -25,7 +25,7 @@ npm run dev
 
 # Run production builds
 
-Compile and minify assets using gulp and then build the pages using Eleventy. Site is contained in _/dist._
+Compile and minify assets and then build the pages using Eleventy. Site is contained in _/dist._
 
 ```
 npm run build
