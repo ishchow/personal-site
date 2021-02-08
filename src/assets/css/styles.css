@@ -69,7 +69,7 @@ ol {
 }
 
 .content a {
-    @apply text-blue-700;
+    @apply text-blue-400;
 }
 
 @tailwind components;

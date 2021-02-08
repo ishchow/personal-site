@@ -15,7 +15,7 @@ changefreq: "daily"
                 <ul class="text-lg">
                     {% for post in posts | reverse %}
                     <li>
-                        <span class="italic">{{ post.data.date | dateFormat("DDD") }} - </span><a class="text-blue-700" href="{{ post.url }}">{{ post.data.title }}</a>
+                       <span class="italic">{{ post.data.date | dateFormat("DDD") }} | </span><a class="text-blue-400" href="{{ post.url }}">{{ post.data.title }}</a>
                     </li>
                     {% endfor %}
                 </ul>
