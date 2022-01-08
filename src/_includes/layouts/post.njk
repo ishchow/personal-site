@@ -5,9 +5,9 @@
 <article>
     <div class="mb-8">
         <p class="mb-2 text-4xl font-bold">{{ title }}</h1> 
-        <p class="text-lg font-medium text-gray-400 "> {{ date | dateFormat("DDD") }} </p>
+        <p class="text-lg font-medium text-gray-300 "> {{ date | dateFormat("DDD") }} </p>
         {% for tag in tags %} 
-            <a class="mr-1 text-lg italic text-gray-400" href="/tags/#{{ tag }}">#{{ tag }}</a>
+            <a class="mr-1 text-lg italic text-gray-300" href="/tags/#{{ tag }}">#{{ tag }}</a>
         {% endfor %}
     </div>
 
@@ -15,5 +15,18 @@
         {{ content | safe }}
     </div>
 
+    <script src="https://giscus.app/client.js"
+            data-repo="ishchow/personal-site"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyNjE2NTU2ODI="
+            data-category="Post Comments"
+            data-category-id="DIC_kwDOD5iMgs4CAmWd"
+            data-mapping="pathname"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-theme="dark_high_contrast"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
 </article>
 {% endblock %}
