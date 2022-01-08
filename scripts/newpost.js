@@ -24,11 +24,15 @@ let obj = {
     date: date.toISO({ suppressMilliseconds: true }),
 };
 
+var files = fs.readdirSync(path.join(__dirname, "..", "src", "posts"));
+var postCount = files.filter(f => f.endsWith(".md")).length
+var newPostNum = postCount + 1;
+
 let frontmatter = util.format("---\n%s---", yaml.stringify(obj));
-let slug = date.toFormat("y-MM-dd") + "-" + slugify(args.title, { lower: true });
+let slug = newPostNum.toString() + "__" + slugify(args.title, { lower: true });
 let filename = path.join(__dirname, "..", "src", "posts", slug + ".md");
 let fd = fs.openSync(filename, "w");
 
-console.log(util.format("Writing to %s ...", filename))
-console.log(frontmatter)
+console.log(util.format("Writing to %s ...", filename));
+console.log(frontmatter);
 fs.writeSync(fd, frontmatter);
