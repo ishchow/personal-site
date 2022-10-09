@@ -1,0 +1,116 @@
+{
+  "main": {
+    "id": "30a947d9f96f1040",
+    "type": "split",
+    "children": [
+      {
+        "id": "49d34188989517f3",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "posts/3__my-ultimate-windows-10-window-management-setup.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "526729bee8400777",
+    "type": "split",
+    "children": [
+      {
+        "id": "9faeb29857c4ba71",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f95f90f13c6881f4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "cc0fa5ed5fd3554b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "0953ff64b4c39f9a",
+    "type": "split",
+    "children": [
+      {
+        "id": "7cf50c06ba6b9cc8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "61fb690e6414e953",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "posts/3__my-ultimate-windows-10-window-management-setup.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4a5825c9c9f9ccf4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "50319c347c1b8c4c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "posts/3__my-ultimate-windows-10-window-management-setup.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "49d34188989517f3",
+  "lastOpenFiles": [
+    "about.md",
+    "404.md"
+  ]
+}
