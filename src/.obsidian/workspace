@@ -53,7 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 461.5
   },
   "right": {
     "id": "0953ff64b4c39f9a",
@@ -101,16 +101,24 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "active": "49d34188989517f3",
   "lastOpenFiles": [
-    "about.md",
-    "404.md"
+    "posts/2__introducing-nvim-deardiary.md",
+    "posts/3__my-ultimate-windows-10-window-management-setup.md",
+    "assets/media/win10wmsetup-mff-at-taskbar.gif",
+    "assets/media/win10wmsetup-wt-focused-highlight.png",
+    "assets/media/win10wmsetup-alt-tab-terminator-settings-appearance.png",
+    "assets/media/win10wmsetup-fancywm-demo.gif",
+    "assets/media/win10wmsetup-desktop-switcher.png",
+    "assets/media/win10wmsetup-taskbar-switch.png",
+    "assets/media/win10wmsetup-wt-focused-no-highlight.png",
+    "assets/media/Pasted image 20221009190632.png"
   ]
 }
