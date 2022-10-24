@@ -3,5 +3,8 @@
   "vimMode": true,
   "newFileLocation": "current",
   "useMarkdownLinks": true,
-  "attachmentFolderPath": "assets/media"
+  "attachmentFolderPath": "assets/media",
+  "alwaysUpdateLinks": true,
+  "promptDelete": false,
+  "showLineNumber": true
 }

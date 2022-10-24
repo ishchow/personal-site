@@ -1,5 +1,9 @@
 [
   "obsidian-focus-mode",
   "obsidian-footnotes",
-  "obsidian-reading-time"
+  "obsidian-reading-time",
+  "obsidian-paste-image-rename",
+  "obsidian-relative-line-numbers",
+  "url-into-selection",
+  "cm-editor-syntax-highlight-obsidian"
 ]
