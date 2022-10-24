@@ -377,7 +377,7 @@ InvokeFancyWmAction(key, downDelay:=100, upDelay:=100)
 	Sleep, downDelay
 	Send, {LWin up}{Shift up}
 	Sleep, upDelay
-	Send, {%key%}
+	Send, %key%
 	Return
 }
 
