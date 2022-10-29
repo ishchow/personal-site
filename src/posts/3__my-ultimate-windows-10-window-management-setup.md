@@ -40,7 +40,7 @@ Note: You don't need to be in the task switcher view to switch desktops.
 
 `Win+Tab` -> Open the virtual desktop switcher. I mainly use this to see which virtual desktops are empty and move to them. You can move to other desktops by clicking on them. Hit the shortcut again or hit `Esc` to exit out of this view.
 
-![](win10wmsetup-desktop-switcher.png)
+![](/assets/media/win10wmsetup-desktop-switcher.png)
 
 ## Move window to next/previous monitor
 

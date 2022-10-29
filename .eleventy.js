@@ -6,7 +6,7 @@ const pluginPWA = require("eleventy-plugin-pwa");
 const fs = require("fs");
 
 module.exports = function (eleventyConfig) {
-    eleventyConfig.addPassthroughCopy("src/assets/img");
+    eleventyConfig.addPassthroughCopy("src/assets/media");
     eleventyConfig.addPassthroughCopy("src/assets/favicon");
     eleventyConfig.addPassthroughCopy("src/manifest.json");
     eleventyConfig.addPassthroughCopy("src/robots.txt");
