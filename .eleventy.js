@@ -4,9 +4,32 @@ const htmlmin = require("html-minifier");
 const luxon = require("luxon");
 const pluginPWA = require("eleventy-plugin-pwa");
 const fs = require("fs");
+const Image = require("@11ty/eleventy-img");
+
+async function imageShortcode(src, alt, sizes = "(min-width: 30em) 50vw, 100vw") {
+    let metadata = await Image(src, {
+      widths: [300, 600],
+      formats: [null],
+      outputDir: "./dist/img",
+      sharpOptions: {
+        animated: true
+      }
+    });
+
+    let imageAttributes = {
+      alt,
+      sizes,
+      loading: "lazy",
+      decoding: "async",
+    };
+
+    // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
+    return Image.generateHTML(metadata, imageAttributes, {
+        whitespaceMode: "inline"
+      });
+  }
 
 module.exports = function (eleventyConfig) {
-    eleventyConfig.addPassthroughCopy("src/assets/media");
     eleventyConfig.addPassthroughCopy("src/assets/favicon");
     eleventyConfig.addPassthroughCopy("src/manifest.json");
     eleventyConfig.addPassthroughCopy("src/robots.txt");
@@ -71,6 +94,10 @@ module.exports = function (eleventyConfig) {
             },
         },
     });
+
+    eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+    eleventyConfig.addLiquidShortcode("image", imageShortcode);
+    eleventyConfig.addJavaScriptFunction("image", imageShortcode);
 
     return {
         dir: {

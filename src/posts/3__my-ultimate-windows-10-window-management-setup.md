@@ -40,7 +40,7 @@ Note: You don't need to be in the task switcher view to switch desktops.
 
 `Win+Tab` -> Open the virtual desktop switcher. I mainly use this to see which virtual desktops are empty and move to them. You can move to other desktops by clicking on them. Hit the shortcut again or hit `Esc` to exit out of this view.
 
-![](/assets/media/win10wmsetup-desktop-switcher.png)
+{% image "./src/assets/media/win10wmsetup-desktop-switcher.png", "Virtual destkop switcher" %}
 
 ## Move window to next/previous monitor
 
@@ -62,23 +62,23 @@ We can use the `Tab`/`Shift+Tab`  shortcuts from the above section to navigate t
 
 I find this technique to clear the notifications from my tray invaluable when I'm using my 43" 4K monitor for work, since it's a pain to move the mouse to the other side of the screen just to clear notifications.
 
-![](win10wmsetup-close-notifications-view.png)
+{% image "./src/assets/media/win10wmsetup-close-notifications-view.png", "Close notification view" %}
 
 ## Active window border highlight using accent color
 
 Open Settings > Personalization > Colors. Pick a specific accent color or pick accent color automatically based on wallpaper. We need to have an accent color set since that will be the color the active window border is highlighted with.
 
-![](win10wmsetup-personalization-settings-color.png)
+{% image "./src/assets/media/win10wmsetup-personalization-settings-color.png", "Color settings" %}
 
 Here's what application windows look by default, without active window border highlight.
 
-![](win10wmsetup-wt-focused-no-highlight.png)
+{% image "./src/assets/media/win10wmsetup-wt-focused-no-highlight.png", "Windows Termianl focused with active window border highlight off" %}
 
 Windows terminal is the active window here. But it's really hard to tell that.
 
 Now, here's what it looks like when active window border highlight is on. It's much more obvious that Windows Terminal is the focused window.
 
-![](win10wmsetup-wt-focused-highlight.png)
+{% image "./src/assets/media/win10wmsetup-wt-focused-highlight.png", "Windows Terminal focused with active window border highlight on" %}
 
 The active window highlight built in to windows does have some limitations. It doesn't seem to work on apps built with Electron.
 
@@ -94,7 +94,7 @@ On each machine, I pin my 10 most used applications at the beginning of the task
 
 Here's an illustration from my taskbar. 
 
-![](win10wmsetup-taskbar-switch.png)
+{% image "./src/assets/media/win10wmsetup-taskbar-switch.png", "Taskbar App Numbering" %}
 
 Now, these keyboard shortcuts has some interesting behaviour:
 
@@ -108,13 +108,13 @@ Now, these keyboard shortcuts has some interesting behaviour:
 
 Open `Settings > System > Multitasking`. I like to use the following settings. I especially rely on Alt+Tab showing only open windows and to show windows from all virtual desktops. I personally don't find switching between Edge tabs in my OS to be a useful feature since I can do that from within Edge just fine.
 
-![](win10wmsetup-multitasking-settings.png)
+{% image "./src/assets/media/win10wmsetup-multitasking-settings.png", "Windows Multi-tasking Settings" %}
 
 ## Improve Windows Search
 
 Open `Settings > Search > Searching Windows`. Make sure Enhanced search is on, so Windows can find more files than by default.
 
-![](win10wmsetup-windows-file-search-settings.png)
+{% image "./src/assets/media/win10wmsetup-windows-file-search-settings.png", "Windows File Search Settings" %}
 
 # Third-Party Programs
 
@@ -130,7 +130,7 @@ Even with Enhanced Windows Search enabled, I sometimes can't find what I'm looki
 
 In terms of general settings, I always run PowerToys as Admin, so I can use the utilities on admin windows.
 
-![](win10wmsetup-powertoys-admin.png)
+{% image "./src/assets/media/win10wmsetup-powertoys-admin.png", "Run PowerToys as Admin" %}
 
 ### PowerToys Run
 
@@ -138,7 +138,7 @@ In terms of general settings, I always run PowerToys as Admin, so I can use the 
 
 Here's some basic settings I enable for PowerToys Run:
 
-![](win10wmsetup-powertoys-run-settings.png)
+{% image "./src/assets/media/win10wmsetup-powertoys-run-settings.png", "PowerToys Run Settings" %}
 
 For built-in plugins, I disable `Web Search` and `OneNote`. I enable everything else. The `Visual Studio Code Workspaces` plugin is particularly handy for me!
 
@@ -146,7 +146,7 @@ I install an unofficial [Everything Plugin](https://github.com/lin-ycv/Everythin
 
 After installing the plugin, restart PowerToys. Then enable the plugin and set a global activation key.
 
-![](win10wmsetup-powertoys-run-everything.png)
+{% image "./src/assets/media/win10wmsetup-powertoys-run-everything.png", "PowerToys Run EveryThing Plugin Settings" %}
 
 This is how I typically run searches using Everything. I rarely use the actual Everything application.
 
@@ -156,13 +156,13 @@ This is how I typically run searches using Everything. I rarely use the actual E
 
 I actually find the core functionality of FancyZones to be useless. It's too much work for me to manually snap windows using my mouse compared to using a tiling WM extension like FancyWM. Also, FancyWM can stack multiple windows in the same panel while FancyZones can't stack multiple windows in the same zone.
 
-![](win10wmsetup-fancyzones-window-settings.png)
+{% image "./src/assets/media/win10wmsetup-fancyzones-window-settings.png", "FancyZones Window Settings" %}
 
 When using multiple monitors, by default Windows will open applications on the primary monitor, not the current active monitor. This drives me nuts since I always want apps to open on the monitor that has focus because that's where I usually need the application to be and that's also typically where my mouse cursor is. Without FancyZones and this specific setting enabled, I would always have to drag the window to the monitor that previously had focus if it wasn't the primary monitor which was a pain!
 
 I also like to make sure this setting for FancyZones is enabled to prevent dragging windows using mouse from activating FancyZones.
 
-![](win10wmsetup-fancyzones-zone-settings.png)
+{% image "./src/assets/media/win10wmsetup-fancyzones-zone-settings.png", "FancyZones Zone Settings" %}
 
 ## Alt-Tab Terminator
 
@@ -171,7 +171,7 @@ I also like to make sure this setting for FancyZones is enabled to prevent dragg
 
 Here's a screenshot of the program running.
 
-![](win10wmsetup-alt-tab-terminator.png)
+{% image "./src/assets/media/win10wmsetup-alt-tab-terminator.png", "Alt-Tab Terminator" %}
 
 For me the app has a few killer features:
 - Search and preview open applications (this is super useful when you have a lot of apps open)
@@ -181,11 +181,11 @@ For me the app has a few killer features:
 
 These are my preferred settings for this program:
 
-![](win10wmsetup-alt-tab-terminator-settings-general.png)
+{% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-general.png", "Alt-Tab Terminator Settings: General" %}
 
-![](win10wmsetup-alt-tab-terminator-settings-appearance.png)
+{% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-appearance.png", "Alt-Tab Terminator Settings: Appearance" %}
 
-![](win10wmsetup-alt-tab-terminator-settings-hotkeys.png)
+{% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-hotkeys.png", "Alt-Tab Terminator Settings: HotKeys" %}
 
 As you can see, I don't actually use Alt+Tab Terminator to replace Alt+Tab. In general, I only use Alt+Tab to switch between current window and previously focused window. The default Alt+Tab is fine for that. Beyond that, I typically switch between my most common applications using `Win + Number` shortcuts. I use Alt+Tab Terminator only to switch to applications that I can't switch to using `Win + Number` . I especially don't like using Alt+Tab Terminator to replace `Win + Tab`  since the virtual desktop preview is way too useful for me. Instead, I use AutoHotKey to launch Alt+Tab Terminator using a custom shortcut (`CapsLock + Tab`). See AutoHotKey section for code.
 
@@ -227,7 +227,7 @@ Here's a short demo of FancyWM. These are the features of FancyWM I'm showing (a
 - Resize windows
 - Temporarily float windows
 
-![](win10wmsetup-fancywm-demo.gif)
+<!-- {% image "./src/assets/media/win10wmsetup-fancywm-demo.gif", "FancyWM Demonstration" %} -->
 
 Now here's another demo of FancyWM focusing on it's handling of virtual desktops. I'm demoing the following features (all using keyboard shortcuts):
 - Focus specific virtual desktop by number (`Shift+Win`  followed by `Number` after short delay)
@@ -237,7 +237,7 @@ Now here's another demo of FancyWM focusing on it's handling of virtual desktops
 	- This shortcuts seems to even work in the Virtual Desktop Switcher
 - Move window to previous virtual desktop (`Shift+Win`  followed by `Shift+Q` after short delay)
 
-![](win10wmsetup-fancywm-virtual-desktops-demo.gif)
+<!-- {% image "./src/assets/media/win10wmsetup-fancywm-virtual-desktops-demo.gif", "FancyWM Virtual Desktop Handling Demonstration" %} -->
 
 FancyWM has a lot of other cool features that I haven't gone into (ex. moving window to specific monitor number, etc.) and new features are added regularly.
 
@@ -247,7 +247,7 @@ FancyWM has a lot of other cool features that I haven't gone into (ex. moving wi
 
 When installing AutoHotKey, make sure the circled option is checked since it will allow AutoHotKey scripts to handle programs running as Admin.
 
-![](win10wmsetup-autohotkey-install.png)
+{% image "./src/assets/media/win10wmsetup-autohotkey-install.png", "AutoHotkey Installation" %}
 
 ### Script structure
 
@@ -261,7 +261,7 @@ ahk\
 	ahkrc.ahk
 ````
 
-`ahk\ahkrc.ahk`:
+<u>ahk\ahkrc.ahk</u>:
 
 ````
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
@@ -295,7 +295,7 @@ ReloadScript()
 
 The following script (which is included in the main script) implements a behaviour called 'Mouse Follows Focus' which moves the mouse automatically according to window focus events.
 
-`ahk\Lib\mouse_cursor_follows_focus.ahk`:
+<u>ahk\Lib\mouse_cursor_follows_focus.ahk</u>:
 
 ````
 ; Makes the mouse cursor follow window focus, but ONLY if the focus change
@@ -356,18 +356,17 @@ Return
 
 Below is a demonstration of the default Windows behaviour when switching between application windows using keyboard shortcuts (in this case, `Win+Number`). You can see that the focused window changes but the mouse cursor still stays at the same position.
 
-![](win10wmsetup-mff-off.gif)
+<!-- {% image "./src/assets/media/win10wmsetup-mff-off.gif", "Demonstration of switching focused window with mouse follows focus off" %} -->
 
 Below is a demonstration of 'Mouse Follows Focus'. Now when I switch windows using keyboard shortcuts, the mouse cursor is automatically moved to the center of the newly focused window. This is especially useful when working with multi-monitor setups, since you can avoid having to physically drag your mouse to move the cursor to another monitor when the focused window changes via keyboard. But I also like this when working on a laptop on the couch since I don't have to use the trackpad so much.
 
-
-![](win10wmsetup-mff-on.gif)
+<!-- {% image "./src/assets/media/win10wmsetup-mff-on.gif", "Demonstration of switching focused window with mouse follows focus on" %} -->
 
 ### Using CapsLock as both Escape and an extra modifier key
 
 The following script (which is included in the main script) modifies `Caps Lock` behaviour in a two interesting ways. Firstly, pressing just `Caps Lock` will send `Escape` which is useful when using vim bindings in my IDE. Second, pressing `Caps Lock` with another key combo invokes a custom action, effectively turning `Caps Lock` into another modifier key. I mainly use these extra modifier shortcuts to invoke FancyWM actions directly instead of using the activation sequence, run Alt+Tab Terminator, and remap default shortcuts into ones easier to type (ex. close window can be invoked `CapsLock + W` in addition to it's default `Alt+F4`).
 
-`ahk\Lib\modal_capslock.ahk`:
+<u>ahk\Lib\modal_capslock.ahk</u>
 
 ````
 ; Invokes key press after activation shortcut
@@ -563,15 +562,15 @@ AutoHotKey scripts won't work on Admin windows by default. Need to follow this [
 
 Due to the directory structure I chose for my autohotkey scripts, I couldn't just stick a shortcut to `ahk\ahkrc.ahk` in `shell:startup`. I could have done so if I decide to compile my autohotkey script as an exe and then move the compiled exe to `shell:startup`. But this is too much of a pain when I need to make some changes to my script. So, I ended up using the Windows Task Scheduler to start `ahk\ahkrc.ahk` at login.
 
-![](win10wmsetup-autohotkey-tasksch-1.png)
+{% image "./src/assets/media/win10wmsetup-autohotkey-tasksch-1.png", "Running AutoHotKey at Login Using Windows Task Scheduler" %}
 
-![](win10wmsetup-autohotkey-tasksch-2.png)
+{% image "./src/assets/media/win10wmsetup-autohotkey-tasksch-2.png", "Running AutoHotKey at Login Using Windows Task Scheduler" %}
 
-![](win10wmsetup-autohotkey-tasksch-3.png)
+{% image "./src/assets/media/win10wmsetup-autohotkey-tasksch-3.png", "Running AutoHotKey at Login Using Windows Task Scheduler" %}
 
-![](win10wmsetup-autohotkey-tasksch-4.png)
+{% image "./src/assets/media/win10wmsetup-autohotkey-tasksch-4.png", "Running AutoHotKey at Login Using Windows Task Scheduler" %}
 
-![](win10wmsetup-autohotkey-tasksch-5.png)
+{% image "./src/assets/media/win10wmsetup-autohotkey-tasksch-5.png", "Running AutoHotKey at Login Using Windows Task Scheduler" %}
 
 # Problems
 
@@ -579,7 +578,7 @@ Due to the directory structure I chose for my autohotkey scripts, I couldn't jus
 
 When window focus events are invoked, it seems that Windows will switch focus to the taskbar and then focus on the actual window. The script adds a short delay to compensate for this but sometimes it's not enough, so you end up in a situation where the mouse cursor is still on the taskbar and hasn't moved to the application window (as shown below).
 
-![](win10wmsetup-mff-at-taskbar.gif)
+<!-- {% image "./src/assets/media/win10wmsetup-mff-at-taskbar.gif", "Mouse cursor stuck at taskbar after window focus change event" %} -->
 
 Usually hitting Alt+Tab twice would help to recenter the mouse by switching to last window and back to new window.
 
