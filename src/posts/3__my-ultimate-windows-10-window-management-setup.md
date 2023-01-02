@@ -1,28 +1,28 @@
 ---
 title: My Ultimate Windows 10 Window Management Setup
-date: 2022-10-23T00:00:00-07:00
+date: 2022-12-30T00:00:00-07:00
 imageNameKey: win10wmsetup
 ---
 
 # Background
 
-I've always been disappointed with the default experience of managing application windows and searching (for files, open apps, anything really) in the Windows 10.
+I've always been disappointed with the default experience of managing application windows and searching (for files, open apps, anything really) in Windows 10. In general, I find that Windows isn't as keyboard driven as I'd like.
 
 Below is a list of features I need from my graphical shell:
 
 - Manipulate application windows and navigate virtual desktops using keyboard shortcuts
 - Quickly switch between apps/windows using keyboard
-- Search open windows in a view with large window previews
-- Search files and launch applications quickly and reliably
+- Search open windows using keyboard in a view with window previews
+- Search files and launch applications quickly
 - Automatically tile windows in order to keep things organized and make effective use of screen space
-- Make it clear which application window has focus
-- Reduce mouse movements as much as possible
+- Make it clear which application window is focused
+- Reduce mouse movements as much as possible by having the mouse cursor automatically move according to focus events (ex. Alt-Tab)
 
-I rely on a mix of default settings and shortcuts as well as external programs and scripts to make this workflow possible for me on Windows 10/11. It took me some time to figure out how to piece all these things together, so I decided to document how I created this workflow in this post. Hopefully, you find some of these settings/programs/scripts useful. If not, well at least I have this setup documented for myself.
+I rely on a mix of built-in Windows settings and shortcuts as well as external programs and scripts to make this workflow possible for me on Windows 10/11. It took me some time to figure out how to piece all these things together into a coherent workflow, so I decided to document my steps in this post. Hopefully, you find the contents of this post useful. If not, at least I have this setup documented for myself.
 
 # Built-in Settings/Shortcuts
 
-These are a list of built-in Windows settings and keyboard shortcuts, related to window management, that I use on a daily basis.
+These are a list of built-in Windows settings and keyboard shortcuts related to window management that I use on a daily basis.
 
 ## Basic window manipulation
 
@@ -30,17 +30,17 @@ These are a list of built-in Windows settings and keyboard shortcuts, related to
 `Win+Down` (may have to repeat again): Minimize window.
 `Alt+F4`: Close window.
 
-Although there are shortcuts for tiling windows to the left/right half of screen or quarters of a screen, I don't use them since I rely on FancyWM to perform these actions.
+Although there are built-in shortcuts for snapping windows to the left/right half of screen or quarters of a screen, I don't use them since I rely on FancyWM to perform these actions.
 
 ## Switch between virtual desktops
 
 `Ctrl+Win+Left` : Switch to the previous virtual desktop.
 `Ctrl+Win+Right`: Switch to the next virtual desktop.
-Note: You don't need to be in the task switcher view to switch desktops.
 
-`Win+Tab` -> Open the virtual desktop switcher. I mainly use this to see which virtual desktops are empty and move to them. You can move to other desktops by clicking on them. Hit the shortcut again or hit `Esc` to exit out of this view.
+`Win+Tab`: Open the virtual desktop switcher. I mainly use this to see which virtual desktops are empty and move to them. You can move to other desktops by clicking on them. Hit the shortcut again or hit `Esc` to exit out of this view.
 
-{% image "./src/assets/media/win10wmsetup-desktop-switcher.png", "Virtual destkop switcher" %}
+<!-- {% image "./src/assets/media/win10wmsetup-desktop-switcher.png", "Virtual destkop switcher" %} -->
+![](win10wmsetup-desktop-switcher.png)
 
 ## Move window to next/previous monitor
 
@@ -56,31 +56,36 @@ Works not just in popups but in UAC prompts, notification tray, and many other U
 
 ## Open notification view
 
-`Win+A`: Open the notification tray.
+<u>Windows 10</u>:  `Win+A`: Open the notification tray.
+<u>Windows 11</u>:  `Win+N`: Open the notification tray.
 
 We can use the `Tab`/`Shift+Tab`  shortcuts from the above section to navigate the notification view. Hit `Shift+Tab` a few times after opening the view to get to the clear all notifications button. Then hit `Enter` to clear all notifications.
 
-I find this technique to clear the notifications from my tray invaluable when I'm using my 43" 4K monitor for work, since it's a pain to move the mouse to the other side of the screen just to clear notifications.
+I find this trick is really useful when I'm using my 43" 4K monitor for work, since it's a pain to move the mouse to the other side of the screen just to clear notifications.
 
-{% image "./src/assets/media/win10wmsetup-close-notifications-view.png", "Close notification view" %}
+<!-- {% image "./src/assets/media/win10wmsetup-close-notifications-view.png", "Close notification view" %} -->
+![](win10wmsetup-close-notifications-view.png)
 
 ## Active window border highlight using accent color
 
 Open Settings > Personalization > Colors. Pick a specific accent color or pick accent color automatically based on wallpaper. We need to have an accent color set since that will be the color the active window border is highlighted with.
 
-{% image "./src/assets/media/win10wmsetup-personalization-settings-color.png", "Color settings" %}
+<!-- {% image "./src/assets/media/win10wmsetup-personalization-settings-color.png", "Color settings" %} -->
+![](win10wmsetup-personalization-settings-color.png)
 
 Here's what application windows look by default, without active window border highlight.
 
-{% image "./src/assets/media/win10wmsetup-wt-focused-no-highlight.png", "Windows Termianl focused with active window border highlight off" %}
+<!-- {% image "./src/assets/media/win10wmsetup-wt-focused-no-highlight.png", "Windows Termianl focused with active window border highlight off" %} -->
+![](win10wmsetup-wt-focused-no-highlight.png)
 
 Windows terminal is the active window here. But it's really hard to tell that.
 
-Now, here's what it looks like when active window border highlight is on. It's much more obvious that Windows Terminal is the focused window.
+Now, here's what it looks like when active window border highlight is on. It's much more obvious that Windows Terminal is the focused window since the border is highlighted in red.
 
-{% image "./src/assets/media/win10wmsetup-wt-focused-highlight.png", "Windows Terminal focused with active window border highlight on" %}
+<!-- {% image "./src/assets/media/win10wmsetup-wt-focused-highlight.png", "Windows Terminal focused with active window border highlight on" %} -->
+![](win10wmsetup-wt-focused-highlight.png)
 
-The active window highlight built in to windows does have some limitations. It doesn't seem to work on apps built with Electron.
+The built-in active window highlight does have some limitations though. Mainly, it doesn't seem to work on apps built with Electron.
 
 ## Switch between apps on task bar using keyboard
 
@@ -94,27 +99,34 @@ On each machine, I pin my 10 most used applications at the beginning of the task
 
 Here's an illustration from my taskbar. 
 
-{% image "./src/assets/media/win10wmsetup-taskbar-switch.png", "Taskbar App Numbering" %}
+<!-- {% image "./src/assets/media/win10wmsetup-taskbar-switch.png", "Taskbar App Numbering" %} -->
+![](win10wmsetup-taskbar-switch.png)
 
-Now, these keyboard shortcuts has some interesting behaviour:
+Now, these keyboard shortcuts have some interesting behaviour:
 
 1. When a pinned app has no windows open, hitting the shortcut will launch the app in the current virtual desktop. In my example, if I hit `Win+0`, it would open Bitwarden in the current virtual desktop.
 2. When a pinned app has a single window open and the window is not focused, hitting the shortcut will switch to the virtual desktop the window is on and will focus the window. If the window was minimized, it will be restored.
-3. When a pinned app has a single window open and the window is focused, hitting the shortcut will minimize it in the current virtual desktop.
+3. When a pinned app has a single window open and the window is focused, hitting the shortcut will minimize it.
 4. When a pinned app has multiple windows open, hitting the shortcut will cycle through the windows of the application. Releasing the shortcut will switch to the selected window of the app.
 	* Note: You can only cycle between windows of the application, you can't minimize/maximize any of the windows using the shortcut like you could when the app only had one window.
 
+## Other keyboard shortcuts
+
+I only listed my most used keyboard shortcuts in this article but you can find full list of them [here](https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec#WindowsVersion=Windows_10).
+
 ## Multitasking settings
 
-Open `Settings > System > Multitasking`. I like to use the following settings. I especially rely on Alt+Tab showing only open windows and to show windows from all virtual desktops. I personally don't find switching between Edge tabs in my OS to be a useful feature since I can do that from within Edge just fine.
+Open `Settings > System > Multitasking`. I like to use the following settings. I especially rely on Alt+Tab showing windows from all virtual desktops. I personally don't find switching between Edge tabs in my OS to be a useful feature since I can do that from within Edge just fine.
 
-{% image "./src/assets/media/win10wmsetup-multitasking-settings.png", "Windows Multi-tasking Settings" %}
+<!-- {% image "./src/assets/media/win10wmsetup-multitasking-settings.png", "Windows Multi-tasking Settings" %} -->
+![](win10wmsetup-multitasking-settings.png)
 
 ## Improve Windows Search
 
 Open `Settings > Search > Searching Windows`. Make sure Enhanced search is on, so Windows can find more files than by default.
 
-{% image "./src/assets/media/win10wmsetup-windows-file-search-settings.png", "Windows File Search Settings" %}
+<!-- {% image "./src/assets/media/win10wmsetup-windows-file-search-settings.png", "Windows File Search Settings" %} -->
+![](win10wmsetup-windows-file-search-settings.png)
 
 # Third-Party Programs
 
@@ -130,7 +142,8 @@ Even with Enhanced Windows Search enabled, I sometimes can't find what I'm looki
 
 In terms of general settings, I always run PowerToys as Admin, so I can use the utilities on admin windows.
 
-{% image "./src/assets/media/win10wmsetup-powertoys-admin.png", "Run PowerToys as Admin" %}
+<!-- {% image "./src/assets/media/win10wmsetup-powertoys-admin.png", "Run PowerToys as Admin" %} -->
+![](win10wmsetup-powertoys-admin.png)
 
 ### PowerToys Run
 
@@ -138,15 +151,17 @@ In terms of general settings, I always run PowerToys as Admin, so I can use the 
 
 Here's some basic settings I enable for PowerToys Run:
 
-{% image "./src/assets/media/win10wmsetup-powertoys-run-settings.png", "PowerToys Run Settings" %}
+<!-- {% image "./src/assets/media/win10wmsetup-powertoys-run-settings.png", "PowerToys Run Settings" %} -->
+![](win10wmsetup-powertoys-run-settings.png)
 
-For built-in plugins, I disable `Web Search` and `OneNote`. I enable everything else. The `Visual Studio Code Workspaces` plugin is particularly handy for me!
+For built-in plugins, I disable `Web Search` and `OneNote`. I enable everything else. The `Visual Studio Code Workspaces` plugin is particularly handy for me.
 
-I install an unofficial [Everything Plugin](https://github.com/lin-ycv/EverythingPowerToys/releases) for PowerToys run. The link will take you to the releases page which has the installation instructions. The only thing to note is that you need to extract the zip file using 7z instead the built-in archiver.
+I install an unofficial [Everything Plugin](https://github.com/lin-ycv/EverythingPowerToys/releases) for PowerToys run. The link will take you to the releases page which has the installation instructions. The only thing to note is that you need to extract the zip file using 7z instead the built-in archiver. Alternately, can install the plugin from [chocolatey](https://community.chocolatey.org/packages/everythingpowertoys).
 
 After installing the plugin, restart PowerToys. Then enable the plugin and set a global activation key.
 
-{% image "./src/assets/media/win10wmsetup-powertoys-run-everything.png", "PowerToys Run EveryThing Plugin Settings" %}
+<!-- {% image "./src/assets/media/win10wmsetup-powertoys-run-everything.png", "PowerToys Run EveryThing Plugin Settings" %} -->
+![](win10wmsetup-powertoys-run-everything.png)
 
 This is how I typically run searches using Everything. I rarely use the actual Everything application.
 
@@ -154,24 +169,26 @@ This is how I typically run searches using Everything. I rarely use the actual E
 
 [FancyZones](https://learn.microsoft.com/en-us/windows/powertoys/fancyzones) is a utility that extends the built-in window snapping/tiling features of Windows. You can specify custom zones that you can manually snap windows to using the mouse. By default, Windows can only snap windows to half or a quarter of the screen. But with FancyZones, you can create your own custom zones which you pre-define and then you snap to these zones.
 
-I actually find the core functionality of FancyZones to be useless. It's too much work for me to manually snap windows using my mouse compared to using a tiling WM extension like FancyWM. Also, FancyWM can stack multiple windows in the same panel while FancyZones can't stack multiple windows in the same zone.
-
-{% image "./src/assets/media/win10wmsetup-fancyzones-window-settings.png", "FancyZones Window Settings" %}
+I actually find the core functionality of FancyZones to be useless. It's too much work for me to manually snap windows using my mouse compared to using a tiling WM extension like FancyWM. But there is one useful thing that FancyZones does for me.
 
 When using multiple monitors, by default Windows will open applications on the primary monitor, not the current active monitor. This drives me nuts since I always want apps to open on the monitor that has focus because that's where I usually need the application to be and that's also typically where my mouse cursor is. Without FancyZones and this specific setting enabled, I would always have to drag the window to the monitor that previously had focus if it wasn't the primary monitor which was a pain!
 
-I also like to make sure this setting for FancyZones is enabled to prevent dragging windows using mouse from activating FancyZones.
+<!-- {% image "./src/assets/media/win10wmsetup-fancyzones-window-settings.png", "FancyZones Window Settings" %} -->
+![](win10wmsetup-fancyzones-window-settings.png)
 
-{% image "./src/assets/media/win10wmsetup-fancyzones-zone-settings.png", "FancyZones Zone Settings" %}
+I also like to make sure these settings for FancyZones are enabled to prevent dragging windows using mouse from activating FancyZones.
+
+<!-- {% image "./src/assets/media/win10wmsetup-fancyzones-zone-settings.png", "FancyZones Zone Settings" %} -->
+![](win10wmsetup-fancyzones-zone-settings.png)
 
 ## Alt-Tab Terminator
 
-[Alt-Tab Terminator](https://www.ntwind.com/software/alttabter.html) is a program that replaces the default Windows Alt+Tab view (which shows windows with small previews in a grid) with a list view that is searchable and has much larger 
- window previews.
+[Alt-Tab Terminator](https://www.ntwind.com/software/alttabter.html) is a program that replaces the default Windows Alt+Tab view (which shows windows with small previews in a grid) with a list view that is searchable and has much larger window previews.
 
 Here's a screenshot of the program running.
 
-{% image "./src/assets/media/win10wmsetup-alt-tab-terminator.png", "Alt-Tab Terminator" %}
+<!-- {% image "./src/assets/media/win10wmsetup-alt-tab-terminator.png", "Alt-Tab Terminator" %} -->
+![](win10wmsetup-alt-tab-terminator.png)
 
 For me the app has a few killer features:
 - Search and preview open applications (this is super useful when you have a lot of apps open)
@@ -181,13 +198,16 @@ For me the app has a few killer features:
 
 These are my preferred settings for this program:
 
-{% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-general.png", "Alt-Tab Terminator Settings: General" %}
+<!-- {% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-general.png", "Alt-Tab Terminator Settings: General" %} -->
+![](win10wmsetup-alt-tab-terminator-settings-general.png)
 
-{% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-appearance.png", "Alt-Tab Terminator Settings: Appearance" %}
+<!-- {% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-appearance.png", "Alt-Tab Terminator Settings: Appearance" %} -->
+![](win10wmsetup-alt-tab-terminator-settings-appearance.png)
 
-{% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-hotkeys.png", "Alt-Tab Terminator Settings: HotKeys" %}
+<!-- {% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-hotkeys.png", "Alt-Tab Terminator Settings: HotKeys" %} -->
+![](win10wmsetup-alt-tab-terminator-settings-hotkeys.png)
 
-As you can see, I don't actually use Alt+Tab Terminator to replace Alt+Tab. In general, I only use Alt+Tab to switch between current window and previously focused window. The default Alt+Tab is fine for that. Beyond that, I typically switch between my most common applications using `Win + Number` shortcuts. I use Alt+Tab Terminator only to switch to applications that I can't switch to using `Win + Number` . I especially don't like using Alt+Tab Terminator to replace `Win + Tab`  since the virtual desktop preview is way too useful for me. Instead, I use AutoHotKey to launch Alt+Tab Terminator using a custom shortcut (`CapsLock + Tab`). See AutoHotKey section for code.
+As you can see, I don't actually use Alt+Tab Terminator to replace Alt+Tab. In general, I only use Alt+Tab to switch between the current window and previously focused window. The default Alt+Tab is fine for that. Beyond that, I typically switch between my most common applications using `Win + Number` shortcuts. I use Alt+Tab Terminator only to switch to applications that I can't switch to using `Win + Number` . I launch Alt-Tab Terminator by using a custom keyboard shortcut `CapsLock + Tab`. This keyboard shortcut invokes Alt-Tab Terminator by invoking it's exe directly (see kanata section for more details). I don't use Alt+Tab Terminator to replace `Win + Tab`  since the virtual desktop preview is pretty useful for me.
 
 ## FancyWM
 
@@ -195,7 +215,7 @@ As you can see, I don't actually use Alt+Tab Terminator to replace Alt+Tab. In g
 
 I personally find a tiling window manager to be really useful. It helps me keeps my application windows organized and lets me navigate open windows easily with the keyboard. When using a laptop, I don't have to use the trackpad as much to get around. When using a large 4K monitor, it lets me create layouts on the fly to effectively use all that space without getting eye strain or having to use the mouse too much.
 
-There are a lot of other projects out there trying to bring tiling window manager capabilities to the Windows Desktop. But I disliked a lot of those projects since they were either unstable, hard to configure, hard to use, or didn't integrate well with Windows.
+There are a lot of other projects out there trying to bring tiling window manager capabilities to the Windows Desktop. But I found those projects were either unstable, hard to configure, hard to use, or didn't integrate well with Windows.
 
 These are the things I really like about FancyWM:
 - Easy to install (just grab it from the MS Store)
@@ -208,16 +228,9 @@ These are the things I really like about FancyWM:
 	- When the window is restored (ie. unmaximized), FancyWM will then automatically tile it
 - Can manipulate tiled windows with both mouse and keyboard shortcuts
 	- Can resize and move Windows around using mouse and they will still be automatically tiled.
-	- Can even move around entire stack panels using mouse (I think this is the only way, I haven't found keyboard shortcut for it).
+	- Can even move around entire panels using mouse (I think this is the only way, I haven't found keyboard shortcut for it).
 - Integrates with native Windows Virtual Desktops
-	- Other tiling WM projects for Windows try to create their own workspace functionality outside of native virtual desktops and I always found that to be frustrating to use. For those other projects, if the tiling wm crashed, those workspaces were gone and you had to recreate them! This was a huge pain when you have a lot of workspaces and a lot of windows open.
-	- Since FancyWM uses native Windows virtual desktops, if it crashes, your windows will still remain in their respective desktop but they will no longer be tiled and you have to recreate your desired layout.
-	- FancyWM exposes keyboard shortcuts to focus a specific virtual desktop by number and move a window to a virtual desktop by number. This is invaluable since there are no default keyboard shortcuts in Windows to do these things.
-- Directly invoke window actions using commandline
-	- When I got more adept at using FancyWM, I found that the activation key sequence slowed me down since it added extra keystrokes everytime I wanted to do something. I wanted to script FancyWM and create my own keyboard shortcuts for it.
-	- FancyWM allows you to directly invoke actions by calling `fancywm.exe`.
-		- Ex. here's how to focus to the window on the left: `fancywm.exe --action MoveFocusLeft`
-		- If you use AutoHotKey, you can create your own custom keyboard shortcuts that call into `fancywm.exe`, allowing you to manipulate windows with fewer keystrokes. See the AutoHotKey section for example code.
+	- Other tiling WM projects for Windows try to create their own "workspace" functionality outside of native virtual desktops and that has never worked well for me. The built-in virtual desktop implementation in Windows is fine, I just need more keyboard shortcuts to work with them than what comes baked into Windows (which FancyWM does deliver).
 	
 Here's a short demo of FancyWM. These are the features of FancyWM I'm showing (all using keyboard shortcuts):
 - Split panel horizontally or vertically
@@ -228,8 +241,9 @@ Here's a short demo of FancyWM. These are the features of FancyWM I'm showing (a
 - Temporarily float windows
 
 <!-- {% image "./src/assets/media/win10wmsetup-fancywm-demo.gif", "FancyWM Demonstration" %} -->
+![](win10wmsetup-fancywm-demo.gif)
 
-Now here's another demo of FancyWM focusing on it's handling of virtual desktops. I'm demoing the following features (all using keyboard shortcuts):
+Now here's another demo of FancyWM focusing on handling of virtual desktops. I'm demoing the following features (all using keyboard shortcuts):
 - Focus specific virtual desktop by number (`Shift+Win`  followed by `Number` after short delay)
 	- This shortcuts seems to even work in the Virtual Desktop Switcher
 - Move window to specific virtual desktop by number (`Shift+Win`  followed by `Shift+Number` after short delay)
@@ -238,8 +252,161 @@ Now here's another demo of FancyWM focusing on it's handling of virtual desktops
 - Move window to previous virtual desktop (`Shift+Win`  followed by `Shift+Q` after short delay)
 
 <!-- {% image "./src/assets/media/win10wmsetup-fancywm-virtual-desktops-demo.gif", "FancyWM Virtual Desktop Handling Demonstration" %} -->
+![](win10wmsetup-fancywm-virtual-desktops-demo.gif)
 
 FancyWM has a lot of other cool features that I haven't gone into (ex. moving window to specific monitor number, etc.) and new features are added regularly.
+
+FancyWM is a life-changing program for me. The use of the activation sequence (by default `Win+Shift`) makes it the most user-friendly tiling WM I know of since you only need to memorize one keyboard shortcut to start using it. However, once you get the hang of using it, having to use the activation sequence everytime you need to do something adds a lot of extra keystrokes. Having dedicated shortcuts for each window action (focus to the window on the left, move to virtual desktop 1, etc) would be helpful.
+
+Luckily, FancyWM has the capability to call it's executable directly to perform these actions. To focus to the window on the left you can use this command in a shell: `cmd fancywm.exe --action MoveFocusLeft`. Then, you can use a keyboard remapping software like AutoHotKey or kanata to bind these commands to custom keyboard shortcuts.
+
+## Kanata
+
+[kanata](https://github.com/jtroo/kanata) is an advanced keyboard remapping software that allows you to segment your keyboard into several "layers" of functionality and to perform different actions depending on how you press a key (tapping a key versus holding a key can perform two different actions). You can set up your keyboard so that holding a specific key will activate a new layer on your keyboard where keys will behave differently than on your default layer.
+
+Here's an example. When you're typing normally the default layer is active. In this case, when you type `n`, it will output 'n' as normal. Say you hold `Tab` and while it's held you enter another layer. In this layer, when you hit `n` instead of outputting 'n' you output `Ctrl+Win+Left` which is the keyboard shortcut for moving to the virtual desktop on the left.
+
+My main use of kanata is to create a navigation layer that is activated while I hold the `Tab` key. When I press any other key while holding tab, it will execute a navigation command (usually a call to `fancywm.exe`). This way, I can directionally focus and move windows without using the FancyWM activation sequence which saves me a lot of keystrokes.
+
+Why use kanata for this purpose over AutoHotKey (or some other software)?
+1. Setting up layers on the keyboard and doing different actions based on tapping vs holding a key is much easier in kanata than AutoHotKey.
+	1. My kanata config for remapping keys is significantly shorter and more powerful than the AutoHotKey script I previously used for the same purpose.
+2. kanata supports remapping your keyboard at a much lower level than AutoHotKey and similar software. kanata has an alternate implementation in windows (`kanata_wintercept.exe`)  that uses the [interception](http://www.oblita.com/interception) kernel driver to remap keys. This allows you to remap keys from admin programs without running kanata as admin and to use it in places where AutoHotKey or the regular kanata implementation (`kanata.exe`) wouldn't work such as the login screen.
+
+To install kanata, download `kanata_cmd_allowed.exe` and `kanata_wintercept_cmd_allowed.exe` from the [releases](https://github.com/jtroo/kanata/releases) page and download it somewhere on your computer. I stick with the latest stable release. 
+
+Here's my full kanata config file:
+
+<u>kanata.kbd</u>:
+
+```
+;;Layer template
+;;(deflayer name
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+;;  _    _    _    _    _    _    _    _    _    _    _    _    _          _
+;;  _    _    _    _    _    _    _    _    _    _    _    _                    _
+;;  _    _    _              _              _    _    _    _               _    _    _
+;;)
+
+(defcfg
+  process-unmapped-keys yes
+  danger-enable-cmd yes
+)
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret        prnt
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
+  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght
+)
+
+(defalias
+  lprn S-9
+  rprn S-0
+  * S-8
+  + S-=
+  cap (tap-hold-press 200 200 esc (layer-while-held modal))
+  tab (tap-hold-press 200 200 tab (layer-while-held nav))
+  grv (tap-hold-press 200 200 grv (layer-while-held numbers))
+  lsft (tap-hold-press 200 200 @lprn lsft)
+  rsft (tap-hold-press 200 200 @rprn lsft)
+  kw A-f4
+  vdp C-M-lft
+  vdn C-M-rght
+  ptr C-A-S-M-spc
+  lsm C-esc
+
+  ;; Alt-Tab Terminator
+  ;; Note: C:\Program Files\Alt-Tab Terminator needs to be in System Path for this to run
+  ;; att (cmd AltTabTer.exe) ;; Doesn't work: https://github.com/jtroo/kanata/issues/234
+  att (cmd cmd.exe /c AltTabTer.exe)
+
+  ;; FancyWM bindings
+  ;; Note: need to run kanata as admin if FancyWM run as admin
+  fwfl (cmd fancywm.exe --action MoveFocusLeft)
+  fwfd (cmd fancywm.exe --action MoveFocusDown)
+  fwfu (cmd fancywm.exe --action MoveFocusUp)
+  fwfr (cmd fancywm.exe --action MoveFocusRight)
+  fwml (cmd fancywm.exe --action MoveLeft)
+  fwmd (cmd fancywm.exe --action MoveDown)
+  fwmu (cmd fancywm.exe --action MoveUp)
+  fwmr (cmd fancywm.exe --action MoveRight)
+  fwpu (cmd fancywm.exe --action PullWindowUp)
+  fwhp (cmd fancywm.exe --action CreateHorizontalPanel)
+  fwvp (cmd fancywm.exe --action CreateVerticalPanel)
+  fwtf (cmd fancywm.exe --action ToggleFloatingMode)
+  fwtm (cmd fancywm.exe --action ToggleManager)
+  fwrw (cmd fancywm.exe --action RefreshWorkspace)
+  fwsp (cmd fancywm.exe --action CreateStackPanel)
+  fwd1 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop1) (cmd fancywm.exe --action MoveToDesktop1)))
+  fwd2 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop2) (cmd fancywm.exe --action MoveToDesktop2)))
+  fwd3 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop3) (cmd fancywm.exe --action MoveToDesktop3)))
+  fwd4 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop4) (cmd fancywm.exe --action MoveToDesktop4)))
+  fwd5 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop5) (cmd fancywm.exe --action MoveToDesktop5)))
+  fwd6 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop6) (cmd fancywm.exe --action MoveToDesktop6)))
+  fwd7 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop7) (cmd fancywm.exe --action MoveToDesktop7)))
+  fwd8 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop8) (cmd fancywm.exe --action MoveToDesktop8)))
+  fwd9 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop9) (cmd fancywm.exe --action MoveToDesktop9)))
+)
+
+(deflayer default
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  @grv    _    _    _    _    _    _    _    _    _    _    _    _    _     XX   _    _
+  @tab    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+  @cap    _    _    _    _    _    _    _    _    _    _    _    _       @ptr
+  @lsft    _    _    _    _    _    _    _    _    _    _    @rsft                    _
+  _    _    _              _              _    _    @ptr    _               _    _    _
+)
+
+(deflayer modal
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     lrld    _    _
+  @att    _    @kw    _    _    _    home    pgdn    pgup    end    _    mlft    mrgt    _     _    _    _
+  _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
+  _    _    _    _    _    _    -    _    _    _    _    _                    _
+  _    _    _              @ptr              _    _    _    _               _    _    _
+)
+
+(deflayer nav
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    @fwd1    @fwd2    @fwd3    @fwd4    @fwd5    @fwd6    @fwd7    @fwd8    @fwd9    _    _    _    _     _    _    _
+  XX    _    _    _    @fwrw    @fwtf    @fwml    @fwmd    @fwmu    @fwmr    _    _    _    _     _    _    _
+  _    _    _    _    _    _    @fwfl    @fwfd    @fwfu    @fwfr    _    _    _          _
+  _    _    _    _    @fwtm    @vdp    @vdn    @fwpu    @fwhp    @fwvp    @fwsp    _                    _
+  _    _    _              _              _    _    _    _               _    _    _
+)
+
+(deflayer numbers
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    7    8    9    _    _    _    _     _    _    _
+  _    _    _    _    _    _    _    4    5    6    @+    _    _    _     _    _    _
+  _    _    _    _    _    _    _    1    2    3    -    ret    _          _
+  _    _    _    _    _    _    _    0    .    @*    /    _                    _
+  _    _    _              _              _    _    _    _               _    _    _
+)
+```
+
+In addition to the navigation layer behaviour described above, there are some other interesting things we can do with this kanata configuration. When typing normally (in the default layer) if you tap `CapsLock` it will send `Esc`. If you hold `CapsLock` and/or hit another key, you will enter the modal layer. The modal layer will be active as long as `CapsLock` is held. In the modal layer, `CapsLock+Tab` will open Alt-Tab Terminator. `CapsLock+h` will send left arrow. `CapsLock+df` will send `Ctrl+Shift`.  Hold `CapsLock+df` with one hand and then hold `h`  and this essentially sends `Ctrl+Shift+Left(hold)` which is the standard shortcut for selecting text to the left. These remaps in the modal layer essentially allow me to navigate text using vim-like bindings in any application!
+
+Holding the backtick key will activate the numbers layer and the layer will be active while the backtick key is held. When in the numbers layer, typing certain keys will send numbers instead of the keys (ex. `k` sends `2`). This effectively allows you to get numpad-like functionality on keyboards without it (ex. laptop keyboard).
+
+To use this kanata configuration, save the above config file in the same location that you store that kanata executables. Then you can run kanata with this custom config:
+
+```
+.\kanata_cmd_allowed.exe --cfg kanata.kbd
+```
+
+Or if you want to use the interception driver instead of the default keyboard hook mechanism:
+
+```
+.\kanata_wintercept_cmd_allowed.exe --cfg kanata.kbd
+```
+
+To automatically start kanata at startup, you can use the [Windows Task Scheduler](https://github.com/jtroo/kanata/discussions/193#discussioncomment-4499387).
 
 ## AutoHotKey
 
@@ -247,23 +414,20 @@ FancyWM has a lot of other cool features that I haven't gone into (ex. moving wi
 
 When installing AutoHotKey, make sure the circled option is checked since it will allow AutoHotKey scripts to handle programs running as Admin.
 
-{% image "./src/assets/media/win10wmsetup-autohotkey-install.png", "AutoHotkey Installation" %}
+<!-- {% image "./src/assets/media/win10wmsetup-autohotkey-install.png", "AutoHotkey Installation" %} -->
+![](win10wmsetup-autohotkey-install.png)
 
-### Script structure
+### Mouse Follows Focus
 
-I'm keeping all my autohotkey scripts in one folder in my filesystem, `ahk`. Within the folder, there is one main script `ahk\ahkrc.ahk` that I run. This main script will include other subscripts under `ahk\Lib\`. The reason I couldn't run the scripts under `Lib` separately is that I needed to have one place to set the capslock state to off. Otherwise, the two scripts I had didn't play nicely when run separately. I prefer this structure anyways since I have only one script to run but the code of the scripts is still modularized.
+This is an AutoHotKey script that automatically centers the mouse on a newly focused window that was focused due to a keyboard shortcut (ex. `Alt-Tab`, `Win+Number`). Focus events that were caused by mouse movements will not cause the mouse to jump around.
 
-````
-ahk\
-	Lib\
-		modal_capslock.ahk
-		mouse_cursor_follows_focus.ahk
-	ahkrc.ahk
-````
+<u>mouse_follows_focus.ahk</u>:
+```
+; Makes the mouse cursor follow window focus, but ONLY if the focus change
+; wasn't caused by the mouse - e.g. Alt-Tab, Win+<Number>, hotkeys, ...
+; Saves a lot of mousing around on multi-monitor setups!
+; Source: https://gist.githubusercontent.com/bladeSk/9feeeb6c2ba9939faa3c88cc9133700c/raw/cabc86477ca9bc23856cf84146ecc55eda74ff32/mouse%2520cursor%2520follows%2520focus.ahk
 
-<u>ahk\ahkrc.ahk</u>:
-
-````
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
@@ -271,37 +435,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #UseHook
 #InstallKeybdHook
 #SingleInstance force
-
-; Deactivate capslock completely.
-; Needs to be at top of file and defined before all other keybindings
-; and all includes. Otherwise, capslock might be able to be activated.
-SetCapslockState, AlwaysOff
-
-; Disable Windows 10 Show Desktop Button
-Control, Hide, , TrayShowDesktopButtonWClass1, ahk_class Shell_TrayWnd
-
-#Include %A_ScriptDir%\Lib\mouse_cursor_follows_focus.ahk
-#Include %A_ScriptDir%\Lib\modal_capslock.ahk
-
-SetTimer, ReloadScript,% 30*1000 ;30 seconds
-
-ReloadScript()
-{
-	Reload
-}
-````
-
-### Mouse Follows Focus
-
-The following script (which is included in the main script) implements a behaviour called 'Mouse Follows Focus' which moves the mouse automatically according to window focus events.
-
-<u>ahk\Lib\mouse_cursor_follows_focus.ahk</u>:
-
-````
-; Makes the mouse cursor follow window focus, but ONLY if the focus change
-; wasn't caused by the mouse - e.g. Alt-Tab, Win+<Number>, hotkeys, ...
-; Saves a lot of mousing around on multi-monitor setups!
-; Source: https://gist.githubusercontent.com/bladeSk/9feeeb6c2ba9939faa3c88cc9133700c/raw/cabc86477ca9bc23856cf84146ecc55eda74ff32/mouse%2520cursor%2520follows%2520focus.ahk
 
 Gui +LastFound 
 
@@ -352,225 +485,26 @@ Return
 *~MButton::
 	lastMouseClickTime := A_TickCount
 Return
-````
+
+```
 
 Below is a demonstration of the default Windows behaviour when switching between application windows using keyboard shortcuts (in this case, `Win+Number`). You can see that the focused window changes but the mouse cursor still stays at the same position.
 
 <!-- {% image "./src/assets/media/win10wmsetup-mff-off.gif", "Demonstration of switching focused window with mouse follows focus off" %} -->
+![](win10wmsetup-mff-off.gif)
 
 Below is a demonstration of 'Mouse Follows Focus'. Now when I switch windows using keyboard shortcuts, the mouse cursor is automatically moved to the center of the newly focused window. This is especially useful when working with multi-monitor setups, since you can avoid having to physically drag your mouse to move the cursor to another monitor when the focused window changes via keyboard. But I also like this when working on a laptop on the couch since I don't have to use the trackpad so much.
 
 <!-- {% image "./src/assets/media/win10wmsetup-mff-on.gif", "Demonstration of switching focused window with mouse follows focus on" %} -->
+![](win10wmsetup-mff-on.gif)
 
-### Using CapsLock as both Escape and an extra modifier key
+### Handling admin windows with AutoHotKey
 
-The following script (which is included in the main script) modifies `Caps Lock` behaviour in a two interesting ways. Firstly, pressing just `Caps Lock` will send `Escape` which is useful when using vim bindings in my IDE. Second, pressing `Caps Lock` with another key combo invokes a custom action, effectively turning `Caps Lock` into another modifier key. I mainly use these extra modifier shortcuts to invoke FancyWM actions directly instead of using the activation sequence, run Alt+Tab Terminator, and remap default shortcuts into ones easier to type (ex. close window can be invoked `CapsLock + W` in addition to it's default `Alt+F4`).
+AutoHotKey scripts won't work on Admin windows by default. Need to follow this [guide](https://stackoverflow.com/a/68855449) to be able to make an AutoHotKey script handle Admin windows without running it as admin. 
 
-<u>ahk\Lib\modal_capslock.ahk</u>
+### Running AutoHotKey script on startup
 
-````
-; Invokes key press after activation shortcut
-InvokeFancyWmAction(key, downDelay:=100, upDelay:=100)
-{
-	Send, {LWin down}{Shift down}
-	Sleep, downDelay
-	Send, {LWin up}{Shift up}
-	Sleep, upDelay
-	Send, %key%
-	Return
-}
-
-Capslock UP::
-	if (A_PriorKey = "Capslock")
-	{
-		Send {Esc}
-	}
-return
-
-; modal shortcuts using CapsLock
-#If GetKeyState("Capslock","P") ;"P" means "pressed".
-	; Turn caps lock off in case it was turned on. CapsLock + Ctrl + Shift + Win + C.
-	^+#c::SetCapslockState, off
-
-	; Move the focused window out of its containing panel. CapsLock + Shift + Enter
-	+Enter::RunWait, fancywm.exe --action PullWindowUp, , Hide
-
-	; Change focused windows. CapsLock + Alt + Vim keys
-	!h::RunWait, fancywm.exe --action MoveFocusLeft, , Hide
-	!j::RunWait, fancywm.exe --action MoveFocusDown, , Hide
-	!k::RunWait, fancywm.exe --action MoveFocusUp, , Hide
-	!l::RunWait, fancywm.exe --action MoveFocusRight, , Hide
-
-	; Move the focused window in a given direction. CapsLock + Alt + Shift + Vim direction keys
-	!+h::RunWait, fancywm.exe --action MoveLeft, , Hide
-	!+j::RunWait, fancywm.exe --action MoveDown, , Hide
-	!+k::RunWait, fancywm.exe --action MoveUp, , Hide
-	!+l::RunWait, fancywm.exe --action MoveRight, , Hide
-
-	; Embed the focused window in a panel. CapsLock + Shift + {,./}
-	+,::RunWait, fancywm.exe --action CreateHorizontalPanel, , Hide
-	+.::RunWait, fancywm.exe --action CreateVerticalPanel, , Hide
-	+/::RunWait, fancywm.exe --action CreateStackPanel, , Hide
-
-	; Change the width/height of the focused window. CapsLock + Ctrl + Vim keys
-	; Decrease width
-	^h::InvokeFancyWmAction("[")
-
-	; Decrease height
-	^j::InvokeFancyWmAction(";")
-
-	; Increase height
-	^k::InvokeFancyWmAction("'")
-
-	; Increase width
-	^l::InvokeFancyWmAction("]")
-
-	; Doesn't work, see https://github.com/FancyWM/fancywm-issues/issues/77
-	;^h::RunWait, fancywm.exe --action DecreaseWidth, , Hide
-	;^j::RunWait, fancywm.exe --action DecreaseHeight, , Hide
-	;^k::RunWait, fancywm.exe --action IncreaseHeight, , Hide
-	;^l::RunWait, fancywm.exe --action IncreaseWidth, , Hide
-
-	; Switch to the selected virtual desktop. CapsLock + Alt + Number
-	!1::RunWait, fancywm.exe --action SwitchToDesktop1, , Hide
-	!2::RunWait, fancywm.exe --action SwitchToDesktop2, , Hide
-	!3::RunWait, fancywm.exe --action SwitchToDesktop3, , Hide
-	!4::RunWait, fancywm.exe --action SwitchToDesktop4, , Hide
-	!5::RunWait, fancywm.exe --action SwitchToDesktop5, , Hide
-	!6::RunWait, fancywm.exe --action SwitchToDesktop6, , Hide
-	!7::RunWait, fancywm.exe --action SwitchToDesktop7, , Hide
-	!8::RunWait, fancywm.exe --action SwitchToDesktop8, , Hide
-	!9::RunWait, fancywm.exe --action SwitchToDesktop9, , Hide
-
-	; Send the focused window to the selected virtual desktop. CapsLock + Shift + Number
-	+1::RunWait, fancywm.exe --action MoveToDesktop1, , Hide
-	+2::RunWait, fancywm.exe --action MoveToDesktop2, , Hide
-	+3::RunWait, fancywm.exe --action MoveToDesktop3, , Hide
-	+4::RunWait, fancywm.exe --action MoveToDesktop4, , Hide
-	+5::RunWait, fancywm.exe --action MoveToDesktop5, , Hide
-	+6::RunWait, fancywm.exe --action MoveToDesktop6, , Hide
-	+7::RunWait, fancywm.exe --action MoveToDesktop7, , Hide
-	+8::RunWait, fancywm.exe --action MoveToDesktop8, , Hide
-	+9::RunWait, fancywm.exe --action MoveToDesktop9, , Hide
-
-	; Move focused window to workspace (basically MoveToDesktopX + SwitchToDesktopX), CapsLock + Alt + Shift + Number
-	!+1::
-	RunWait, fancywm.exe --action MoveToDesktop1, , Hide
-	RunWait, fancywm.exe --action SwitchToDesktop1, , Hide
-	return
-
-	!+2::
-	RunWait, fancywm.exe --action MoveToDesktop2, , Hide
-	RunWait, fancywm.exe --action SwitchToDesktop2, , Hide
-	return
-
-	!+3::
-	RunWait, fancywm.exe --action MoveToDesktop3, , Hide
-	RunWait, fancywm.exe --action SwitchToDesktop3, , Hide
-	return
-
-	!+4::
-	RunWait, fancywm.exe --action MoveToDesktop4, , Hide
-	RunWait, fancywm.exe --action SwitchToDesktop4, , Hide
-	return
-
-	!+5::
-	RunWait, fancywm.exe --action MoveToDesktop5, , Hide
-	RunWait, fancywm.exe --action SwitchToDesktop5, , Hide
-	return
-
-	!+6::
-	RunWait, fancywm.exe --action MoveToDesktop6, , Hide
-	RunWait, fancywm.exe --action SwitchToDesktop6, , Hide
-	return
-
-	!+7::
-	RunWait, fancywm.exe --action MoveToDesktop7, , Hide
-	RunWait, fancywm.exe --action SwitchToDesktop7, , Hide
-	return
-
-	!+8::
-	RunWait, fancywm.exe --action MoveToDesktop8, , Hide
-	RunWait, fancywm.exe --action SwitchToDesktop8, , Hide
-	return
-
-	!+9::
-	RunWait, fancywm.exe --action MoveToDesktop9, , Hide
-	RunWait, fancywm.exe --action SwitchToDesktop9, , Hide
-	return
-
-	; Toggle floating mode for the active window. CapsLock + Shift + F
-	+f::RunWait, fancywm.exe --action ToggleFloatingMode, , Hide
-
-	; Temporarily toggle the window management functionality in FancyWM. CapsLock + Alt + Shift + F
-	!+f::RunWait, fancywm.exe --action ToggleManager, , Hide
-
-	; Manually refresh the window positions. CapsLock + Shift + R.
-	+r::RunWait, fancywm.exe --action RefreshWorkspace, , Hide
-
-	; Reload current ahk script, CapsLock + Alt + Shift + '
-	!+'::reload
-
-	; Kill application/window. CapsLock + W
-	w::!F4
-
-	; Focus virtual desktop to the right. CapsLock + N
-	n::Send,^#{Right}
-
-	; Focus virtual desktop to left. CapsLock + B
-	b::Send,^#{Left}
-
-	; Left click mouse. CapsLock + [
-	[::Click
-
-	; Right click mouse. CapsLock + ]
-	]::Click Right
-
-	; Open PowerToys Run. CapsLock + Space
-	Space::Send,!{Space}
-
-	; Open start menu. CapsLock + G
-	g::Send,{LWin}
-
-	; Launch Alt+Tab Terminator. CapsLock + Tab
-	Tab::RunWait, "C:\Program Files\Alt-Tab Terminator\AltTabTer.exe", "C:\Program Files\Alt-Tab Terminator", Hide
-
-	; CapsLock + any unhandled key combo + vim keys to key combo + arrow keys.
-	; * is the wildcard prefix, it matches any key combo. {Blind} is the wildcard key combo.
-	; Example: Can use CapsLock + Vim keys to navigate as if using arrow keys.
-	; Example: Can use CapsLock + Shift + Vim keys to select text in specified direction by character.
-	; Example: Can use CapsLock + Ctrl + Shift + Vim keys to select text in specified direction by word.
-	; Note: I think this has to go last after all other bindings with hjkl since we use hjkl in many other key combos earlier in the script.
-	*h::Send,{Blind}{Left}
-	*l::Send,{Blind}{Right}
-	*k::Send,{Blind}{Up}
-	*j::Send,{Blind}{Down}
-
-	; CapsLock + any unhandled key combo + yuio to key combo + Home/Page Down/Page Up/End.
-	*y::Send,{Blind}{Home}
-	*u::Send,{Blind}{PgDn}
-	*i::Send,{Blind}{PgUp}
-	*o::Send,{Blind}{End}
-#If
-````
-
-### Have `ahk\ahkrc.ahk` handle admin windows
-
-AutoHotKey scripts won't work on Admin windows by default. Need to follow this [guide](https://stackoverflow.com/a/68855449) to be able to make an AutoHotKey script handle Admin windows without running it as admin. You only need to do this for `ahk\ahkrc.ahk` since that is the only script that will be directly invoked.
-
-### Run `ahk\ahkrc.ahk` at startup
-
-Due to the directory structure I chose for my autohotkey scripts, I couldn't just stick a shortcut to `ahk\ahkrc.ahk` in `shell:startup`. I could have done so if I decide to compile my autohotkey script as an exe and then move the compiled exe to `shell:startup`. But this is too much of a pain when I need to make some changes to my script. So, I ended up using the Windows Task Scheduler to start `ahk\ahkrc.ahk` at login.
-
-{% image "./src/assets/media/win10wmsetup-autohotkey-tasksch-1.png", "Running AutoHotKey at Login Using Windows Task Scheduler" %}
-
-{% image "./src/assets/media/win10wmsetup-autohotkey-tasksch-2.png", "Running AutoHotKey at Login Using Windows Task Scheduler" %}
-
-{% image "./src/assets/media/win10wmsetup-autohotkey-tasksch-3.png", "Running AutoHotKey at Login Using Windows Task Scheduler" %}
-
-{% image "./src/assets/media/win10wmsetup-autohotkey-tasksch-4.png", "Running AutoHotKey at Login Using Windows Task Scheduler" %}
-
-{% image "./src/assets/media/win10wmsetup-autohotkey-tasksch-5.png", "Running AutoHotKey at Login Using Windows Task Scheduler" %}
+I also use the Windows Task Scheduler to run `mouse_follows_focus.ahk` on startup. Alternately, you could make a shortcut to your script and then place it in `shell:startup`.
 
 # Problems
 
@@ -579,24 +513,10 @@ Due to the directory structure I chose for my autohotkey scripts, I couldn't jus
 When window focus events are invoked, it seems that Windows will switch focus to the taskbar and then focus on the actual window. The script adds a short delay to compensate for this but sometimes it's not enough, so you end up in a situation where the mouse cursor is still on the taskbar and hasn't moved to the application window (as shown below).
 
 <!-- {% image "./src/assets/media/win10wmsetup-mff-at-taskbar.gif", "Mouse cursor stuck at taskbar after window focus change event" %} -->
+![](win10wmsetup-mff-at-taskbar.gif)
 
-Usually hitting Alt+Tab twice would help to recenter the mouse by switching to last window and back to new window.
-
-## AHK script silently dies
-
-For some reason, `ahk\ahkrc.ahk`, will silently die after several days (sometimes even hours) of uptime. Other times, the keyboard starts acting funky (ie. wrong keys are fired from even non-remaped keys). In these cases I usually either:
-
-1. Reload script
-2. Exit script and restart it (if reloading doesn't work)
-
-While I would like to get to figure out why this is happening, I can live with this mild annoyance.
-
-## FancyWM less stable when using from within an RDP session
-
-FancyWM is a life-changing program for me. I can't use Windows without it now and it's been very stable when not using in an RDP session.
-
-At my workplace, I often do development on remote machines (desktop on office, Azure VMs) which I connect to using RDP. I install FancyWM onto the remote machines as well and I can use it over RDP. Most of the time, it works just as well as when not using it over RDP. But sometimes, when reconnecting to RDP sessions or when the display configuration changes in the RDP session (ex. resizing RDP window, attaching extra monitor), FancyWM doesn't always handle it gracefully and may crash. It doesn't happen all the time but it's still annoying when it does happen since I have to rearrange my windows.
+Usually hitting Alt+Tab once or twice would help to recenter the mouse.
 
 # Conclusion
 
-Although it took a bit of time to set this all up, I'm really happy with the results. I find I'm now much more productive in Windows.
+Although it took a bit of time to set this all up, I'm really happy with the result. I find I'm now much more productive in Windows.
