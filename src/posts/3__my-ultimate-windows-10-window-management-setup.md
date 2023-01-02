@@ -185,7 +185,7 @@ I also like to make sure these settings for FancyZones are enabled to prevent dr
 
 [Alt-Tab Terminator](https://www.ntwind.com/software/alttabter.html) is a program that replaces the default Windows Alt+Tab view (which shows windows with small previews in a grid) with a list view that is searchable and has much larger window previews.
 
-Here's a screenshot of the program running.
+Here's a screenshot of the program running:
 
 {% image "./src/assets/media/win10wmsetup-alt-tab-terminator.png", "Alt-Tab Terminator" %}
 <!-- ![](win10wmsetup-alt-tab-terminator.png) -->
@@ -240,6 +240,7 @@ Here's a short demo of FancyWM. These are the features of FancyWM I'm showing (a
 - Resize windows
 - Temporarily float windows
 
+<iframe width="1123" height="631" src="https://www.youtube.com/embed/nNFbUpHJmG4" title="win10wmsetup fancywm demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <!-- ![](win10wmsetup-fancywm-demo.gif) -->
 
