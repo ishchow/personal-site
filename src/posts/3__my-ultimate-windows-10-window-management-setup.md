@@ -39,7 +39,7 @@ Although there are built-in shortcuts for snapping windows to the left/right hal
 
 `Win+Tab`: Open the virtual desktop switcher. I mainly use this to see which virtual desktops are empty and move to them. You can move to other desktops by clicking on them. Hit the shortcut again or hit `Esc` to exit out of this view.
 
-<!-- {% image "./src/assets/media/win10wmsetup-desktop-switcher.png", "Virtual destkop switcher" %} -->
+{% image "./src/assets/media/win10wmsetup-desktop-switcher.png", "Virtual destkop switcher" %}
 <!-- ![](win10wmsetup-desktop-switcher.png) -->
 
 ## Move window to next/previous monitor
@@ -63,26 +63,26 @@ We can use the `Tab`/`Shift+Tab`  shortcuts from the above section to navigate t
 
 I find this trick is really useful when I'm using my 43" 4K monitor for work, since it's a pain to move the mouse to the other side of the screen just to clear notifications.
 
-<!-- {% image "./src/assets/media/win10wmsetup-close-notifications-view.png", "Close notification view" %} -->
+{% image "./src/assets/media/win10wmsetup-close-notifications-view.png", "Close notification view" %}
 <!-- ![](win10wmsetup-close-notifications-view.png) -->
 
 ## Active window border highlight using accent color
 
 Open Settings > Personalization > Colors. Pick a specific accent color or pick accent color automatically based on wallpaper. We need to have an accent color set since that will be the color the active window border is highlighted with.
 
-<!-- {% image "./src/assets/media/win10wmsetup-personalization-settings-color.png", "Color settings" %} -->
+{% image "./src/assets/media/win10wmsetup-personalization-settings-color.png", "Color settings" %}
 <!-- ![](win10wmsetup-personalization-settings-color.png) -->
 
 Here's what application windows look by default, without active window border highlight.
 
-<!-- {% image "./src/assets/media/win10wmsetup-wt-focused-no-highlight.png", "Windows Termianl focused with active window border highlight off" %} -->
+{% image "./src/assets/media/win10wmsetup-wt-focused-no-highlight.png", "Windows Termianl focused with active window border highlight off" %}
 <!-- ![](win10wmsetup-wt-focused-no-highlight.png) -->
 
 Windows terminal is the active window here. But it's really hard to tell that.
 
 Now, here's what it looks like when active window border highlight is on. It's much more obvious that Windows Terminal is the focused window since the border is highlighted in red.
 
-<!-- {% image "./src/assets/media/win10wmsetup-wt-focused-highlight.png", "Windows Terminal focused with active window border highlight on" %} -->
+{% image "./src/assets/media/win10wmsetup-wt-focused-highlight.png", "Windows Terminal focused with active window border highlight on" %}
 <!-- ![](win10wmsetup-wt-focused-highlight.png) -->
 
 The built-in active window highlight does have some limitations though. Mainly, it doesn't seem to work on apps built with Electron.
@@ -99,7 +99,7 @@ On each machine, I pin my 10 most used applications at the beginning of the task
 
 Here's an illustration from my taskbar. 
 
-<!-- {% image "./src/assets/media/win10wmsetup-taskbar-switch.png", "Taskbar App Numbering" %} -->
+{% image "./src/assets/media/win10wmsetup-taskbar-switch.png", "Taskbar App Numbering" %}
 <!-- [](win10wmsetup-taskbar-switch.png) -->
 
 Now, these keyboard shortcuts have some interesting behaviour:
@@ -118,14 +118,14 @@ I only listed my most used keyboard shortcuts in this article but you can find f
 
 Open `Settings > System > Multitasking`. I like to use the following settings. I especially rely on Alt+Tab showing windows from all virtual desktops. I personally don't find switching between Edge tabs in my OS to be a useful feature since I can do that from within Edge just fine.
 
-<!-- {% image "./src/assets/media/win10wmsetup-multitasking-settings.png", "Windows Multi-tasking Settings" %} -->
+{% image "./src/assets/media/win10wmsetup-multitasking-settings.png", "Windows Multi-tasking Settings" %}
 <!-- ![](win10wmsetup-multitasking-settings.png) -->
 
 ## Improve Windows Search
 
 Open `Settings > Search > Searching Windows`. Make sure Enhanced search is on, so Windows can find more files than by default.
 
-<!-- {% image "./src/assets/media/win10wmsetup-windows-file-search-settings.png", "Windows File Search Settings" %} -->
+{% image "./src/assets/media/win10wmsetup-windows-file-search-settings.png", "Windows File Search Settings" %}
 <!-- ![](win10wmsetup-windows-file-search-settings.png) -->
 
 # Third-Party Programs
@@ -142,7 +142,7 @@ Even with Enhanced Windows Search enabled, I sometimes can't find what I'm looki
 
 In terms of general settings, I always run PowerToys as Admin, so I can use the utilities on admin windows.
 
-<!-- {% image "./src/assets/media/win10wmsetup-powertoys-admin.png", "Run PowerToys as Admin" %} -->
+{% image "./src/assets/media/win10wmsetup-powertoys-admin.png", "Run PowerToys as Admin" %}
 <!-- ![](win10wmsetup-powertoys-admin.png) -->
 
 ### PowerToys Run
@@ -151,7 +151,7 @@ In terms of general settings, I always run PowerToys as Admin, so I can use the 
 
 Here's some basic settings I enable for PowerToys Run:
 
-<!-- {% image "./src/assets/media/win10wmsetup-powertoys-run-settings.png", "PowerToys Run Settings" %} -->
+{% image "./src/assets/media/win10wmsetup-powertoys-run-settings.png", "PowerToys Run Settings" %}
 <!-- ![](win10wmsetup-powertoys-run-settings.png) -->
 
 For built-in plugins, I disable `Web Search` and `OneNote`. I enable everything else. The `Visual Studio Code Workspaces` plugin is particularly handy for me.
@@ -160,7 +160,7 @@ I install an unofficial [Everything Plugin](https://github.com/lin-ycv/Everythin
 
 After installing the plugin, restart PowerToys. Then enable the plugin and set a global activation key.
 
-<!-- {% image "./src/assets/media/win10wmsetup-powertoys-run-everything.png", "PowerToys Run EveryThing Plugin Settings" %} -->
+{% image "./src/assets/media/win10wmsetup-powertoys-run-everything.png", "PowerToys Run EveryThing Plugin Settings" %}
 <!-- ![](win10wmsetup-powertoys-run-everything.png) -->
 
 This is how I typically run searches using Everything. I rarely use the actual Everything application.
@@ -173,12 +173,12 @@ I actually find the core functionality of FancyZones to be useless. It's too muc
 
 When using multiple monitors, by default Windows will open applications on the primary monitor, not the current active monitor. This drives me nuts since I always want apps to open on the monitor that has focus because that's where I usually need the application to be and that's also typically where my mouse cursor is. Without FancyZones and this specific setting enabled, I would always have to drag the window to the monitor that previously had focus if it wasn't the primary monitor which was a pain!
 
-<!-- {% image "./src/assets/media/win10wmsetup-fancyzones-window-settings.png", "FancyZones Window Settings" %} -->
+{% image "./src/assets/media/win10wmsetup-fancyzones-window-settings.png", "FancyZones Window Settings" %}
 <!-- ![](win10wmsetup-fancyzones-window-settings.png) -->
 
 I also like to make sure these settings for FancyZones are enabled to prevent dragging windows using mouse from activating FancyZones.
 
-<!-- {% image "./src/assets/media/win10wmsetup-fancyzones-zone-settings.png", "FancyZones Zone Settings" %} -->
+{% image "./src/assets/media/win10wmsetup-fancyzones-zone-settings.png", "FancyZones Zone Settings" %}
 <!-- ![](win10wmsetup-fancyzones-zone-settings.png) -->
 
 ## Alt-Tab Terminator
@@ -187,7 +187,7 @@ I also like to make sure these settings for FancyZones are enabled to prevent dr
 
 Here's a screenshot of the program running.
 
-<!-- {% image "./src/assets/media/win10wmsetup-alt-tab-terminator.png", "Alt-Tab Terminator" %} -->
+{% image "./src/assets/media/win10wmsetup-alt-tab-terminator.png", "Alt-Tab Terminator" %}
 <!-- ![](win10wmsetup-alt-tab-terminator.png) -->
 
 For me the app has a few killer features:
@@ -198,13 +198,13 @@ For me the app has a few killer features:
 
 These are my preferred settings for this program:
 
-<!-- {% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-general.png", "Alt-Tab Terminator Settings: General" %} -->
+{% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-general.png", "Alt-Tab Terminator Settings: General" %}
 <!-- ![](win10wmsetup-alt-tab-terminator-settings-general.png) -->
 
-<!-- {% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-appearance.png", "Alt-Tab Terminator Settings: Appearance" %} -->
+{% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-appearance.png", "Alt-Tab Terminator Settings: Appearance" %}
 <!-- ![](win10wmsetup-alt-tab-terminator-settings-appearance.png) -->
 
-<!-- {% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-hotkeys.png", "Alt-Tab Terminator Settings: HotKeys" %} -->
+{% image "./src/assets/media/win10wmsetup-alt-tab-terminator-settings-hotkeys.png", "Alt-Tab Terminator Settings: HotKeys" %}
 <!-- ![](win10wmsetup-alt-tab-terminator-settings-hotkeys.png) -->
 
 As you can see, I don't actually use Alt+Tab Terminator to replace Alt+Tab. In general, I only use Alt+Tab to switch between the current window and previously focused window. The default Alt+Tab is fine for that. Beyond that, I typically switch between my most common applications using `Win + Number` shortcuts. I use Alt+Tab Terminator only to switch to applications that I can't switch to using `Win + Number` . I launch Alt-Tab Terminator by using a custom keyboard shortcut `CapsLock + Tab`. This keyboard shortcut invokes Alt-Tab Terminator by invoking it's exe directly (see kanata section for more details). I don't use Alt+Tab Terminator to replace `Win + Tab`  since the virtual desktop preview is pretty useful for me.
@@ -240,7 +240,7 @@ Here's a short demo of FancyWM. These are the features of FancyWM I'm showing (a
 - Resize windows
 - Temporarily float windows
 
-<!-- {% image "./src/assets/media/win10wmsetup-fancywm-demo.gif", "FancyWM Demonstration" %} -->
+
 <!-- ![](win10wmsetup-fancywm-demo.gif) -->
 
 Now here's another demo of FancyWM focusing on handling of virtual desktops. I'm demoing the following features (all using keyboard shortcuts):
@@ -251,7 +251,7 @@ Now here's another demo of FancyWM focusing on handling of virtual desktops. I'm
 	- This shortcuts seems to even work in the Virtual Desktop Switcher
 - Move window to previous virtual desktop (`Shift+Win`  followed by `Shift+Q` after short delay)
 
-<!-- {% image "./src/assets/media/win10wmsetup-fancywm-virtual-desktops-demo.gif", "FancyWM Virtual Desktop Handling Demonstration" %} -->
+
 <!-- ![](win10wmsetup-fancywm-virtual-desktops-demo.gif) -->
 
 FancyWM has a lot of other cool features that I haven't gone into (ex. moving window to specific monitor number, etc.) and new features are added regularly.
@@ -412,7 +412,7 @@ To automatically start kanata at startup, you can use the [Windows Task Schedule
 
 When installing AutoHotKey, make sure the circled option is checked since it will allow AutoHotKey scripts to handle programs running as Admin.
 
-<!-- {% image "./src/assets/media/win10wmsetup-autohotkey-install.png", "AutoHotkey Installation" %} -->
+{% image "./src/assets/media/win10wmsetup-autohotkey-install.png", "AutoHotkey Installation" %}
 <!-- ![](win10wmsetup-autohotkey-install.png) -->
 
 ### Mouse Follows Focus
@@ -483,17 +483,14 @@ Return
 *~MButton::
 	lastMouseClickTime := A_TickCount
 Return
-
 ```
 
 Below is a demonstration of the default Windows behaviour when switching between application windows using keyboard shortcuts (in this case, `Win+Number`). You can see that the focused window changes but the mouse cursor still stays at the same position.
 
-<!-- {% image "./src/assets/media/win10wmsetup-mff-off.gif", "Demonstration of switching focused window with mouse follows focus off" %} -->
 <!-- ![](win10wmsetup-mff-off.gif) -->
 
 Below is a demonstration of 'Mouse Follows Focus'. Now when I switch windows using keyboard shortcuts, the mouse cursor is automatically moved to the center of the newly focused window. This is especially useful when working with multi-monitor setups, since you can avoid having to physically drag your mouse to move the cursor to another monitor when the focused window changes via keyboard. But I also like this when working on a laptop on the couch since I don't have to use the trackpad so much.
 
-<!-- {% image "./src/assets/media/win10wmsetup-mff-on.gif", "Demonstration of switching focused window with mouse follows focus on" %} -->
 <!-- ![](win10wmsetup-mff-on.gif) -->
 
 ### Handling admin windows with AutoHotKey
@@ -510,7 +507,6 @@ I also use the Windows Task Scheduler to run `mouse_follows_focus.ahk` on startu
 
 When window focus events are invoked, it seems that Windows will switch focus to the taskbar and then focus on the actual window. The script adds a short delay to compensate for this but sometimes it's not enough, so you end up in a situation where the mouse cursor is still on the taskbar and hasn't moved to the application window (as shown below).
 
-<!-- {% image "./src/assets/media/win10wmsetup-mff-at-taskbar.gif", "Mouse cursor stuck at taskbar after window focus change event" %} -->
 <!-- ![](win10wmsetup-mff-at-taskbar.gif) -->
 
 Usually hitting Alt+Tab once or twice would help to recenter the mouse.
