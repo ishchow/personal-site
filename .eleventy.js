@@ -9,7 +9,7 @@ const Image = require("@11ty/eleventy-img");
 async function imageShortcode(src, alt, sizes = "(min-width: 30em) 50vw, 100vw") {
     let metadata = await Image(src, {
       widths: [300, 600],
-      formats: [null],
+      formats: ["webp", "jpeg"],
       outputDir: "./dist/img",
       sharpOptions: {
         animated: true
