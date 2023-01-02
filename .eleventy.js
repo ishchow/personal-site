@@ -2,13 +2,12 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const htmlmin = require("html-minifier");
 const luxon = require("luxon");
-const pluginPWA = require("eleventy-plugin-pwa");
 const fs = require("fs");
 const Image = require("@11ty/eleventy-img");
 
 async function imageShortcode(src, alt, sizes = "(min-width: 30em) 50vw, 100vw") {
     let metadata = await Image(src, {
-      widths: [300, 600],
+      widths: [300, 600, 900, 1200],
       formats: ["webp", "jpeg"],
       outputDir: "./dist/img",
       sharpOptions: {
@@ -45,10 +44,6 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.addPlugin(syntaxHighlight);
     eleventyConfig.addPlugin(pluginRss);
-    eleventyConfig.addPlugin(pluginPWA, {
-        clientsClaim: true,
-        skipWaiting: true,
-    });
 
     // enable everything
     var markdownit = require("markdown-it")({
