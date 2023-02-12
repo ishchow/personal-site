@@ -36,8 +36,8 @@
         "tailwindcss": "^3.0.12"
     },
     "devDependencies": {
-        "@netlify/plugin-lighthouse": "^1.4.2",
-        "lighthouse": "^7.0.1",
+        "@netlify/plugin-lighthouse": "^4.0.7",
+        "lighthouse": "^10.0.0",
         "slugify": "^1.4.6",
         "yaml": "^1.10.0",
         "yargs": "^16.2.0"
