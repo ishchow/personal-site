@@ -1,12 +1,11 @@
 ---
 title: My Ultimate Windows 10 Window Management Setup
-date: 2022-12-30T00:00:00-07:00
+date: 2023-02-12T00:00:00-07:00
 imageNameKey: win10wmsetup
 tags:
     - Windows
     - FancyWM
     - Kanata
-    - AutoHotKey
 ---
 
 # Background
