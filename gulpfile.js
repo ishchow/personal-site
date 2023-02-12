@@ -9,7 +9,14 @@ gulp.task('css', function () {
     .pipe(gulp.dest('src/_includes/css/'))
 })
 
+gulp.task('js', function () {
+  return gulp.src('src/assets/js/*.js')
+  .pipe(concat('main.js'))
+  .pipe(gulp.dest('src/_includes/js/'))
+})
+
 gulp.task('watch', function () {
     gulp.watch('src/assets/css/*.css', gulp.parallel('css'))
+    gulp.watch('src/assets/js/*.js', gulp.parallel('js'))
 })
 
