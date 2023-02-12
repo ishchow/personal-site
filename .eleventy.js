@@ -91,8 +91,20 @@ module.exports = function (eleventyConfig) {
     });
 
     eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
-    eleventyConfig.addLiquidShortcode("image", imageShortcode);
-    eleventyConfig.addJavaScriptFunction("image", imageShortcode);
+    eleventyConfig.addNunjucksShortcode("youtube", (videoURL, title) => {
+        const url = new URL(videoURL);
+        const videoId = url.searchParams.get("v");
+        return `
+    <iframe class="yt-shortcode" src="https://www.youtube-nocookie.com/embed/${videoId}" title="YouTube video player${
+          title ? ` for ${title}` : ""
+        }" frameborder="0" allowfullscreen></iframe>
+    `;
+      });
+    eleventyConfig.addNunjucksShortcode("youtubeLite", (videoURL, title = "") => {
+        const url = new URL(videoURL);
+        const videoId = url.searchParams.get("v");
+        return `<lite-youtube videoid="${videoId}" style="background-image: url('https://i.ytimg.com/vi/${videoId}/hqdefault.jpg');" params="autoplay=0"><button type="button" class="lty-playbtn"><span class="lyt-visually-hidden">${title}</span></button></lite-youtube>`;
+      });
 
     return {
         dir: {

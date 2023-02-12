@@ -240,8 +240,7 @@ Here's a short demo of FancyWM. These are the features of FancyWM I'm showing (a
 - Resize windows
 - Temporarily float windows
 
-<iframe width="1123" height="631" src="https://www.youtube.com/embed/nNFbUpHJmG4" title="win10wmsetup fancywm demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+{% youtubeLite "https://www.youtube.com/watch?v=nNFbUpHJmG4", "FancyWM Demo" %}
 <!-- ![](win10wmsetup-fancywm-demo.gif) -->
 
 Now here's another demo of FancyWM focusing on handling of virtual desktops. I'm demoing the following features (all using keyboard shortcuts):
@@ -252,7 +251,7 @@ Now here's another demo of FancyWM focusing on handling of virtual desktops. I'm
 	- This shortcuts seems to even work in the Virtual Desktop Switcher
 - Move window to previous virtual desktop (`Shift+Win`  followed by `Shift+Q` after short delay)
 
-
+{% youtubeLite "https://www.youtube.com/watch?v=j7wu2VmVx6c", "FancyWM Virtual Desktops Demo" %}
 <!-- ![](win10wmsetup-fancywm-virtual-desktops-demo.gif) -->
 
 FancyWM has a lot of other cool features that I haven't gone into (ex. moving window to specific monitor number, etc.) and new features are added regularly.
@@ -488,10 +487,12 @@ Return
 
 Below is a demonstration of the default Windows behaviour when switching between application windows using keyboard shortcuts (in this case, `Win+Number`). You can see that the focused window changes but the mouse cursor still stays at the same position.
 
+{% youtubeLite "https://www.youtube.com/watch?v=5PiZZbXib5E", "Mouse Follows Focus Off" %}
 <!-- ![](win10wmsetup-mff-off.gif) -->
 
 Below is a demonstration of 'Mouse Follows Focus'. Now when I switch windows using keyboard shortcuts, the mouse cursor is automatically moved to the center of the newly focused window. This is especially useful when working with multi-monitor setups, since you can avoid having to physically drag your mouse to move the cursor to another monitor when the focused window changes via keyboard. But I also like this when working on a laptop on the couch since I don't have to use the trackpad so much.
 
+{% youtubeLite "https://www.youtube.com/watch?v=qqEqMTeONJ4", "Mouse Follows Focus On" %}
 <!-- ![](win10wmsetup-mff-on.gif) -->
 
 ### Handling admin windows with AutoHotKey
@@ -508,6 +509,7 @@ I also use the Windows Task Scheduler to run `mouse_follows_focus.ahk` on startu
 
 When window focus events are invoked, it seems that Windows will switch focus to the taskbar and then focus on the actual window. The script adds a short delay to compensate for this but sometimes it's not enough, so you end up in a situation where the mouse cursor is still on the taskbar and hasn't moved to the application window (as shown below).
 
+{% youtubeLite "https://www.youtube.com/watch?v=lTi6waxdh1Y", "Mouse Follows Focus at Taskbar" %}
 <!-- ![](win10wmsetup-mff-at-taskbar.gif) -->
 
 Usually hitting Alt+Tab once or twice would help to recenter the mouse.

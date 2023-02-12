@@ -15,7 +15,8 @@
         <link rel="manifest" href="/manifest.json" />
         <title>{{ title }}</title>
         <style>{% include "css/main.css" %}</style>
-        <script>
+        <script defer>{% include "js/main.js" %}</script>
+        <script defer>
             function openTarget() {
                 console.log("in open target");
                 var hash = location.hash.substring(1);
