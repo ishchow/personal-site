@@ -2,6 +2,11 @@
 title: My Ultimate Windows 10 Window Management Setup
 date: 2022-12-30T00:00:00-07:00
 imageNameKey: win10wmsetup
+tags:
+    - Windows
+    - FancyWM
+    - Kanata
+    - AutoHotKey
 ---
 
 # Background
@@ -273,120 +278,7 @@ Why use kanata for this purpose over AutoHotKey (or some other software)?
 
 To install kanata, download `kanata_cmd_allowed.exe` and `kanata_wintercept_cmd_allowed.exe` from the [releases](https://github.com/jtroo/kanata/releases) page and download it somewhere on your computer. I stick with the latest stable release. 
 
-Here's my full kanata config file:
-
-<u>kanata.kbd</u>:
-
-```
-;;Layer template
-;;(deflayer name
-;;  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-;;  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-;;  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-;;  _    _    _    _    _    _    _    _    _    _    _    _    _          _
-;;  _    _    _    _    _    _    _    _    _    _    _    _                    _
-;;  _    _    _              _              _    _    _    _               _    _    _
-;;)
-
-(defcfg
-  process-unmapped-keys yes
-  danger-enable-cmd yes
-)
-
-(defsrc
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret        prnt
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
-  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght
-)
-
-(defalias
-  lprn S-9
-  rprn S-0
-  * S-8
-  + S-=
-  cap (tap-hold-press 200 200 esc (layer-while-held modal))
-  tab (tap-hold-press 200 200 tab (layer-while-held nav))
-  grv (tap-hold-press 200 200 grv (layer-while-held numbers))
-  lsft (tap-hold-press 200 200 @lprn lsft)
-  rsft (tap-hold-press 200 200 @rprn lsft)
-  kw A-f4
-  vdp C-M-lft
-  vdn C-M-rght
-  ptr C-A-S-M-spc
-  lsm C-esc
-
-  ;; Alt-Tab Terminator
-  ;; Note: C:\Program Files\Alt-Tab Terminator needs to be in System Path for this to run
-  ;; att (cmd AltTabTer.exe) ;; Doesn't work: https://github.com/jtroo/kanata/issues/234
-  att (cmd cmd.exe /c AltTabTer.exe)
-
-  ;; FancyWM bindings
-  ;; Note: need to run kanata as admin if FancyWM run as admin
-  fwfl (cmd fancywm.exe --action MoveFocusLeft)
-  fwfd (cmd fancywm.exe --action MoveFocusDown)
-  fwfu (cmd fancywm.exe --action MoveFocusUp)
-  fwfr (cmd fancywm.exe --action MoveFocusRight)
-  fwml (cmd fancywm.exe --action MoveLeft)
-  fwmd (cmd fancywm.exe --action MoveDown)
-  fwmu (cmd fancywm.exe --action MoveUp)
-  fwmr (cmd fancywm.exe --action MoveRight)
-  fwpu (cmd fancywm.exe --action PullWindowUp)
-  fwhp (cmd fancywm.exe --action CreateHorizontalPanel)
-  fwvp (cmd fancywm.exe --action CreateVerticalPanel)
-  fwtf (cmd fancywm.exe --action ToggleFloatingMode)
-  fwtm (cmd fancywm.exe --action ToggleManager)
-  fwrw (cmd fancywm.exe --action RefreshWorkspace)
-  fwsp (cmd fancywm.exe --action CreateStackPanel)
-  fwd1 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop1) (cmd fancywm.exe --action MoveToDesktop1)))
-  fwd2 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop2) (cmd fancywm.exe --action MoveToDesktop2)))
-  fwd3 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop3) (cmd fancywm.exe --action MoveToDesktop3)))
-  fwd4 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop4) (cmd fancywm.exe --action MoveToDesktop4)))
-  fwd5 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop5) (cmd fancywm.exe --action MoveToDesktop5)))
-  fwd6 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop6) (cmd fancywm.exe --action MoveToDesktop6)))
-  fwd7 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop7) (cmd fancywm.exe --action MoveToDesktop7)))
-  fwd8 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop8) (cmd fancywm.exe --action MoveToDesktop8)))
-  fwd9 (tap-dance 200 ((cmd fancywm.exe --action SwitchToDesktop9) (cmd fancywm.exe --action MoveToDesktop9)))
-)
-
-(deflayer default
-  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-  @grv    _    _    _    _    _    _    _    _    _    _    _    _    _     XX   _    _
-  @tab    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  @cap    _    _    _    _    _    _    _    _    _    _    _    _       @ptr
-  @lsft    _    _    _    _    _    _    _    _    _    _    @rsft                    _
-  _    _    _              _              _    _    @ptr    _               _    _    _
-)
-
-(deflayer modal
-  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _     lrld    _    _
-  @att    _    @kw    _    _    _    home    pgdn    pgup    end    _    mlft    mrgt    _     _    _    _
-  _    lmet    lalt    lsft    lctl    @lsm    lft    down    up    rght    _    _    _    _
-  _    _    _    _    _    _    -    _    _    _    _    _                    _
-  _    _    _              @ptr              _    _    _    _               _    _    _
-)
-
-(deflayer nav
-  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-  _    @fwd1    @fwd2    @fwd3    @fwd4    @fwd5    @fwd6    @fwd7    @fwd8    @fwd9    _    _    _    _     _    _    _
-  XX    _    _    _    @fwrw    @fwtf    @fwml    @fwmd    @fwmu    @fwmr    _    _    _    _     _    _    _
-  _    _    _    _    _    _    @fwfl    @fwfd    @fwfu    @fwfr    _    _    _          _
-  _    _    _    _    @fwtm    @vdp    @vdn    @fwpu    @fwhp    @fwvp    @fwsp    _                    _
-  _    _    _              _              _    _    _    _               _    _    _
-)
-
-(deflayer numbers
-  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-  _    _    _    _    _    _    _    7    8    9    _    _    _    _     _    _    _
-  _    _    _    _    _    _    _    4    5    6    @+    _    _    _     _    _    _
-  _    _    _    _    _    _    _    1    2    3    -    ret    _          _
-  _    _    _    _    _    _    _    0    .    @*    /    _                    _
-  _    _    _              _              _    _    _    _               _    _    _
-)
-```
+Here's my full [kanata config](https://gist.github.com/ishchow/30f3a6d34c2f3230fad9936af648329d#file-kanata-kbd).
 
 In addition to the navigation layer behaviour described above, there are some other interesting things we can do with this kanata configuration. When typing normally (in the default layer) if you tap `CapsLock` it will send `Esc`. If you hold `CapsLock` and/or hit another key, you will enter the modal layer. The modal layer will be active as long as `CapsLock` is held. In the modal layer, `CapsLock+Tab` will open Alt-Tab Terminator. `CapsLock+h` will send left arrow. `CapsLock+df` will send `Ctrl+Shift`.  Hold `CapsLock+df` with one hand and then hold `h`  and this essentially sends `Ctrl+Shift+Left(hold)` which is the standard shortcut for selecting text to the left. These remaps in the modal layer essentially allow me to navigate text using vim-like bindings in any application!
 
@@ -417,73 +309,7 @@ When installing AutoHotKey, make sure the circled option is checked since it wil
 
 ### Mouse Follows Focus
 
-This is an AutoHotKey script that automatically centers the mouse on a newly focused window that was focused due to a keyboard shortcut (ex. `Alt-Tab`, `Win+Number`). Focus events that were caused by mouse movements will not change mouse position.
-
-<u>mouse_follows_focus.ahk</u>:
-```
-; Makes the mouse cursor follow window focus, but ONLY if the focus change
-; wasn't caused by the mouse - e.g. Alt-Tab, Win+<Number>, hotkeys, ...
-; Saves a lot of mousing around on multi-monitor setups!
-; Source: https://gist.githubusercontent.com/bladeSk/9feeeb6c2ba9939faa3c88cc9133700c/raw/cabc86477ca9bc23856cf84146ecc55eda74ff32/mouse%2520cursor%2520follows%2520focus.ahk
-
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-#UseHook
-#InstallKeybdHook
-#SingleInstance force
-
-Gui +LastFound 
-
-lastMouseClickTime := 0
-hWnd := WinExist()
-
-DllCall("RegisterShellHookWindow", UInt, hWnd)
-msgNum := DllCall("RegisterWindowMessage", Str, "SHELLHOOK")
-OnMessage(msgNum, "OnShellMessage")
-OnMessage(WM_MOUSEMOVE:=0x0201, "OnMouseDown")
-Return
-
-OnShellMessage( wParam, lParam )
-{
-	global
-	; HSHELL_WINDOWACTIVATED | HSHELL_RUDEAPPACTIVATED
-	If (wParam = 4 or wParam = 32772) {
-		; ignore when dragging
-		GetKeyState, mouseDown, LButton
-		if (mouseDown <> "D" and A_TickCount - lastMouseClickTime > 500) {
-			; delay a tiny bit to ignore taskbar focus on Win+Number switching
-			Sleep, 200
-			CoordMode, Mouse, Screen
-			WinGetPos, wx, wy, width, height, A
-			WinGet, processName, ProcessName, A
-
-			; these processes send a lot of focus events and thus behave weirdly
-			if (processName != "steam.exe")
-			{
-				; puts the cursor in middle of the active window, tweak to your needs
-				mx := Round(wx + width * 0.50)
-				my := Round(wy + height * 0.50)
-
-				DllCall("SetCursorPos", int, mx, int, my)
-			}
-		}
-	}
-}
-
-*~LButton::
-	lastMouseClickTime := A_TickCount
-Return
-
-*~RButton::
-	lastMouseClickTime := A_TickCount
-Return
-
-*~MButton::
-	lastMouseClickTime := A_TickCount
-Return
-```
+This is an AutoHotKey [script](https://gist.github.com/ishchow/30f3a6d34c2f3230fad9936af648329d#file-mouse-follows-focus-ahk) that automatically centers the mouse on a newly focused window that was focused due to a keyboard shortcut (ex. `Alt-Tab`, `Win+Number`). Focus events that were caused by mouse movements will not change mouse position.
 
 Below is a demonstration of the default Windows behaviour when switching between application windows using keyboard shortcuts (in this case, `Win+Number`). You can see that the focused window changes but the mouse cursor still stays at the same position.
 
