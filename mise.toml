@@ -1,0 +1,3 @@
+[tasks.new-post]
+description = "Scaffold a new blog post"
+run = "bash scripts/new-post.sh {{arg(name='title')}}"

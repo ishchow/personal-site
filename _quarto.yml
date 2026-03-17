@@ -1,0 +1,42 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "posts/**/*.qmd"
+
+website:
+  title: "Ishaat Chowdhury"
+  site-url: "https://www.ishaat.ca"
+  open-graph: true
+  twitter-card: true
+  navbar:
+    right:
+      - about.qmd
+      - text: Tags
+        href: index.qmd
+      - icon: rss
+        href: index.xml
+  page-footer:
+    center: "© 2025 Ishaat Chowdhury"
+    right:
+      - icon: github
+        href: https://github.com/ishchow/personal-site
+        aria-label: Source Code
+  comments:
+    giscus:
+      repo: ishchow/personal-site
+      repo-id: MDEwOlJlcG9zaXRvcnkyNjE2NTU2ODI=
+      category: "Post Comments"
+      category-id: DIC_kwDOD5iMgs4CAmWd
+      mapping: title
+      reactions-enabled: true
+      input-position: top
+      loading: lazy
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css

@@ -1,0 +1,21 @@
+---
+title: "About"
+---
+
+Hi, I'm Ishaat Chowdhury — a software developer based in Canada.
+
+This is my personal dev blog where I write about tools, workflows, and projects that I find interesting.
+
+## Tech Stack
+
+This site is built with [Quarto](https://quarto.org), hosted on [Cloudflare Pages](https://pages.cloudflare.com/), and the source code is on [GitHub](https://github.com/ishchow/personal-site).
+
+## License
+
+- **Content**: [CC BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+- **Source code**: [MIT](https://github.com/ishchow/personal-site/blob/main/LICENSE.md)
+
+## Links
+
+- [GitHub](https://www.github.com/ishchow)
+- [LinkedIn](https://ca.linkedin.com/in/ishaatc)
