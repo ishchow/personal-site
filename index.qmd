@@ -3,9 +3,11 @@ pagetitle: "Ishaat Chowdhury"
 listing:
   contents: "posts/**/index.qmd"
   sort: "date desc"
-  type: default
+  type: table
+  fields: [date, title, reading-time]
   categories: true
   sort-ui: false
   filter-ui: false
-  feed: true
+  feed:
+    title: "Ishaat Chowdhury"
 ---

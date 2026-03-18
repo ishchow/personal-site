@@ -1,3 +1,13 @@
 freeze: true
 author: "Ishaat Chowdhury"
 csl: ../chicago-notes-bibliography.csl
+comments:
+  giscus:
+    repo: ishchow/personal-site
+    repo-id: MDEwOlJlcG9zaXRvcnkyNjE2NTU2ODI=
+    category: "Post Comments"
+    category-id: DIC_kwDOD5iMgs4CAmWd
+    mapping: "title"
+    reactions-enabled: true
+    input-position: top
+    loading: lazy
