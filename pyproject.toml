@@ -1,0 +1,8 @@
+[project]
+name = "personal-site"
+version = "0.1.0"
+description = "Personal dev blog at ishaat.ca"
+requires-python = ">=3.14"
+dependencies = [
+    "bibtexparser>=1.4.4",
+]

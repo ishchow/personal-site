@@ -9,7 +9,13 @@ Source code used to render and display content is licensed under the [MIT](https
 
 ## Setup
 
-Install [Quarto](https://quarto.org/docs/get-started/) and [mise](https://mise.jdx.dev/).
+Install [Quarto](https://quarto.org/docs/get-started/) and [mise](https://mise.jdx.dev/), then run the setup script:
+
+```bash
+bash scripts/setup.sh
+```
+
+This installs mise-managed tools (Python, uv) and project dependencies.
 
 ## Dev Server
 
@@ -46,3 +52,11 @@ mise run new-post "My Post Title"
 ```
 
 This scaffolds a new post directory with `index.qmd` under `posts/{year}/{NNN}-{slug}/`. Posts are drafts by default.
+
+## Sort BibTeX References
+
+```bash
+mise run sort-bib path/to/refs.bib
+```
+
+Sorts entries alphabetically by citation key (in-place).

@@ -9,6 +9,7 @@
 
 # Environment
 .env
+.venv/
 
 **/*.quarto_ipynb
 
