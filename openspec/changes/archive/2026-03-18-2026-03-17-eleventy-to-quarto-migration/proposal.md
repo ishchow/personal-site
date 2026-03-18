@@ -9,7 +9,7 @@ ishaat.ca is a personal dev blog built with Eleventy v0.11, TailwindCSS v3, Gulp
 3. **Consistency**: The sister site screechingintothevoid.com already runs on Quarto + Cloudflare Pages with a clean, proven setup. Aligning ishaat.ca with the same stack reduces cognitive overhead.
 4. **Simplicity**: Quarto provides a single CLI for authoring and rendering, built-in syntax highlighting, RSS, sitemap, and theme support — replacing an entire toolchain of Eleventy + Gulp + PostCSS + TailwindCSS + plugins.
 
-## What
+## What Changes
 
 This change migrates the entire platform:
 
