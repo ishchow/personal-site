@@ -4,4 +4,5 @@ date: "2026-03-18"
 description: "TODO: Fill in description"
 draft: true
 categories: [ssg, quarto]
+bibliography: refs.bib
 ---
