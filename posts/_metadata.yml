@@ -1,6 +1,6 @@
 freeze: true
 author: "Ishaat Chowdhury"
-csl: ../chicago-notes-bibliography.csl
+csl: ../ieee.csl
 comments:
   giscus:
     repo: ishchow/personal-site
