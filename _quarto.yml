@@ -4,10 +4,13 @@ project:
   render:
     - "*.qmd"
     - "posts/**/*.qmd"
+  resources:
+    - "assets/favicon/**"
 
 website:
   title: "Ishaat Chowdhury"
   site-url: "https://www.ishaat.ca"
+  favicon: assets/favicon/favicon.ico
   open-graph: true
   twitter-card: true
   navbar:
@@ -23,6 +26,12 @@ website:
       - icon: github
         href: https://github.com/ishchow/personal-site
         aria-label: Source Code
+      - icon: linkedin
+        href: https://ca.linkedin.com/in/ishaatc
+        aria-label: LinkedIn
+      - icon: envelope
+        href: mailto:ishaatchowdhury@gmail.com
+        aria-label: Email
   comments:
     giscus:
       repo: ishchow/personal-site
@@ -40,3 +49,4 @@ format:
       light: flatly
       dark: darkly
     css: styles.css
+    include-in-header: assets/favicon/head.html
