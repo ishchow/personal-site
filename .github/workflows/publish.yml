@@ -2,7 +2,7 @@ name: Deploy to CloudFlare Pages
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
 
 permissions:
