@@ -1,3 +1,11 @@
+[tools]
+python = "latest"
+uv = "latest"
+
 [tasks.new-post]
 description = "Scaffold a new blog post"
 run = "bash scripts/new-post.sh {{arg(name='title')}}"
+
+[tasks.sort-bib]
+description = "Sort a BibTeX file alphabetically by citation key"
+run = "uv run scripts/sort-bib.py {{arg(name='file')}}"
