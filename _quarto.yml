@@ -8,16 +8,15 @@ project:
     - "assets/favicon/**"
 
 website:
-  title: "Ishaat Chowdhury"
   site-url: "https://www.ishaat.ca"
   favicon: assets/favicon/favicon.ico
-  open-graph: true
+  open-graph:
+    site-name: "Ishaat Chowdhury"
   twitter-card: true
   navbar:
+    title: "Ishaat Chowdhury"
     right:
       - about.qmd
-      - text: Tags
-        href: index.qmd
       - icon: rss
         href: index.xml
   page-footer:
@@ -32,16 +31,6 @@ website:
       - icon: envelope
         href: mailto:ishaatchowdhury@gmail.com
         aria-label: Email
-  comments:
-    giscus:
-      repo: ishchow/personal-site
-      repo-id: MDEwOlJlcG9zaXRvcnkyNjE2NTU2ODI=
-      category: "Post Comments"
-      category-id: DIC_kwDOD5iMgs4CAmWd
-      mapping: title
-      reactions-enabled: true
-      input-position: top
-      loading: lazy
 
 format:
   html:
