@@ -2,7 +2,6 @@
 /_site/
 /_freeze/
 /.quarto/
-*.html
 
 # OS
 .DS_Store
