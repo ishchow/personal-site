@@ -6,8 +6,8 @@ listing:
   type: table
   fields: [date, title, reading-time]
   categories: true
-  sort-ui: true
-  filter-ui: true
+  sort-ui: false
+  filter-ui: false
   feed:
     title: "Ishaat Chowdhury"
 ---

@@ -6,3 +6,146 @@ draft: true
 categories: [ssg, quarto]
 bibliography: refs.bib
 ---
+
+## Introduction
+
+Recently, I've been using Quarto at work to author design docs and other documents and really fell in love with it. I loved how expressive Pandoc markdown was compared to other forms of markdown and how many output formats Quarto supported: HTML, DOCX, PDF, and more. At work I mainly used it to author single documents: PDF, DOCX, and a single HTML page.
+
+At the same time, I had been maintaining my personal site for several years now. I occasionally write posts (once a year at best). But whenever I do, I end up having to spend time maintainig my static site generation stack (Eleventy + TailwindCSS + whatever other NodeJS tools that brought along) instead of actually focusing on writing the content. As my site used to be a NodeJS project, sometimes I had to deal with node module issues whenever I wanted to ensure that I can even preview/build it using Eleventy.
+
+Since Quarto can be used to host a blog @quarto-blog and I already really liked using it to write techincal documents, I decided it was time to migrate my blog to Quarto from Eleventy and TailwindCSS.
+
+## Why Quarto?
+
+I wanted to write longer, more academic style blog posts which could make use of formal citations if I wanted to. I want to write in this more rigorous style since I'm finding that I scrutinize anything I read far more heavily than ever with the ubiquity of LLMs. Considering how easily information can be fabricated/hallucinated/whatever nowadays, I want to source claims I make in my writing as much as possible so that readers can more easily verify what I say. I refuse to allow an LLM to write for me as I find LLM generated content tortortous to read through due to lack of information density. But I do find LLMs help me in challenging specific claims I make and also helping with collecting interesting, relevant articles for me to read through. I don't use LLMs to write, I use it more like a lightweight editor and research assistant.
+
+Quarto natively supports citations @quarto-citations in almost any citation style you want to use. I use IEEE style for this blog as it just renders inline in the text as `[1]` and just appends a simple list as a bilbiography at the end. Most of what I'll be citing is online sources, so I thought this was a good fit for a technical blog. Standard Markdown dosn't have a citation syntax. But you could get something like it manually using footnotes but you have to handle the numbering yourself. With Quarto's native citation support, you keep your sources in a single bibtex file and you cite it inline in your document with this syntax `@source-key`. All of the numbering is done for you. I find it really handy to keep my research separate from my document/post. I often give an LLM a link to a webpage and ask it to add it to the bibtex file for me so I don't have to manage the bibtex file by hand. The thing about using formal citations is that I can easily refer to the same source multiple times quite easily and have Quarto handle the numbering. Lastly, I like the look of inline citations over use of direct hyperlinks. Probably direct hyperlinks are easier for readers of a blog.
+
+Quarto is just a single executable @quarto-cli so it doesn't suffer from any NodeJS shenanigans. It has `preview` (similar to `eleventy --serve`) and `render` (similar to `eleventy --build`) commands which are the main ones you use to preview and build the blog post.
+
+I've always struggled with making websites look nice as UI design is not my forte. I was able to kludge my way through it in the past, but at this point, I just want something that looks nice enough and mostly gets out of my way. Websites in Quarto are styled using Bootstrap. Quarto vendors 25 Bootswatch @bootswatch themes and supports light/dark theme pairing out of the box @quarto-themes. I use *flatly* as the light theme and *darkly* as the dark theme in this site. Although the site doesn't look as individual/unique to me as my old one, it's a sacrifice I'm willing to make to have more time to focus on writing.
+
+## Site Structure
+
+```sh
+personal-site/
+├── .github/
+│   ├── prompts/
+│   │   └── new-post.prompt.md
+│   ├── skills/
+│   ├── workflows/
+│   │   └── publish.yml # Deployment action
+│   └── copilot-instructions.md
+├── assets/
+│   └── favicon/
+├── posts/ # Posts
+│   ├── 2020/
+│   │   └── 001-eleventy-tailwindcss-new-site/
+│   ├── 2021/
+│   │   └── 001-introducing-nvim-deardiary/
+│   ├── 2023/
+│   │   └── 001-my-ultimate-windows-10-window-management-setup/
+│   ├── 2026/ # Folder per year
+│   │   └── 001-migrating-my-blog-to-quarto-from-eleventy-tailwindcss/ # Individual post
+│   │       ├── index.qmd # Blog post content
+│   │       └── refs.bib # Bibliography (BibTeX) file
+│   └── _metadata.yml # Shared frontmatter for all posts
+├── scripts/
+│   ├── new-post.sh # Create new post
+│   ├── setup.sh # Setup local dev dependencies
+│   └── sort-bib.py # Sort bibliography file lexically by citation key
+├── 404.qmd # 404 page
+├── LICENSE.md
+├── README.md
+├── _quarto.yml # Defines Quarto Website project
+├── about.qmd # About page
+├── ieee.csl # IEEE Citation Syntax Language
+├── index.qmd # Site home page
+├── mise.toml # Defines python and uv versions as long as wraps scripts in tasks
+├── pyproject.toml # Defines which dependencies are needed in this site
+├── styles.css # Custom CSS Styles used by Quarto (currently empty)
+└── uv.lock # Lock file for python dependencies
+```
+
+TODO: ???
+
+### Site Title Handling and Implications for Giscus
+
+TODO: Explain what we had to do to get giscuss to work properly!!!
+
+### Post Scaffolding
+
+TODO: ???
+
+## Porkbun + Netlify to Cloudflare Domains + Pages
+
+I hosted my domain on Porkbun @porkbun and used Netlify @netlify to host the site. I have no issues really with either site. I also just bought a few domains on Cloudflare and since Cloudflare also has pages @cloudflare-pages which is similar to Netlify, I just decided to migrate everything to Cloudflare for simplicity.
+
+The domain transfer process from Porkbun to Cloudflare Domains was pretty simple. As was the migration from Netlify to Cloudflare Pages.
+
+## Deployment Pipeline
+
+Pretty much a typical JAMStack setup.
+
+First, I write locally on my laptop, create a new branch and files for my post, author using a text editor, and then make a PR when I want to publish a post.
+
+Then, I have a single `deploy` GitHub Action that builds the site using Quarto's offical GitHub Action @quarto-actions and puts the output to a `_site/` folder. Afterwards, the Cloudflare Pages GitHub Action @cloudflare-pages-action deploys the contents of `_site/` to Cloudflare Pages infra. Finally, another GitHub action runs which can put a stick comment in a PR that has the links to deploy preview url(s). The same workflow runs on pushes to the default branch minus the PR comment action.
+
+```{.yaml}
+name: Deploy to CloudFlare Pages
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+  deployments: write
+  pull-requests: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render site
+        run: quarto render
+
+      - name: Deploy to CloudFlare Pages
+        id: deploy
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: personal-site
+          directory: _site
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment preview URL on PR
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: cloudflare-preview
+          message: |
+            ## ☁️ Cloudflare Pages Deploy
+
+            | | |
+            |---|---|
+            | **Latest commit:** | `${{ github.event.pull_request.head.sha }}` |
+            | **Status:** | ✅ Deploy successful! |
+            | **Preview URL:** | ${{ steps.deploy.outputs.url }} |
+            | **Branch Preview URL:** | ${{ steps.deploy.outputs.alias }} |
+```
+
+Although CloudFlare Pages can build sites directly from source, Quarto isn't one of it's supported Static Site Generators. You can technically use a custom build command which can download the Quarto CLI from GitHub releases via wget or curl and then run the CLI to build the site. That seemed really janky. Cloudflare supports deploying any static output @cloudflare-pages-static-html which is the official GitHub action does. So opted to go with the GitHub actions approach instead as it seemed less brittle and more flexible.
+
+I personally like having Cloudflare Pages just be a pure deployment target but I control the build logic entirely with GitHub Actions. It makes it easy to move static site hosts in the future if I don't depend on my host to also do CI/CD. I could even easily migrate away from GitHub to another forge as long as I can host the code there (which is a trivial capability) and the forge has support for CI/CD.
+
+## Result
+
+TODO: ???
