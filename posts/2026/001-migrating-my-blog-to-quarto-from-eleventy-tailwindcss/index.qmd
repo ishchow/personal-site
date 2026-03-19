@@ -27,7 +27,7 @@ I've always struggled with making websites look nice as UI design is not my fort
 
 ## Site Structure
 
-```sh
+```{.sh}
 personal-site/
 ├── .github/
 │   ├── prompts/

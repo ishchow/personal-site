@@ -1,6 +1,7 @@
 freeze: true
 author: "Ishaat Chowdhury"
 csl: ../ieee.csl
+toc: true
 comments:
   giscus:
     repo: ishchow/personal-site
