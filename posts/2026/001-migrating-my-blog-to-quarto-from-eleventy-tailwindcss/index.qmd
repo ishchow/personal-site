@@ -27,7 +27,7 @@ I've always struggled with making websites look nice as UI design is not my fort
 
 ## Site Structure
 
-```{.sh}
+```{.sh #lst-site-structure lst-cap="Filesystem structure of the site"}
 personal-site/
 ├── .github/
 │   ├── prompts/
@@ -36,17 +36,24 @@ personal-site/
 │   ├── workflows/
 │   │   └── publish.yml # Deployment action
 │   └── copilot-instructions.md
-├── assets/
+├── assets/ # Shared assests for the site
 │   └── favicon/
-├── posts/ # Posts
+├── posts/ # Blog posts, have subfoler per year, each post within a year is prefixed by post number
 │   ├── 2020/
 │   │   └── 001-eleventy-tailwindcss-new-site/
+│   │       └── index.qmd # Blog post content
 │   ├── 2021/
 │   │   └── 001-introducing-nvim-deardiary/
+│   │       └── index.qmd # Blog post content
 │   ├── 2023/
 │   │   └── 001-my-ultimate-windows-10-window-management-setup/
-│   ├── 2026/ # Folder per year
+│   │       ├── index.qmd # Blog post content
+│   │       ├── *.png # Per-post assets are contained in the post directory
+│   │       └── *.gif
+│   ├── 2026/
 │   │   └── 001-migrating-my-blog-to-quarto-from-eleventy-tailwindcss/ # Individual post
+│   │       ├── notes/ # Research notes (not rendered)
+│   │       │   └── example-note.md
 │   │       ├── index.qmd # Blog post content
 │   │       └── refs.bib # Bibliography (BibTeX) file
 │   └── _metadata.yml # Shared frontmatter for all posts
@@ -67,11 +74,104 @@ personal-site/
 └── uv.lock # Lock file for python dependencies
 ```
 
-TODO: ???
+TODO: Add breif explanation
+
+```{.yml #lst-quarto-yml lst-cap="Contents of _quarto.yml"}
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "posts/**/*.qmd"
+  resources:
+    - "assets/favicon/**"
+
+website:
+  # title: "Ishaat Chowdhury" # Intentionally not set
+  site-url: "https://www.ishaat.ca"
+  favicon: assets/favicon/favicon.ico
+  open-graph:
+    site-name: "Ishaat Chowdhury"
+  twitter-card: true
+  navbar:
+    title: "Ishaat Chowdhury"
+    right:
+      - about.qmd
+      - icon: rss
+        href: index.xml
+  page-footer:
+    center: "© 2026 Ishaat Chowdhury"
+    right:
+      - icon: github
+        href: https://github.com/ishchow/personal-site
+        aria-label: Source Code
+      - icon: linkedin
+        href: https://ca.linkedin.com/in/ishaatc
+        aria-label: LinkedIn
+      - icon: envelope
+        href: mailto:ishaatchowdhury@gmail.com
+        aria-label: Email
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    include-in-header: assets/favicon/head.html
+```
+
+TODO: Add breif explanation
+
+```{.yml #lst-example-post-frontmatter lst-cap="Example Post Frontmatter"}
+---
+title: "My Ultimate Windows 10 Window Management Setup"
+date: 2023-02-12
+description: |
+  A comprehensive guide to my keyboard-driven window management workflow on Windows 10/11,
+  using FancyWM, kanata, AutoHotKey, and built-in settings.
+categories: [Windows, FancyWM, Kanata]
+---
+```
+
+TODO: Add breif explanation
 
 ### Site Title Handling and Implications for Giscus
 
-TODO: Explain what we had to do to get giscuss to work properly!!!
+The reason why have this `# title: "Ishaat Chowdhury" # Intentionally not set` in `_quarto.yml` is that when you enable title on the site, the actual page in the HTML becomes something like `{page.title} – {website.title}` but if you comment it out, the title becomes `{page.title}`. Under the hood, Quarto uses the `website.title` value as Pandoc's `title-prefix` @pandoc-title-prefix, which gets appended to the page title in the HTML `<title>` tag. You can see this in Quarto's `computePageTitle` function @quarto-compute-page-title shown in @lst-compute-page-title. My original Eleventy blog had giscus setup that it created a GitHub discussion entry for `{page.title}`. So when I set `title:`, this was causing Quarto to not pickup my existing discussion entries since my discussion entries @fig-gh-disc don't have the `– Ishaat Chowdhury` site title suffix which thus broke comments in my site. After commenting out `title:`, everything started working again. This was the most frustrating and subtle issue with the migration imo and I wouldn't have been able to figure this out without the help of LLMs.
+
+```{.typescript #lst-compute-page-title lst-cap="Quarto's computePageTitle function from website-shared.ts"}
+export function computePageTitle(
+  format: Format,
+  extras?: FormatExtras,
+): string | undefined {
+  const meta = extras?.metadata || {};
+  const pageTitle =
+    meta[kPageTitle] || format.metadata[kPageTitle];
+  const titlePrefix =
+    extras?.pandoc?.[kTitlePrefix] ||
+    format.pandoc[kTitlePrefix] ||
+    (format.metadata[kWebsite] as
+      Record<string, unknown>)?.[kTitle];
+  const title = format.metadata[kTitle];
+
+  if (pageTitle !== undefined) {
+    return pageTitle as string;
+  } else if (titlePrefix !== undefined) {
+    if (titlePrefix === title) {
+      return title as string;
+    } else if (title !== undefined) {
+      return title + " – " + titlePrefix;
+    } else {
+      return titlePrefix + "";
+    }
+  } else {
+    return title as string;
+  }
+}
+```
+
+![GitHub Discussions entries for the site — note the titles don't include a site title suffix](personal-site-gh-disc.png){#fig-gh-disc}
 
 ### Post Scaffolding
 

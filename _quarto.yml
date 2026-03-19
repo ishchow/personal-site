@@ -11,6 +11,7 @@ project:
     - resume.pdf
 
 website:
+  # title: "Ishaat Chowdhury" # Intentionally not set
   site-url: "https://www.ishaat.ca"
   favicon: assets/favicon/favicon.ico
   open-graph:
