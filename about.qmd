@@ -4,7 +4,11 @@ title: "About"
 
 Just another software engineer trying their best.
 
+The opinions expressed in this site are my own and do not represent the views of my employer.
+
+As I hate AI generated/assisted writing myself, the actual contents of this site is almost fully written by me (a human). I mainly use LLMs to perform cosmetic changes to the site (I like writing but hate making a website so happy to defer to an LLM here), some minor editing (spelling, grammar, checking BibTex citations, etc), and some research tasks (citing specific claims I make, etc).
+
 This site is built with [Quarto](https://quarto.org), hosted on [Cloudflare Pages](https://pages.cloudflare.com/), and the source code is on [GitHub](https://github.com/ishchow/personal-site).
 
 Contents of this site are licensed under [CC BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/).
-Source code used to render and display content is licensed under the [MIT](https://github.com/ishchow/personal-site/blob/main/LICENSE.md) license.
+Source code used to render and display content is licensed under the [MIT](https://github.com/ishchow/personal-site/blob/master/LICENSE.md) license.

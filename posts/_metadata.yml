@@ -1,5 +1,6 @@
-freeze: true
+freeze: auto
 author: "Ishaat Chowdhury"
+license: "CC BY-NC"
 csl: ../ieee.csl
 toc: true
 comments:
