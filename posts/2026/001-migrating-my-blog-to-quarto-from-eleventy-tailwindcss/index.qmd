@@ -125,20 +125,20 @@ TODO: Add breif explanation
 
 ```{.yml #lst-example-post-frontmatter lst-cap="Example Post Frontmatter"}
 ---
-title: "My Ultimate Windows 10 Window Management Setup"
-date: 2023-02-12
-description: |
-  A comprehensive guide to my keyboard-driven window management workflow on Windows 10/11,
-  using FancyWM, kanata, AutoHotKey, and built-in settings.
-categories: [Windows, FancyWM, Kanata]
+title: "Migrating My Blog to Quarto from Eleventy + TailwindCSS"
+date: "2026-03-18"
+description: "TODO: Fill in description"
+draft: true
+categories: [ssg, quarto]
+bibliography: refs.bib
 ---
 ```
 
-TODO: Add breif explanation
+Above is the frontmatter for this post. It's pretty straightforward imo.
 
 ### Site Title Handling and Implications for Giscus
 
-The reason why have this `# title: "Ishaat Chowdhury" # Intentionally not set` in `_quarto.yml` is that when you enable title on the site, the actual page in the HTML becomes something like `{page.title} – {website.title}` but if you comment it out, the title becomes `{page.title}`. Under the hood, Quarto uses the `website.title` value as Pandoc's `title-prefix` @pandoc-title-prefix, which gets appended to the page title in the HTML `<title>` tag. You can see this in Quarto's `computePageTitle` function @quarto-compute-page-title shown in @lst-compute-page-title. My original Eleventy blog had giscus setup that it created a GitHub discussion entry for `{page.title}`. So when I set `title:`, this was causing Quarto to not pickup my existing discussion entries since my discussion entries @fig-gh-disc don't have the `– Ishaat Chowdhury` site title suffix which thus broke comments in my site. After commenting out `title:`, everything started working again. This was the most frustrating and subtle issue with the migration imo and I wouldn't have been able to figure this out without the help of LLMs.
+The reason why have this `# title: "Ishaat Chowdhury" # Intentionally not set` in `_quarto.yml` is that when you enable title on the site, the actual page in the HTML becomes something like `{page.title} – {website.title}` but if you comment it out, the title becomes `{page.title}`. Under the hood, Quarto uses the `website.title` value as Pandoc's `title-prefix` @pandoc-title-prefix, which gets appended to the page title in the HTML `<title>` tag. You can see this in Quarto's `computePageTitle` function @quarto-compute-page-title shown in @lst-compute-page-title. My original Eleventy blog had giscus setup that it created a GitHub discussion entry for `{page.title}`. So when I set `title:`, this was causing Quarto to not pickup my existing discussion entries since my discussion entries @fig-gh-disc don't have the `– Ishaat Chowdhury` site title suffix which thus broke comments in my site. After commenting out `title:`, everything started working again. This was the most frustrating and subtle issue with the migration imo and it would've been pretty annoying to figure this out without the help of LLMs. Because I used LLMs to figure this out, I will fully admit that I might've missed something and picked a suboptimal workaround for this. I mostly just wanted to get it working and move on with my life but if someone who is reading this knows the proper way to fix this, please let me know!
 
 ```{.typescript #lst-compute-page-title lst-cap="Quarto's computePageTitle function from website-shared.ts"}
 export function computePageTitle(
@@ -173,15 +173,76 @@ export function computePageTitle(
 
 ![GitHub Discussions entries for the site — note the titles don't include a site title suffix](personal-site-gh-disc.png){#fig-gh-disc}
 
+## Authoring Posts
+
 ### Post Scaffolding
 
-TODO: ???
+TODO: Inline the new-post script here.
+
+### Writing and Editing
+
+TODO: Briefly mention what tools I use to check spelling/grammar. harper-ls for spellcheck, vale for checking content. panache.rs for quarto LSP. Maybe marksman too?
+
+### Merging Changes to the Post
+
+TODO: Inline the sort-bib.py file here! Add another script to check cross-references.
+
+```{.py #lst-sort-bib-py lst-cap="sort-bib.py"}
+#!/usr/bin/env python3
+"""Sort a BibTeX file alphabetically by citation key."""
+
+import sys
+from pathlib import Path
+
+import bibtexparser
+
+
+def main() -> None:
+    if len(sys.argv) != 2:
+        print("Usage: mise run sort-bib <path/to/file.bib>", file=sys.stderr)
+        sys.exit(1)
+
+    bib_path = Path(sys.argv[1])
+
+    if not bib_path.exists():
+        print(f"Error: {bib_path} does not exist", file=sys.stderr)
+        sys.exit(1)
+
+    if bib_path.suffix != ".bib":
+        print(f"Error: {bib_path} is not a .bib file", file=sys.stderr)
+        sys.exit(1)
+
+    with open(bib_path, encoding="utf-8") as f:
+        parser = bibtexparser.bparser.BibTexParser(common_strings=True)
+        parser.ignore_nonstandard_types = False
+        bib_db = bibtexparser.load(f, parser=parser)
+
+    bib_db.entries.sort(key=lambda entry: entry.get("ID", "").lower())
+
+    writer = bibtexparser.bwriter.BibTexWriter()
+    writer.indent = "  "
+
+    with open(bib_path, "w", encoding="utf-8") as f:
+        bibtexparser.dump(bib_db, f, writer=writer)
+
+    print(f"Sorted {len(bib_db.entries)} entries in {bib_path}")
+
+
+if __name__ == "__main__":
+    main()
+```
 
 ## Porkbun + Netlify to Cloudflare Domains + Pages
 
-I hosted my domain on Porkbun @porkbun and used Netlify @netlify to host the site. I have no issues really with either site. I also just bought a few domains on Cloudflare and since Cloudflare also has pages @cloudflare-pages which is similar to Netlify, I just decided to migrate everything to Cloudflare for simplicity.
+I hosted my domain on Porkbun @porkbun and used Netlify @netlify to host the site. I have no issues really with either site. I also just bought a few domains on Cloudflare for some other websites and since Cloudflare also has pages @cloudflare-pages which is similar to Netlify, I used Cloudflare Pages on those other webistes for simplicity. I just migrated this website domain and hosting to Cloudflare to keep my domains + sites in one place using one stack.
 
 The domain transfer process from Porkbun to Cloudflare Domains was pretty simple. As was the migration from Netlify to Cloudflare Pages.
+
+### Redirecting old urls to new ones using bulk redirects
+
+TODO: Mention how I used bulk redirects to migrate the 3 existing blog posts I had.
+
+Not being a prolific writer actually ended up working out in my favor here.
 
 ## Deployment Pipeline
 
@@ -242,9 +303,9 @@ jobs:
             | **Branch Preview URL:** | ${{ steps.deploy.outputs.alias }} |
 ```
 
-Although CloudFlare Pages can build sites directly from source, Quarto isn't one of it's supported Static Site Generators. You can technically use a custom build command which can download the Quarto CLI from GitHub releases via wget or curl and then run the CLI to build the site. That seemed really janky. Cloudflare supports deploying any static output @cloudflare-pages-static-html which is the official GitHub action does. So opted to go with the GitHub actions approach instead as it seemed less brittle and more flexible.
+Although CloudFlare Pages can build sites directly from source, Quarto isn't one of it's supported static site generators. You can technically use a custom build command which can download Quarto CLI from GitHub releases via wget or curl and then run the CLI to build the site. That seemed really janky. Cloudflare supports deploying any static output @cloudflare-pages-static-html which is the official GitHub action does. So opted to go with the GitHub actions approach instead as it seemed less brittle and more flexible.
 
-I personally like having Cloudflare Pages just be a pure deployment target but I control the build logic entirely with GitHub Actions. It makes it easy to move static site hosts in the future if I don't depend on my host to also do CI/CD. I could even easily migrate away from GitHub to another forge as long as I can host the code there (which is a trivial capability) and the forge has support for CI/CD.
+I personally like having Cloudflare Pages just be a pure deployment target but I control the build logic entirely with GitHub Actions. It makes it easy to move static site hosts in the future if I don't depend on my host to also do CI/CD. I could even easily migrate away from GitHub to another forge as long as I can host the code there (which is a trivial capability) and the forge has support for CI/CD. Overall, to me at least, it feels like a pretty clear separation of concerns.
 
 ## Result
 
