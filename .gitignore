@@ -11,3 +11,6 @@
 .env
 
 **/*.quarto_ipynb
+
+# Build artifacts
+resume.pdf

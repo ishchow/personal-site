@@ -1,11 +1,14 @@
 project:
   type: website
   output-dir: _site
+  pre-render:
+    - quarto typst compile resume.typ
   render:
     - "*.qmd"
     - "posts/**/*.qmd"
   resources:
     - "assets/favicon/**"
+    - resume.pdf
 
 website:
   site-url: "https://www.ishaat.ca"
@@ -17,6 +20,8 @@ website:
     title: "Ishaat Chowdhury"
     right:
       - about.qmd
+      - text: Resume
+        href: resume.pdf
       - icon: rss
         href: index.xml
   page-footer:

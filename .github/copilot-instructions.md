@@ -5,6 +5,7 @@ A personal dev blog at [ishaat.ca](https://www.ishaat.ca), built for writing abo
 ## Tech Stack
 
 - **Quarto** — Static site generator (`.qmd` files → HTML)
+- **Typst** — Resume typesetting (bundled with Quarto, no separate install)
 - **GitHub Actions** — CI/CD (`.github/workflows/publish.yml`)
 - **CloudFlare Pages** — Hosting and CDN
 
@@ -59,3 +60,29 @@ New post branches are named `{year}-{NNN}` (e.g., `2026-002`), always created fr
 
 This site was migrated from Eleventy + TailwindCSS + Netlify to Quarto + CloudFlare Pages in March 2026.
 Old URLs (`/posts/YYYY/MM/DD/slug/`) are redirected to new URLs (`/posts/YYYY/NNN-slug/`) via CloudFlare Bulk Redirect rules.
+
+## Resume
+
+The resume lives at `resume.typ` (project root) — a plain Typst file using the [`basic-resume`](https://typst.app/universe/package/basic-resume/) template (pinned to `0.2.3` for Typst 0.11 compatibility with Quarto 1.6.x).
+
+### How it integrates with the site
+
+- **Pre-render**: `quarto typst compile resume.typ` runs before `quarto render` (configured in `_quarto.yml` under `project.pre-render`)
+- **Resources**: `resume.pdf` is listed in `project.resources` so it copies into `_site/`
+- **Navbar**: Links directly to `resume.pdf` (no HTML resume page)
+- **CI/CD**: No extra workflow steps — Quarto bundles Typst, and `pre-render` runs automatically
+- **`.gitignore`**: `resume.pdf` is a build artifact and is gitignored
+
+### Phone number handling
+
+The phone number is conditionally included via Typst's `sys.inputs`:
+
+```bash
+# Deployed version (no phone)
+quarto typst compile resume.typ
+
+# Local version (with phone)
+quarto typst compile resume.typ --input phone=XXX-XXX-XXXX
+```
+
+The `pre-render` step in `_quarto.yml` compiles without the flag, so the deployed PDF omits the phone number.

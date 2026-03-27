@@ -25,6 +25,20 @@ quarto render
 
 Output is in `_site/`.
 
+## Resume
+
+The resume is a plain Typst file (`resume.typ`) using the [`basic-resume`](https://typst.app/universe/package/basic-resume/) template. It is compiled to PDF via Quarto's bundled Typst CLI in a `pre-render` step and served as a static file on the site.
+
+```bash
+# Compile for deployment (no phone number)
+quarto typst compile resume.typ
+
+# Compile locally with phone number
+quarto typst compile resume.typ --input phone=XXX-XXX-XXXX
+```
+
+The phone number is injected via `sys.inputs` — omitted by default (deployed version), included when passed via `--input` (local version).
+
 ## Create a New Post
 
 ```bash
