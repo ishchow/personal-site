@@ -53,7 +53,7 @@
   dates: dates-helper(start-date: "Aug 2020", end-date: "May 2022"),
 )
 - Introduced feature to garbage collect files from backup share as part of cross-region share replication job, eliminating 430 TB of data and saving \$50K per month in cloud spend.
-- Developed PowerShell script to hot-swap running processes and DLLs of local Service Fabric applications, reducing local deployment time from 10 mins to 30 seconds.
+- Developed PowerShell script to hot-swap running processes and DLLs of local Service Fabric applications, reducing local deployment time from 10 mins to 30 seconds (20X improvement).
 - Improved service reliability by onboarding PowerBI Premium service to Azure Monitor alerting, allowing for proactive detection of issues with dependent services (Redis, Storage, Key Vault, etc.).
 - Built foundations of #link("https://github.com/Azure/azure-rest-api-specs/blob/main/specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/PowerBIDedicated/AutoScaleVCore.tsp")[AutoScaleVCore] resource provider by implementing metadata store changes, provision logic, API controllers, and data contracts, enabling PowerBI Premium customers to #link("https://web.archive.org/web/20251124033306/https://learn.microsoft.com/en-us/fabric/enterprise/powerbi/service-premium-auto-scale")[automatically scale compute capacity] on a pay-as-you-go basis.
 
