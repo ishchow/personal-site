@@ -15,6 +15,8 @@ At the same time, I had been maintaining my personal site for several years now.
 
 Since Quarto can be used to host a blog @quarto-blog and I already really liked using it to write techincal documents, I decided it was time to migrate my blog to Quarto from Eleventy and TailwindCSS.
 
+Lastly, I had a resume that I had hosted on Overleaf.com which was written in LaTeX and based on Jake's resume. I wanted to update my resume and also make it part of my website somehow. I found that I had a hard time even maintaining the resume in Overleaf since I didn't use the site for anything else, I didn't really like LaTeX or understand it very well (which made my resume hard to maintain), and wanted a more local editing experience. Quarto can handle LaTeX but that would require downloading LaTeX dependencies which is a pain. However, it also vendors Typst @quarto-typst (which is a modern LaTeX replacement) and there was a Typst resume template @basic-resume that was similar to Jake's resume.
+
 ## Why Quarto?
 
 I wanted to write longer, more academic style blog posts which could make use of formal citations if I wanted to. I want to write in this more rigorous style since I'm finding that I scrutinize anything I read far more heavily than ever with the ubiquity of LLMs. Considering how easily information can be fabricated/hallucinated/whatever nowadays, I want to source claims I make in my writing as much as possible so that readers can more easily verify what I say. I refuse to allow an LLM to write for me as I find LLM generated content tortortous to read through due to lack of information density. But I do find LLMs help me in challenging specific claims I make and also helping with collecting interesting, relevant articles for me to read through. I don't use LLMs to write, I use it more like a lightweight editor and research assistant.
@@ -70,21 +72,25 @@ personal-site/
 ├── index.qmd # Site home page
 ├── mise.toml # Defines python and uv versions as long as wraps scripts in tasks
 ├── pyproject.toml # Defines which dependencies are needed in this site
+├── resume.typ # Typst source for the resume PDF
 ├── styles.css # Custom CSS Styles used by Quarto (currently empty)
 └── uv.lock # Lock file for python dependencies
 ```
 
-TODO: Add breif explanation
+The above listing shows the basic filesystem structure of the Quarto project that hosts this website. It's mostly pretty straightforward imo and the inline comments describe the files pretty well, so won't elaborate much more.
 
 ```{.yml #lst-quarto-yml lst-cap="Contents of _quarto.yml"}
 project:
   type: website
   output-dir: _site
+  pre-render:
+    - quarto typst compile resume.typ
   render:
     - "*.qmd"
     - "posts/**/*.qmd"
   resources:
     - "assets/favicon/**"
+    - resume.pdf
 
 website:
   # title: "Ishaat Chowdhury" # Intentionally not set
@@ -97,6 +103,8 @@ website:
     title: "Ishaat Chowdhury"
     right:
       - about.qmd
+      - text: Resume
+        href: resume.pdf
       - icon: rss
         href: index.xml
   page-footer:
@@ -121,7 +129,8 @@ format:
     include-in-header: assets/favicon/head.html
 ```
 
-TODO: Add breif explanation
+This is the definition of the Quarto project. It's a website type project which before we run `quarto render` will compile `resume.typ` to `resume.pdf`. The blog posts are in `posts/**/*.md` and other pages (404, about, etc) are in `*.qmd` files which are rendered as part of `quarto render`. The rest is pretty straightforward imo and thus won't detail. Refer to Quarto docs for more information.
+
 
 ```{.yml #lst-example-post-frontmatter lst-cap="Example Post Frontmatter"}
 ---
@@ -177,60 +186,30 @@ export function computePageTitle(
 
 ### Post Scaffolding
 
-TODO: Inline the new-post script here.
+I use a small shell script to scaffold new posts. It picks the current year, finds the next post number within that year, slugifies the title, and creates an `index.qmd` file with basic frontmatter. I wrap calling it in a prompt.
 
-### Writing and Editing
-
-TODO: Briefly mention what tools I use to check spelling/grammar. harper-ls for spellcheck, vale for checking content. panache.rs for quarto LSP. Maybe marksman too?
+```{.md #lst-new-post-prompt lst-cap="new-post.prompt.md"}
+```
 
 ### Merging Changes to the Post
 
-TODO: Inline the sort-bib.py file here! Add another script to check cross-references.
-
-```{.py #lst-sort-bib-py lst-cap="sort-bib.py"}
-#!/usr/bin/env python3
-"""Sort a BibTeX file alphabetically by citation key."""
-
-import sys
-from pathlib import Path
-
-import bibtexparser
-
-
-def main() -> None:
-    if len(sys.argv) != 2:
-        print("Usage: mise run sort-bib <path/to/file.bib>", file=sys.stderr)
-        sys.exit(1)
-
-    bib_path = Path(sys.argv[1])
-
-    if not bib_path.exists():
-        print(f"Error: {bib_path} does not exist", file=sys.stderr)
-        sys.exit(1)
-
-    if bib_path.suffix != ".bib":
-        print(f"Error: {bib_path} is not a .bib file", file=sys.stderr)
-        sys.exit(1)
-
-    with open(bib_path, encoding="utf-8") as f:
-        parser = bibtexparser.bparser.BibTexParser(common_strings=True)
-        parser.ignore_nonstandard_types = False
-        bib_db = bibtexparser.load(f, parser=parser)
-
-    bib_db.entries.sort(key=lambda entry: entry.get("ID", "").lower())
-
-    writer = bibtexparser.bwriter.BibTexWriter()
-    writer.indent = "  "
-
-    with open(bib_path, "w", encoding="utf-8") as f:
-        bibtexparser.dump(bib_db, f, writer=writer)
-
-    print(f"Sorted {len(bib_db.entries)} entries in {bib_path}")
-
-
-if __name__ == "__main__":
-    main()
+```{.md #lst-merge-post-prompt lst-cap="merge-post.prompt.md"}
+TODO: Add the prompt and then inline here!
 ```
+
+## Updating Resume
+
+Basically update the `resume.typ` file. The basic-resume template @basic-resume is much easier to read and maintain than the Jake's resume LaTeX template I was using before while giving the same look. Run the below commands to compile the resume to PDF:
+
+```bash
+# Compile for deployment (no phone number)
+quarto typst compile resume.typ
+
+# Compile locally with phone number
+quarto typst compile resume.typ --input phone=XXX-XXX-XXXX
+```
+
+In the CI, the resume won't have my phone number. But I can easily generate a version with my phone number and other private info in the future by adding it as an input. By default, if nothing is set for a private field, it won't be added to the PDF output.
 
 ## Porkbun + Netlify to Cloudflare Domains + Pages
 
@@ -242,7 +221,7 @@ The domain transfer process from Porkbun to Cloudflare Domains was pretty simple
 
 TODO: Mention how I used bulk redirects to migrate the 3 existing blog posts I had.
 
-Not being a prolific writer actually ended up working out in my favor here.
+Not being a prolific writer (yet) actually ended up working out in my favor here.
 
 ## Deployment Pipeline
 
@@ -305,7 +284,7 @@ jobs:
 
 Although CloudFlare Pages can build sites directly from source, Quarto isn't one of it's supported static site generators. You can technically use a custom build command which can download Quarto CLI from GitHub releases via wget or curl and then run the CLI to build the site. That seemed really janky. Cloudflare supports deploying any static output @cloudflare-pages-static-html which is the official GitHub action does. So opted to go with the GitHub actions approach instead as it seemed less brittle and more flexible.
 
-I personally like having Cloudflare Pages just be a pure deployment target but I control the build logic entirely with GitHub Actions. It makes it easy to move static site hosts in the future if I don't depend on my host to also do CI/CD. I could even easily migrate away from GitHub to another forge as long as I can host the code there (which is a trivial capability) and the forge has support for CI/CD. Overall, to me at least, it feels like a pretty clear separation of concerns.
+I personally like having Cloudflare Pages just be a pure deployment target but I control the build logic entirely with GitHub Actions. It makes it easy to move static site hosts in the future if I don't depend on my host to also do CI/CD. I could technically migrate away from GitHub to another forge as long as I can host the code there (which is a trivial capability) and the forge has support for CI/CD which can deploy to Cloudflare (less trivial likely). Overall, to me at least, it feels like a pretty clear separation of concerns.
 
 ## Result
 

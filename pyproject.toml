@@ -5,4 +5,5 @@ description = "Personal dev blog at ishaat.ca"
 requires-python = ">=3.14"
 dependencies = [
     "bibtexparser>=1.4.4",
+    "pyyaml>=6.0.2",
 ]
