@@ -33,7 +33,7 @@ cat > "${POST_DIR}/index.qmd" <<EOF
 title: "${TITLE}"
 date: "${DATE}"
 description: ""
-draft: true
+draft: false
 categories: []
 ---
 EOF

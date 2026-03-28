@@ -2,7 +2,7 @@
 title: "Migrating My Blog to Quarto from Eleventy + TailwindCSS"
 date: "2026-03-18"
 description: "TODO: Fill in description"
-draft: true
+draft: false
 categories: [ssg, quarto]
 bibliography: refs.bib
 ---
@@ -137,7 +137,7 @@ This is the definition of the Quarto project. It's a website type project which 
 title: "Migrating My Blog to Quarto from Eleventy + TailwindCSS"
 date: "2026-03-18"
 description: "TODO: Fill in description"
-draft: true
+draft: false
 categories: [ssg, quarto]
 bibliography: refs.bib
 ---
@@ -220,6 +220,19 @@ The domain transfer process from Porkbun to Cloudflare Domains was pretty simple
 ### Redirecting old urls to new ones using bulk redirects
 
 TODO: Mention how I used bulk redirects to migrate the 3 existing blog posts I had.
+
+::: {#tbl-bulk-redirects tbl-cap="Bulk redirect mappings from the old Eleventy URL structure to the new Quarto URL structure."}
+| **Original URL** | **Redirected URL** |
+|---|---|
+| https://ishaat.ca/feed.xml | https://ishaat.ca/index.xml |
+| https://ishaat.ca/posts/2020/05/20/eleventy-tailwindcss-new-site/ | https://ishaat.ca/posts/2020/001-eleventy-tailwindcss-new-site/ |
+| https://ishaat.ca/posts/2021/02/07/introducing-nvim-deardiary/ | https://ishaat.ca/posts/2021/001-introducing-nvim-deardiary/ |
+| https://ishaat.ca/posts/2023/02/12/my-ultimate-windows-10-window-management-setup/ | https://ishaat.ca/posts/2023/001-my-ultimate-windows-10-window-management-setup/ |
+| https://www.ishaat.ca/feed.xml | https://www.ishaat.ca/index.xml |
+| https://www.ishaat.ca/posts/2020/05/20/eleventy-tailwindcss-new-site/ | https://www.ishaat.ca/posts/2020/001-eleventy-tailwindcss-new-site/ |
+| https://www.ishaat.ca/posts/2021/02/07/introducing-nvim-deardiary/ | https://www.ishaat.ca/posts/2021/001-introducing-nvim-deardiary/ |
+| https://www.ishaat.ca/posts/2023/02/12/my-ultimate-windows-10-window-management-setup/ | https://www.ishaat.ca/posts/2023/001-my-ultimate-windows-10-window-management-setup/ |
+:::
 
 Not being a prolific writer (yet) actually ended up working out in my favor here.
 

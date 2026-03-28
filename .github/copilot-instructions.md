@@ -39,7 +39,7 @@ Use the mise task runner:
 mise run new-post "My Post Title"
 ```
 
-This scaffolds `posts/{year}/{NNN}-{slug}/index.qmd`. Posts are created as **drafts by default** — set `draft: false` in the front matter when ready to publish.
+This scaffolds `posts/{year}/{NNN}-{slug}/index.qmd`. Posts are created with `draft: false` by default.
 
 ### Branch Naming Convention
 

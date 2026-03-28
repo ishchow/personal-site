@@ -51,7 +51,7 @@ The phone number is injected via `sys.inputs` — omitted by default (deployed v
 mise run new-post "My Post Title"
 ```
 
-This scaffolds a new post directory with `index.qmd` under `posts/{year}/{NNN}-{slug}/`. Posts are drafts by default.
+This scaffolds a new post directory with `index.qmd` under `posts/{year}/{NNN}-{slug}/`. Posts are created with `draft: false` by default.
 
 ## Sort BibTeX References
 

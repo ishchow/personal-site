@@ -33,4 +33,3 @@ Create a new blog post with the given title.
 6. Remind the user to:
    - Fill in the `description` field (used for Open Graph previews)
    - Add references to `refs.bib` as needed
-   - Set `draft: false` when ready to publish
