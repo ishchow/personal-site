@@ -1,5 +1,5 @@
 ---
-title: "Migrating My Blog to Quarto from Eleventy + TailwindCSS"
+title: "Migrating My Blog to Quarto"
 date: "2026-03-18"
 description: "TODO: Fill in description"
 draft: false
@@ -53,7 +53,7 @@ personal-site/
 │   │       ├── *.png # Per-post assets are contained in the post directory
 │   │       └── *.gif
 │   ├── 2026/
-│   │   └── 001-migrating-my-blog-to-quarto-from-eleventy-tailwindcss/ # Individual post
+│   │   └── 001-migrating-my-blog-to-quarto/ # Individual post
 │   │       ├── notes/ # Research notes (not rendered)
 │   │       │   └── example-note.md
 │   │       ├── index.qmd # Blog post content
@@ -134,7 +134,7 @@ This is the definition of the Quarto project. It's a website type project which 
 
 ```{.yml #lst-example-post-frontmatter lst-cap="Example Post Frontmatter"}
 ---
-title: "Migrating My Blog to Quarto from Eleventy + TailwindCSS"
+title: "Migrating My Blog to Quarto"
 date: "2026-03-18"
 description: "TODO: Fill in description"
 draft: false
@@ -193,7 +193,7 @@ I use a small shell script to scaffold new posts. It picks the current year, fin
 
 ### Merging Changes to the Post
 
-```{.md #lst-merge-post-prompt lst-cap="merge-post.prompt.md"}
+```{.md #lst-pre-merge-post-prompt lst-cap="pre-merge-post.prompt.md"}
 TODO: Add the prompt and then inline here!
 ```
 
@@ -219,7 +219,7 @@ The domain transfer process from Porkbun to Cloudflare Domains was pretty simple
 
 ### Redirecting old urls to new ones using bulk redirects
 
-TODO: Mention how I used bulk redirects to migrate the 3 existing blog posts I had.
+I only had 3 posts in my old blog but I still wanted to be able to ensure that links weren't broken post migration. Cloudflare has a feature called bulk redirects @cloudflare-bulk-redirects which can basically redirect URLs on a Cloudflare domain. Not being a prolific writer (yet) actually ended up working out in my favor here.
 
 ::: {#tbl-bulk-redirects tbl-cap="Bulk redirect mappings from the old Eleventy URL structure to the new Quarto URL structure."}
 | **Original URL** | **Redirected URL** |
@@ -233,8 +233,6 @@ TODO: Mention how I used bulk redirects to migrate the 3 existing blog posts I h
 | https://www.ishaat.ca/posts/2021/02/07/introducing-nvim-deardiary/ | https://www.ishaat.ca/posts/2021/001-introducing-nvim-deardiary/ |
 | https://www.ishaat.ca/posts/2023/02/12/my-ultimate-windows-10-window-management-setup/ | https://www.ishaat.ca/posts/2023/001-my-ultimate-windows-10-window-management-setup/ |
 :::
-
-Not being a prolific writer (yet) actually ended up working out in my favor here.
 
 ## Deployment Pipeline
 
