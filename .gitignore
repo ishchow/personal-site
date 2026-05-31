@@ -1,16 +1,12 @@
-# Quarto build output
-/_site/
-/_freeze/
-/.quarto/
-*.html
+# Soupault build output
+/build/
+/.soupault-cache/
 
 # OS
 .DS_Store
 
 # Environment
 .env
-
-**/*.quarto_ipynb
 
 # Build artifacts
 resume.pdf

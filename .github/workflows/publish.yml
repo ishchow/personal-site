@@ -13,14 +13,14 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - uses: jdx/mise-action@v3
 
-      - name: Render site
-        run: quarto render
+      - name: Build the site
+        run: mise run build
 
       - name: Deploy to CloudFlare Pages
         id: deploy
@@ -29,7 +29,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: personal-site
-          directory: _site
+          directory: build
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Comment preview URL on PR

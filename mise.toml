@@ -1,3 +1,32 @@
+[tools]
+  "github:PataphysicalSociety/soupault" = "5.3.0"
+  minify = "2.24.13"
+  typst = "0.11.1"
+
+[tasks.clean]
+description = "Remove build contents"
+run = "rm -rf build/*"
+
+[tasks.build]
+description = "Build the site with soupault"
+depends = ["clean"]
+run = "soupault"
+
+[tasks.serve]
+description = "Serve the site locally"
+depends = ["build"]
+run = "python -m http.server 8080 --directory build/ --bind 127.0.0.1"
+
 [tasks.new-post]
-description = "Scaffold a new blog post"
-run = "bash scripts/new-post.sh {{arg(name='title')}}"
+description = "Create a new blog post"
+run = "scripts/new-post.sh \"{{arg(name='title')}}\""
+
+[tasks.resume]
+description = "Compile resume PDF (use --phone=XXX to include phone number)"
+run = """
+if [ -n "{{option(name='phone', default='')}}" ]; then
+  typst compile site/resume.typ resume.pdf --input "phone={{option(name='phone')}}"
+else
+  typst compile site/resume.typ resume.pdf
+fi
+"""

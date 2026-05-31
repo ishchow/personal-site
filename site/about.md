@@ -1,0 +1,8 @@
+# About
+
+Just another software engineer trying their best.
+
+This site is built with [soupault](https://soupault.app), hosted on [Cloudflare Pages](https://pages.cloudflare.com/), and the source code is on [GitHub](https://github.com/ishchow/personal-site).
+
+Contents of this site are licensed under [CC BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+Source code used to render and display content is licensed under the [MIT](https://github.com/ishchow/personal-site/blob/main/LICENSE.md) license.
