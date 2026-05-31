@@ -20,7 +20,14 @@ time#post-date {
 }
 
 #blog-index li {
-  margin-bottom: 0.6em;
+  margin-bottom: 1.5em;
+}
+
+#blog-index .post-excerpt {
+  margin-top: 0.3em;
+  margin-bottom: 0;
+  font-size: 0.9em;
+  color: #aaa;
 }
 
 /* Responsive video embeds */
