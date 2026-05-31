@@ -4,8 +4,6 @@
 
 <p id="post-excerpt">A comprehensive guide to my keyboard-driven window management workflow on Windows 10/11, using FancyWM, kanata, AutoHotKey, and built-in settings.</p>
 
-<span class="category">Windows</span> <span class="category">FancyWM</span> <span class="category">Kanata</span>
-
 # Background
 
 I've always been disappointed with the default experience of managing application windows and searching (for files, open apps, anything really) in Windows 10. In general, I find that Windows isn't as keyboard driven as I'd like.

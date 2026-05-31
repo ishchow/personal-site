@@ -78,15 +78,12 @@ Posts use Markdown with inline HTML metadata (no YAML front matter):
 
 <p id="post-excerpt">Short description for feed and listing.</p>
 
-<span class="category">tag1</span> <span class="category">tag2</span>
-
 Post content here...
 ```
 
 ## Key Conventions
 
-- **Categories**: Use `<span class="category">` elements for tagging posts.
-- **Homepage listing**: Shows date, title, and category tags.
+- **Homepage listing**: Shows date and title.
 - **Excerpt**: Every post should have a `<p id="post-excerpt">` — this powers Atom feed previews.
 - **Images**: For posts with images, create a same-named directory and reference with `![alt](filename)`.
 - **Videos**: Use responsive iframe embeds wrapped in `<div class="video-embed">`.

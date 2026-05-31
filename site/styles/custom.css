@@ -13,17 +13,6 @@ time#post-date {
   margin-bottom: 1.5rem;
 }
 
-/* Categories */
-span.category {
-  display: inline-block;
-  font-size: 0.75em;
-  padding: 0.15em 0.5em;
-  margin-left: 0.3em;
-  background-color: #40363a;
-  border-radius: 3px;
-  color: #eb99a1;
-}
-
 /* Blog index list */
 #blog-index {
   list-style: none;

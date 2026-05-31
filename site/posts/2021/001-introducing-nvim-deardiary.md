@@ -4,8 +4,6 @@
 
 <p id="post-excerpt">An overview of nvim-deardiary, a Neovim plugin written in Lua for managing multiple journals with customizable frequencies, filesystem paths, and templating.</p>
 
-<span class="category">neovim</span> <span class="category">lua</span> <span class="category">nvim-deardiary</span>
-
 I've been working on a Neovim plugin written in Lua for a while now called
 [nvim-deardiary](https://github.com/ishchow/nvim-deardiary). I've been using it
 regularly over the past month or so and I think it's now in a good enough state

@@ -4,8 +4,6 @@
 
 <p id="post-excerpt">In this post, I describe the tech stack I made my new site in and why. I also contextualize my choices compared to my experiences with other static site generators.</p>
 
-<span class="category">ssg</span> <span class="category">eleventy</span> <span class="category">tailwindcss</span>
-
 Now that I'm recently graduated with all my summer activities (vacations, grad ceremonies, etc.) cancelled due to COVID, I thought this would be the ideal time to redo my website.
 I created my new website using [Eleventy](https://www.11ty.dev/) as the static site generator and [TailwindCSS](https://tailwindcss.com/) to style the website.
 
