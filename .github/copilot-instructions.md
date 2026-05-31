@@ -4,32 +4,54 @@ A personal dev blog at [ishaat.ca](https://www.ishaat.ca), built for writing abo
 
 ## Tech Stack
 
-- **Quarto** — Static site generator (`.qmd` files → HTML)
-- **Typst** — Resume typesetting (bundled with Quarto, no separate install)
+- **Soupault** — Static site generator / HTML processor
+- **Typst** — Resume typesetting (compiled via soupault asset processor)
+- **Sakura-vader** — CSS theme (dark-only)
 - **GitHub Actions** — CI/CD (`.github/workflows/publish.yml`)
 - **CloudFlare Pages** — Hosting and CDN
+- **mise** — Task runner and tool version manager
 
 ## Directory Structure
 
 ```
-posts/
-├── _metadata.yml          # Shared metadata (author, freeze)
-└── {year}/
-    └── {NNN}-{slug}/
-        ├── index.qmd      # Post content
-        └── *.png/gif       # Co-located images (if any)
+site/                          # Soupault site_dir (source)
+├── index.html                 # Homepage with blog index placeholder
+├── about.md                   # About page
+├── 404.md                     # 404 page
+├── resume.typ                 # Resume source (typst asset processor → PDF)
+├── styles/
+│   ├── sakura-vader.css       # Vendored CSS theme
+│   └── custom.css             # Custom additions
+├── assets/
+│   └── favicon/               # Favicon files
+└── posts/
+    └── {year}/
+        ├── {NNN}-{slug}.md    # Post content (flat file)
+        └── {NNN}-{slug}/      # Co-located images (optional, same-named dir)
+            └── *.png/gif
+
+templates/
+└── main.html                  # Page shell template
+
+plugins/
+└── atom.lua                   # Atom feed generator
+
+build/                         # Output directory (gitignored)
 ```
 
 - `{year}` — Four-digit year (e.g., `2023`)
 - `{NNN}` — Three-digit zero-padded sequence number (e.g., `001`)
 - `{slug}` — Slugified title (e.g., `my-post-title`)
 - URLs follow the filesystem path: `/posts/2023/001-my-post-title/`
+- Posts are **flat `.md` files**, not `index.md` inside directories — this is required so soupault includes them in `site_index` (used by the Atom feed plugin). Co-located images go in a same-named directory alongside the `.md` file.
 
 ## Deployment Pipeline
 
-1. Push to `main` or open a PR triggers `.github/workflows/publish.yml`
-2. GitHub Actions installs Quarto, renders the site, deploys `_site/` to CloudFlare Pages
-3. PRs get preview deploys; pushes to `main` deploy to production
+1. Push to `master` or open a PR triggers `.github/workflows/publish.yml`
+2. GitHub Actions installs tools via mise (soupault, typst, minify), runs `mise run build`
+3. Soupault processes pages, compiles resume via typst asset processor, minifies CSS
+4. `build/` is deployed to CloudFlare Pages
+5. PRs get preview deploys; pushes to `master` deploy to production
 
 ## Creating a New Post
 
@@ -39,38 +61,52 @@ Use the mise task runner:
 mise run new-post "My Post Title"
 ```
 
-This scaffolds `posts/{year}/{NNN}-{slug}/index.qmd`. Posts are created as **drafts by default** — set `draft: false` in the front matter when ready to publish.
+This scaffolds `site/posts/{year}/{NNN}-{slug}.md` with soupault HTML metadata (title as `# heading`, date as `<time id="post-date">`, excerpt as `<p id="post-excerpt">`).
 
 ### Branch Naming Convention
 
 New post branches are named `{year}-{NNN}` (e.g., `2026-002`), always created from `main`.
 
+## Post Format
+
+Posts use Markdown with inline HTML metadata (no YAML front matter):
+
+```markdown
+# Post Title
+
+<time id="post-date" datetime="YYYY-MM-DD">YYYY-MM-DD</time>
+
+<p id="post-excerpt">Short description for feed and listing.</p>
+
+<span class="category">tag1</span> <span class="category">tag2</span>
+
+Post content here...
+```
+
 ## Key Conventions
 
-- **Author**: Set globally in `posts/_metadata.yml`. Do not add `author` to individual post front matter unless overriding.
-- **Categories**: Use the `categories` field in front matter for tagging posts.
-- **Homepage listing**: Default format showing date, title, description, and categories.
-- **Description field**: Every post should have a `description` in its front matter — this powers Open Graph and RSS previews.
-- **Freeze**: Enabled in `posts/_metadata.yml`. Quarto caches rendered output to avoid re-executing computational content.
-- **Images**: Co-locate images in the post directory and reference with `![alt](filename)`.
-- **Videos**: Use Quarto's built-in video shortcode: `{{< video https://youtube.com/watch?v=ID >}}`.
-- **Comments**: Giscus is configured globally in `_quarto.yml` (mapped by post title).
+- **Categories**: Use `<span class="category">` elements for tagging posts.
+- **Homepage listing**: Shows date, title, and category tags.
+- **Excerpt**: Every post should have a `<p id="post-excerpt">` — this powers Atom feed previews.
+- **Images**: For posts with images, create a same-named directory and reference with `![alt](filename)`.
+- **Videos**: Use responsive iframe embeds wrapped in `<div class="video-embed">`.
+- **Comments**: Giscus is configured in `soupault.toml` as an `insert_html` widget (injected on post pages only, mapped by title, dark theme).
+- **Feed**: Atom feed generated by `plugins/atom.lua`, served at `/atom.xml`.
 
 ## Migration Context
 
-This site was migrated from Eleventy + TailwindCSS + Netlify to Quarto + CloudFlare Pages in March 2026.
+This site was migrated from Eleventy → Quarto → Soupault.
 Old URLs (`/posts/YYYY/MM/DD/slug/`) are redirected to new URLs (`/posts/YYYY/NNN-slug/`) via CloudFlare Bulk Redirect rules.
 
 ## Resume
 
-The resume lives at `resume.typ` (project root) — a plain Typst file using the [`basic-resume`](https://typst.app/universe/package/basic-resume/) template (pinned to `0.2.3` for Typst 0.11 compatibility with Quarto 1.6.x).
+The resume lives at `site/resume.typ` — a plain Typst file using the [`basic-resume`](https://typst.app/universe/package/basic-resume/) template (pinned to `0.2.3` for Typst 0.11 compatibility).
 
 ### How it integrates with the site
 
-- **Pre-render**: `quarto typst compile resume.typ` runs before `quarto render` (configured in `_quarto.yml` under `project.pre-render`)
-- **Resources**: `resume.pdf` is listed in `project.resources` so it copies into `_site/`
-- **Navbar**: Links directly to `resume.pdf` (no HTML resume page)
-- **CI/CD**: No extra workflow steps — Quarto bundles Typst, and `pre-render` runs automatically
+- **Asset processor**: Soupault compiles `resume.typ` → `resume.pdf` via the `[asset_processors] typ` config
+- **Navbar**: Links directly to `/resume.pdf`
+- **CI/CD**: No extra workflow steps — mise installs typst, soupault runs the asset processor automatically
 - **`.gitignore`**: `resume.pdf` is a build artifact and is gitignored
 
 ### Phone number handling
@@ -78,11 +114,11 @@ The resume lives at `resume.typ` (project root) — a plain Typst file using the
 The phone number is conditionally included via Typst's `sys.inputs`:
 
 ```bash
-# Deployed version (no phone)
-quarto typst compile resume.typ
+# Deployed version (no phone) — this is what the asset processor does
+mise run resume
 
 # Local version (with phone)
-quarto typst compile resume.typ --input phone=XXX-XXX-XXXX
+mise run resume --phone=XXX-XXX-XXXX
 ```
 
-The `pre-render` step in `_quarto.yml` compiles without the flag, so the deployed PDF omits the phone number.
+The asset processor compiles without the `--phone` flag, so the deployed PDF omits the phone number.

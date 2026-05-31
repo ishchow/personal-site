@@ -1,48 +1,52 @@
-# personal-site
+# Overview
 
-Personal dev blog at [ishaat.ca](https://www.ishaat.ca), built with [Quarto](https://quarto.org/) and deployed to [Cloudflare Pages](https://pages.cloudflare.com/).
+Source code for [ishaat.ca](https://www.ishaat.ca/).
+Built with [soupault](https://soupault.net/).
+Hosted on Cloudflare Pages.
+Deployed using GitHub Actions.
 
-## License
+# Setup
 
-Contents of this site (blog posts etc.) are licensed under [CC BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=ccchooser).
-Source code used to render and display content is licensed under the [MIT](https://github.com/ishchow/personal-site/blob/master/LICENSE.md).
-
-## Setup
-
-Install [Quarto](https://quarto.org/docs/get-started/) and [mise](https://mise.jdx.dev/).
-
-## Dev Server
+Install [mise](https://mise.jdx.dev/). Then run the following to setup dependencies.
 
 ```bash
-quarto preview
+mise install
 ```
 
-## Build
+# Dev Server
 
 ```bash
-quarto render
+mise serve
 ```
 
-Output is in `_site/`.
-
-## Resume
-
-The resume is a plain Typst file (`resume.typ`) using the [`basic-resume`](https://typst.app/universe/package/basic-resume/) template. It is compiled to PDF via Quarto's bundled Typst CLI in a `pre-render` step and served as a static file on the site.
+# Build
 
 ```bash
-# Compile for deployment (no phone number)
-quarto typst compile resume.typ
-
-# Compile locally with phone number
-quarto typst compile resume.typ --input phone=XXX-XXX-XXXX
+mise build
 ```
 
-The phone number is injected via `sys.inputs` — omitted by default (deployed version), included when passed via `--input` (local version).
+Output is in `build/`.
 
-## Create a New Post
+# Resume
+
+The resume is a plain Typst file (`site/resume.typ`) using the [`basic-resume`](https://typst.app/universe/package/basic-resume/) template. During site builds, soupault compiles it to PDF automatically via its typst asset processor.
+
+To compile the resume standalone:
 
 ```bash
-mise run new-post "My Post Title"
+# Without phone number (same as deployed version)
+mise run resume
+
+# With phone number (local use)
+mise run resume --phone=XXX-XXX-XXXX
 ```
 
-This scaffolds a new post directory with `index.qmd` under `posts/{year}/{NNN}-{slug}/`. Posts are drafts by default.
+The phone number is injected via Typst's `sys.inputs` — omitted by default, included when passed via `--phone`.
+
+# Adding New Posts
+
+`mise run new-post "Title"`
+
+# CI/CD
+
+See `.github/workflows/publish.yml` for the CI/CD configuration.

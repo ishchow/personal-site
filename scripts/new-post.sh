@@ -9,14 +9,14 @@ fi
 TITLE="$1"
 YEAR=$(date +%Y)
 DATE=$(date +%Y-%m-%d)
-YEAR_DIR="posts/${YEAR}"
+YEAR_DIR="site/posts/${YEAR}"
 
 # Slugify: lowercase, replace spaces/special chars with hyphens, collapse multiple hyphens, trim
 SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 -]//g' | tr ' ' '-' | sed 's/--*/-/g' | sed 's/^-//;s/-$//')
 
 # Find next sequence number
 mkdir -p "$YEAR_DIR"
-LAST_SEQ=$(find "$YEAR_DIR" -maxdepth 1 -mindepth 1 -type d 2>/dev/null \
+LAST_SEQ=$(find "$YEAR_DIR" -maxdepth 1 -name '*.md' 2>/dev/null \
   | sed 's|.*/||' \
   | grep -oE '^[0-9]+' \
   | sort -n \
@@ -24,18 +24,16 @@ LAST_SEQ=$(find "$YEAR_DIR" -maxdepth 1 -mindepth 1 -type d 2>/dev/null \
   || echo "0")
 NEXT_SEQ=$(printf "%03d" $(( ${LAST_SEQ:-0} + 1 )))
 
-POST_DIR="${YEAR_DIR}/${NEXT_SEQ}-${SLUG}"
-mkdir -p "$POST_DIR"
+POST_FILE="${YEAR_DIR}/${NEXT_SEQ}-${SLUG}.md"
 
-# Create index.qmd with front matter
-cat > "${POST_DIR}/index.qmd" <<EOF
----
-title: "${TITLE}"
-date: "${DATE}"
-description: ""
-draft: true
-categories: []
----
+# Create post with soupault metadata
+cat > "$POST_FILE" <<EOF
+# ${TITLE}
+
+<time id="post-date" datetime="${DATE}">${DATE}</time>
+
+<p id="post-excerpt"></p>
+
 EOF
 
-echo "Created: ${POST_DIR}/index.qmd"
+echo "Created: ${POST_FILE}"

@@ -1,0 +1,121 @@
+
+# To learn about configuring soupault, visit https://www.soupault.net/reference-manual
+
+[settings]
+  soupault_version = "5.3.0"
+  verbose = true
+  debug = false
+  site_dir = "site"
+  build_dir = "build"
+  page_file_extensions = ["htm", "html"]
+  markdown_extensions = ["md"]
+  markdown_strict_commonmark = false
+  markdown_smart_punctuation = true
+  markdown_smart_quotes = true
+  markdown_smart_apostrophe = true
+  markdown_smart_dashes = true
+  markdown_smart_ellipsis = true
+  clean_urls = true
+  keep_extensions = ["html", "htm"]
+  default_extension = "html"
+  ignore_extensions = ["draft"]
+  generator_mode = true
+  complete_page_selector = "html"
+  default_template_file = "templates/main.html"
+  default_content_selector = "main"
+  default_content_action = "append_child"
+  keep_doctype = true
+  doctype = "<!DOCTYPE html>"
+  pretty_print_html = true
+  plugin_discovery = true
+  plugin_dirs = ["plugins"]
+  caching = true
+  cache_dir = ".soupault-cache"
+  page_character_encoding = "utf-8"
+
+[asset_processors]
+  css = "minify -o {{target_dir}}/{{source_file_name}} {{source_file_path}}"
+  typ = "typst compile {{source_file_path}} {{target_dir}}/resume.pdf"
+
+[custom_options]
+  site_url = "https://www.ishaat.ca"
+  site_title = "Ishaat Chowdhury"
+  site_author = "Ishaat Chowdhury"
+  site_author_email = "ishaatchowdhury@gmail.com"
+
+# Page title widget
+[widgets.page-title]
+  widget = "title"
+  selector = ["#title", "h1", "h2", "h3"]
+  default = "Ishaat Chowdhury"
+  force = false
+
+# Delete blink elements
+[widgets.no-blink]
+  widget = "delete_element"
+  selector = "blink"
+  delete_all = true
+
+# Giscus comments on post pages
+[widgets.giscus-comments]
+  widget = "insert_html"
+  html = """
+    <script src="https://giscus.app/client.js"
+      data-repo="ishchow/personal-site"
+      data-repo-id="MDEwOlJlcG9zaXRvcnkyNjE2NTU2ODI="
+      data-category="Post Comments"
+      data-category-id="DIC_kwDOD5iMgs4CAmWd"
+      data-mapping="title"
+      data-reactions-enabled="1"
+      data-input-position="top"
+      data-theme="dark"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async>
+    </script>
+  """
+  selector = "main"
+  action = "append_child"
+  section = "posts"
+  include_subsections = true
+
+# Index fields
+[index.fields.title]
+  selector = ["h1", "h2", "h3"]
+
+[index.fields.date]
+  selector = ["time#post-date", "time"]
+  extract_attribute = "datetime"
+  fallback_to_content = true
+
+[index.fields.excerpt]
+  selector = ["p#post-excerpt", "p"]
+
+[index.fields.categories]
+  selector = "span.category"
+  select_all = true
+
+[index]
+  sort_descending = true
+  sort_type = "calendar"
+  sort_by = "date"
+  date_formats = ["%F"]
+
+[index.views.blog]
+  section = "posts"
+  include_subsections = true
+  index_selector = "#blog-index"
+  index_item_template = """
+    <li>
+      <span class="post-date">{{ date }}</span> |
+      <a href="{{ url }}">{{ title }}</a>
+      {% for c in categories %}<span class="category">{{ c }}</span> {% endfor %}
+    </li>
+  """
+
+# Atom feed
+[widgets.atom]
+  widget = "atom"
+  page = "index.html"
+  feed_file = "atom.xml"
+  use_section = "posts"
