@@ -49,6 +49,11 @@ time#post-date {
   border: 0;
 }
 
+/* Link visibility for accessibility — links must be distinguishable beyond color */
+main a {
+  text-decoration: underline;
+}
+
 /* Giscus container spacing */
 .giscus {
   margin-top: 3rem;
