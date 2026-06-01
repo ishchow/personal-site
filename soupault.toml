@@ -50,6 +50,11 @@
   default = "Ishaat Chowdhury"
   force = false
 
+# Meta description
+[widgets.meta-description]
+  widget = "meta-description"
+  default_description = "Personal dev blog by Ishaat Chowdhury — writing about tools, workflows, and projects."
+
 # Delete blink elements
 [widgets.no-blink]
   widget = "delete_element"

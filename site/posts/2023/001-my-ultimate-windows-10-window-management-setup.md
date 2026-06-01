@@ -106,7 +106,7 @@ Now, these keyboard shortcuts have some interesting behaviour:
 
 ## Other keyboard shortcuts
 
-I only listed my most used keyboard shortcuts in this article but you can find full list of them [here](https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec#WindowsVersion=Windows_10).
+I only listed my most used keyboard shortcuts in this article but you can find [the full list of Windows keyboard shortcuts](https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec#WindowsVersion=Windows_10).
 
 ## Multitasking settings
 
@@ -224,7 +224,7 @@ Here's a short demo of FancyWM. These are the features of FancyWM I'm showing (a
 - Temporarily float windows
 
 <div class="video-embed">
-<iframe src="https://www.youtube-nocookie.com/embed/nNFbUpHJmG4" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/nNFbUpHJmG4" title="FancyWM tiling window management demo" allowfullscreen></iframe>
 </div>
 
 Now here's another demo of FancyWM focusing on handling of virtual desktops. I'm demoing the following features (all using keyboard shortcuts):
@@ -236,7 +236,7 @@ Now here's another demo of FancyWM focusing on handling of virtual desktops. I'm
 - Move window to previous virtual desktop (`Shift+Win`  followed by `Shift+Q` after short delay)
 
 <div class="video-embed">
-<iframe src="https://www.youtube-nocookie.com/embed/j7wu2VmVx6c" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/j7wu2VmVx6c" title="FancyWM virtual desktop management demo" allowfullscreen></iframe>
 </div>
 
 FancyWM has a lot of other cool features that I haven't gone into (ex. moving window to specific monitor number, etc.) and new features are added regularly.
@@ -293,13 +293,13 @@ This is an AutoHotKey [script](https://gist.github.com/ishchow/30f3a6d34c2f3230f
 Below is a demonstration of the default Windows behaviour when switching between application windows using keyboard shortcuts (in this case, `Win+Number`). You can see that the focused window changes but the mouse cursor still stays at the same position.
 
 <div class="video-embed">
-<iframe src="https://www.youtube-nocookie.com/embed/5PiZZbXib5E" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/5PiZZbXib5E" title="Default Windows focus behavior without mouse follows focus" allowfullscreen></iframe>
 </div>
 
 Below is a demonstration of 'Mouse Follows Focus'. Now when I switch windows using keyboard shortcuts, the mouse cursor is automatically moved to the center of the newly focused window. This is especially useful when working with multi-monitor setups, since you can avoid having to physically drag your mouse to move the cursor to another monitor when the focused window changes via keyboard. But I also like this when working on a laptop on the couch since I don't have to use the trackpad so much.
 
 <div class="video-embed">
-<iframe src="https://www.youtube-nocookie.com/embed/qqEqMTeONJ4" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/qqEqMTeONJ4" title="Mouse follows focus demo with AutoHotKey" allowfullscreen></iframe>
 </div>
 
 ### Handling admin windows with AutoHotKey
@@ -317,7 +317,7 @@ I also use the Windows Task Scheduler to run `mouse_follows_focus.ahk` on startu
 When window focus events are invoked, it seems that Windows will switch focus to the taskbar and then focus on the actual window. The script adds a short delay to compensate for this but sometimes it's not enough, so you end up in a situation where the mouse cursor is still on the taskbar and hasn't moved to the application window (as shown below).
 
 <div class="video-embed">
-<iframe src="https://www.youtube-nocookie.com/embed/lTi6waxdh1Y" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/lTi6waxdh1Y" title="Mouse cursor stuck on taskbar issue demo" allowfullscreen></iframe>
 </div>
 
 Usually hitting Alt+Tab once or twice would help to recenter the mouse.

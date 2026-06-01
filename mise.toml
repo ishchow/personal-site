@@ -30,3 +30,19 @@ else
   typst compile site/resume.typ resume.pdf
 fi
 """
+
+[tasks.lighthouse]
+description = "Run Lighthouse audit against the built site"
+depends = ["build"]
+run = """
+python3 -m http.server 10080 --directory build/ --bind 127.0.0.1 &
+SERVER_PID=$!
+sleep 1
+npx lighthouse http://127.0.0.1:10080 \
+  --chrome-flags="--headless=new --no-sandbox" \
+  --output=html --output-path=./lighthouse-report.html \
+  --only-categories=seo,accessibility
+EXIT_CODE=$?
+kill $SERVER_PID 2>/dev/null
+exit $EXIT_CODE
+"""
